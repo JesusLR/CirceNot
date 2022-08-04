@@ -1,56 +1,9 @@
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'CICER') }}</title>
-    <!-- Scripts -->
-    <!-- CSS only -->
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-
-    <!-- Icons -->
-    <link href="{{ asset('css/nucleo-icons.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/nucleo-svg.css') }}" rel="stylesheet" />
-
-    <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-
-    <!-- CSS Files -->
-    <link id="pagestyle" href="{{ asset('css/soft-ui-dashboard.css') }}" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-
-    <!-- JS CORE -->
-    <!-- Core -->
-    <script src="{{ asset('js/core/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/core/popper.min.js') }}"></script>
 
 
-
-    <!-- Theme JS -->
-    <script src="{{ asset('js/soft-ui-dashboard.min.js') }}"></script>
-    <script src="{{ asset('js/plugins/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('js/plugins/choices.min.js') }}"></script>
-
-    <!-- CKEDITOR -->
-    <script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
-
-
-
-    <style>
-        .async-hide {
-            opacity: 0 !important
-        }
-    </style>
-</head>
-
-<body class="g-sidenav-show bg-gray-100">
+<div class="g-sidenav-show bg-gray-100">
     <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
         <div class="sidenav-header">
           <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -813,10 +766,12 @@
         </div>
       </aside>
 
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg  bg-gray-100">
+      <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg  bg-gray-100">
         @yield('content')
     </main>
     @yield('scripts')
 
-</body>
+
+
+    </div>
 </html>
