@@ -16,12 +16,18 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="{{asset('/img/apple-icon.png')}}">
   <link rel="icon" type="image/png" href="{{asset('img/favicon.png')}}">
   <title>
     Inicia Sesion!
   </title>
+   <!--AJAX and JQuery-->
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Nucleo Icons -->
@@ -57,17 +63,17 @@
                 <div class="card-body">
                   <form role="form">
                     <div class="mb-3">
-                      <input type="email" class="form-control form-control-lg" placeholder="Email" aria-label="Email">
+                      <input id="userInputLog" type="email" class="form-control form-control-lg" placeholder="Email" >
                     </div>
                     <div class="mb-3">
-                      <input type="email" class="form-control form-control-lg" placeholder="Password" aria-label="Password">
+                      <input id="passInputLog" type="password" class="form-control form-control-lg" placeholder="Password">
                     </div>
                     <div class="form-check form-switch">
                       <input class="form-check-input" type="checkbox" id="rememberMe">
                       <label class="form-check-label" for="rememberMe">Remember me</label>
                     </div>
                     <div class="text-center">
-                      <button type="button" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Sign in</button>
+                      <button id="btnAceptLogin" type="button" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Aceptar</button>
                     </div>
                   </form>
                 </div>
@@ -97,6 +103,7 @@
   <script src="{{asset('js/core/bootstrap.min.js')}}"></script>
   <script src="{{asset('js/plugins/perfect-scrollbar.min.js')}}"></script>
   <script src="{{asset('js/plugins/smooth-scrollbar.min.js')}}"></script>
+  <script src="{{ asset('js/not/login.js') }}"></script>
   <!-- Kanban scripts -->
   <script src="{{asset('js/plugins/dragula/dragula.min.js')}}"></script>
   <script src="{{asset('js/plugins/jkanban/jkanban.js')}}"></script>
