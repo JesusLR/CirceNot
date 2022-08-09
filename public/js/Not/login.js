@@ -23,7 +23,7 @@ $("#btnAceptLogin").click(function() {
         },
         dataType: "json",
         success: function (r) {
-           
+            window.location.href = "/home";
     },
         error: function (err) {
             

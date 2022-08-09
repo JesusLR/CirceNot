@@ -9,10 +9,15 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
+
+    public function acceso(){
+        return view('auth.login');
+    }
+
     public function login(Request $request){
         $credentials = $request->only('email', 'password');
         if(Auth::attempt($credentials)){
-            return redirect()->intended(route('home'));
+            return redirect()->route('home');
         }else{
            dd('No esta autorizado');
         }
