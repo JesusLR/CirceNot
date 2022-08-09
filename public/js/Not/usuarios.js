@@ -25,7 +25,6 @@ $(document).ready(function() {
             field: "cNombreCompleto",
             title: "Nombre",
             width: "5%",
-            visible: false,
         },{
             field: "cAccion",
             title: "Acciones",
