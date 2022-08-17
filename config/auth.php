@@ -40,6 +40,15 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins'
+        ],
+        'autorizados' => [
+            'driver' => 'session',
+            'provider' => 'pautorizado'
+        ]
+
     ],
 
     /*
@@ -64,6 +73,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Administrador::class,
+        ],
+        'pautorizado' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\PersonasAutorizadas::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
