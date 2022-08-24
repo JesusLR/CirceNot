@@ -25,7 +25,7 @@
   </title>
    <!--AJAX and JQuery-->
    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <!--     Fonts and icons     -->
@@ -61,36 +61,37 @@
                   <p class="mb-0">Panel administrativo</p>
                 </div>
                 <div class="card-body">
-                  <form role="form">
+                  <form role="form" action='{{route('admin_login_inicio_sesion')}}' method='POST'>
+                    @csrf
                     <div class="mb-3">
-                      <input id="userInputLog" type="email" class="form-control form-control-lg" placeholder="Email" >
+                      <input id="userInputLog" type="email" name="email" class="form-control form-control-lg" placeholder="Email" >
                     </div>
                     <div class="mb-3">
-                      <input id="passInputLog" type="password" class="form-control form-control-lg" placeholder="Password">
+                      <input id="passInputLog" type="password" name="password" class="form-control form-control-lg" placeholder="Password">
                     </div>
                     <div class="form-check form-switch">
                       <input class="form-check-input" type="checkbox" id="rememberMe">
                       <label class="form-check-label" for="rememberMe">Remember me</label>
                     </div>
                     <div class="text-center">
-                      <button id="btnAceptLogin" type="button" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Aceptar</button>
+                      <button id="btnAceptLogin" type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Aceptar</button>
                     </div>
                   </form>
                 </div>
-                <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                {{-- <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-4 text-sm mx-auto">
                     Don't have an account?
                     <a href="javascript:;" class="text-primary text-gradient font-weight-bold">Sign up</a>
                   </p>
-                </div>
+                </div> --}}
               </div>
             </div>
             <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
-              <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg');
+              <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('https://www.elsoldetoluca.com.mx/incoming/373uz4-notarias.jpg/ALTERNATES/LANDSCAPE_1140/notarias.jpg');
           background-size: cover;">
                 <span class="mask bg-gradient-primary opacity-6"></span>
-                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Attention is the new currency"</h4>
-                <p class="text-white position-relative">The more effortless the writing looks, the more effort the writer actually put into the process.</p>
+                <h4 class="mt-5 text-white font-weight-bolder position-relative">CIRCE NOTARIAL</h4>
+                <p class="text-white position-relative">Todo lo que nesesitas, al alcance de tus manos.</p>
               </div>
             </div>
           </div>

@@ -1,20 +1,8 @@
-
-<!DOCTYPE html>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
-
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-
-<div class="g-sidenav-show bg-gray-100">
     <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
         <div class="sidenav-header">
           <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
           <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard-pro/pages/dashboards/default.html " target="_blank">
-            <img src="/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+            <img src="/img/circeNotLogo.png" class="navbar-brand-img h-100" alt="main_logo">
             <span class="ms-1 font-weight-bold">Circe Notarial</span>
           </a>
         </div>
@@ -31,7 +19,7 @@
               <div class="collapse " id="adminpanel">
                 <ul class="nav ms-4">
                   <li class="nav-item ">
-                    <a class="nav-link " href="{{route('usuarios')}}">
+                    <a class="nav-link " href="{{route('administracion_usuarios')}}">
                       <span class="sidenav-mini-icon"> U </span>
                       <span class="sidenav-normal"> Usuarios </span>
                     </a>
@@ -319,10 +307,3 @@
         </div>
       </aside>
 
-      <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg  bg-gray-100">
-        @yield('content')
-    </main>
-    @yield('scripts')
-
-    </div>
-</html>

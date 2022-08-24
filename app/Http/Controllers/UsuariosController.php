@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UsuariosController extends Controller
-{
+class UsuariosController extends Controller{
     
-public function usuarios(){
-    return view('admin.usuarios');
-}
+    public function usuariosAdmin(){
+        return view('admin.adminUsers');
+    }
 
 }

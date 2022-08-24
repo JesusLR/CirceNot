@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('autorizados.auth.login');
+// });
 Route::get('/', function () {
-    return view('autorizados.auth.login');
+    return redirect()->route('usuario_vista_login');
 });
 require __DIR__ . '/administrador/adminRuta.php';
 require __DIR__ .'/usuarios/usuarioRuta.php';
