@@ -12,7 +12,12 @@
               panel administrativo para la administracion de personas autorizadas
             </p>
           </div>
- 
+          <div class="row" style="margin-bottom: 20px;">
+            <div class="col-md-12">
+                <table class="table table-striped" id="gridUsers">
+                </table>
+            </div>
+        </div>
         </div>
       </div>
     </div>

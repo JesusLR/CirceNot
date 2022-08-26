@@ -6,15 +6,11 @@ $(document).ready(function() {
     });
 
     $("#gridUsers").bootstrapTable({
+        url: window.url + "/admin/gridUsers",
         classes: "table-striped",
         uniqueId: "id",
-        method: "post",
+        method: "get",
         contentType: "application/x-www-form-urlencoded",
-        queryParams: function(p) {
-            return {
-                iIDUser: "",
-            };
-        },
         pagination: true,
         pageSize: 10,
         columns: [{
@@ -24,7 +20,7 @@ $(document).ready(function() {
         }, {
             field: "cNombreCompleto",
             title: "Nombre",
-            width: "5%",
+            // width: "5%",
         },{
             field: "cAccion",
             title: "Acciones",
@@ -32,5 +28,5 @@ $(document).ready(function() {
         }],
         onLoadSuccess: function(data) {},
     });
-    $("#gridUsers").bootstrapTable("refresh");
+    // $("#gridUsers").bootstrapTable("refresh");
 })

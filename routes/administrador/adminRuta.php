@@ -10,4 +10,5 @@ Route::prefix('admin/')->group(function () {
     Route::get('panel', [LoginController::class, 'adminHome'])->name('admin_vista_home');
     Route::get('logout', [LoginController::class, 'logout'])->name('admin_logout');
     Route::get('usuariosAdmin', [UsuariosController::class, 'usuariosAdmin'])->name('administracion_usuarios');
+    Route::get('gridUsers', [UsuariosController::class, 'gridUsers'])->name('grid_usuarios');
 });
