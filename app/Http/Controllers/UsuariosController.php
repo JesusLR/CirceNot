@@ -16,13 +16,10 @@ class UsuariosController extends Controller{
 
     public function gridUsers(){
         try {
-           $p =  PersonasAutorizadas::select('*')->get();
-            dd($p);
+           $users =  PersonasAutorizadas::select('*')->get();
             
-            return response()->json([
-                'lSuccess' => true,
-                'data' => $p,
-            ]);
+            return $users;
+        
         } catch (Exception $err) {
             $conexion->rollback();
             return response()->json([
@@ -30,5 +27,89 @@ class UsuariosController extends Controller{
                 'cMensaje' => $err->getMessage(),
             ]);
         }
+    }
+
+    public function createUser(Request $request){
+        try {
+             
+            PersonasAutorizadas::create([
+                'cNombre' => $request->nombre,
+                'cPrimerApellido' => $request->apellidoP,
+                'cSegundoApellido' => $request->apellidoM,
+                'email' => $request->email,
+                'emailDos' => $request->email2,
+                'cUsuario' => $request->usuario,
+                'password' => $request->password,
+                'cCURP' => $request->curp,
+                'cRFC' => $request->rfc,
+                'iIDPermiso' => $request->permiso,
+                'iIDPuesto' => $request->puesto,
+                'iTelefono' => $request->telefono,
+                'lActivo' => 1,
+                // 'iIDGestoria' 
+            ]);
+
+            return response()->json([
+                'lSuccess' => true,
+                'cMensaje' => 'Usuario creado con exito!',
+            ]);
+         
+         } catch (Exception $err) {
+             $conexion->rollback();
+             return response()->json([
+                 'lSuccess' => false,
+                 'cMensaje' => $err->getMessage(),
+             ]);
+         }
+    }
+
+    public function editUser(Request $request){
+        try {
+             
+            $user = PersonasAutorizadas::where('iIDPersonaAutorizada', $request->iIDPersonaAutorizada)->first();
+
+            return $user;
+         
+         } catch (Exception $err) {
+             $conexion->rollback();
+             return response()->json([
+                 'lSuccess' => false,
+                 'cMensaje' => $err->getMessage(),
+             ]);
+         }
+    }
+
+    public function updateUser(Request $request){
+        try {
+             
+            PersonasAutorizadas::where('iIDPersonaAutorizada', $request->iIDPersonaAutorizada)->update([
+                'cNombre' => $request->nombre,
+                'cPrimerApellido' => $request->apellidoP,
+                'cSegundoApellido' => $request->apellidoM,
+                'email' => $request->email,
+                'emailDos' => $request->email2,
+                'cUsuario' => $request->usuario,
+                'password' => $request->password,
+                'cCURP' => $request->curp,
+                'cRFC' => $request->rfc,
+                'iIDPermiso' => $request->permiso,
+                'iIDPuesto' => $request->puesto,
+                'iTelefono' => $request->telefono,
+                'lActivo' => 1,
+                // 'iIDGestoria' 
+            ]);
+
+            return response()->json([
+                'lSuccess' => true,
+                'cMensaje' => 'Usuario actualizado con exito!',
+            ]);
+         
+         } catch (Exception $err) {
+             $conexion->rollback();
+             return response()->json([
+                 'lSuccess' => false,
+                 'cMensaje' => $err->getMessage(),
+             ]);
+         }
     }
 }

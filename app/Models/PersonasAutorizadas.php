@@ -10,4 +10,23 @@ class PersonasAutorizadas extends Authenticatable
     use HasFactory;
     protected $guard = 'autorizados';
     protected $table = 'personas_autorizadas';
+
+    protected $fillable = 
+    [
+        'cNombre',
+        'cPrimerApellido',
+        'cSegundoApellido',
+        'email',
+        'emailDos',
+        'cUsuario',
+        'password',
+        'cCURP',
+        'cRFC',
+        'iIDPermiso',
+        'iIDPuesto',
+        'iTelefono',    
+        'created_at',
+        'updated_at',
+        'lActivo'
+];
 }
