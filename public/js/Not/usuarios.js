@@ -72,7 +72,7 @@ function usuarioStatusFormatter(value, row) {
 function usuarioFormatter(value, row) {
     var html;
 
-    html = '<a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Tarjeta de presentacion">'+
+    html = '<a href="javascript:;" onclick="infoUser('+row.iIDPersonaAutorizada+')" data-bs-toggle="tooltip" data-bs-original-title="Tarjeta de presentacion">'+
            ' <i class="fas fa-eye text-secondary"></i>'+
         '</a>'+
         '<a href="javascript:;" onclick="editUser('+row.iIDPersonaAutorizada+')" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Usuario">'+
@@ -167,6 +167,39 @@ function createUser(){
     });
 }
 
+function infoUser(iIDPersonaAutorizada){
+    $.ajax({
+        url: "/admin/editUser",
+        type: "post",
+        dataType: "json",
+        data: {
+            iIDPersonaAutorizada:iIDPersonaAutorizada,
+        },
+        success: function (r) {
+            console.log(r.cNombre)
+            // $('#btnUpdateUser').val(r.iIDPersonaAutorizada);
+            var nombre = r.cNombre + ' ' + r.cPrimerApellido + ' ' + r.cSegundoApellido;
+            console.log(nombre)
+            $('#idNomUserInfo').html(nombre);
+            // $('#idNomUserInfo').val(r.cPrimerApellido);
+            // $('#userApellidoMEdit').val(r.cSegundoApellido);
+            $('#UserEmailInfo').html(r.email);
+            $('#UserEmailDosInfo').html(r.emailDos);
+            $('#UserPermisoInfo').html(r.iIDPermiso);
+            $('#UserPuestoInfo').html(r.iIDPuesto);
+            $('#UserInfo').html(r.cUsuario);
+            $('#UserTelInfo').html(r.iTelefono);
+            // $('#userPasswordEdit').val(r.password);
+            $('#UserCURPInfo').html(r.cCURP);
+            $('#UserRFCInfo').html(r.cRFC);
+            $('#modalInfoUser').modal('show');
+    },
+        error: function (err) {
+            
+        },
+    });
+}
+
 function editUser(iIDPersonaAutorizada){
     $.ajax({
         url: "/admin/editUser",
@@ -177,6 +210,11 @@ function editUser(iIDPersonaAutorizada){
         },
         success: function (r) {
             console.log(r.cNombre)
+            if(r.lActivo == 1){
+                $('#userStatus').prop('checked', true);
+            }else{
+                $('#userStatus').prop('checked', false);
+            }
             $('#btnUpdateUser').val(r.iIDPersonaAutorizada);
             $('#userNombreEdit').val(r.cNombre);
             $('#userApellidoPEdit').val(r.cPrimerApellido);
@@ -199,6 +237,7 @@ function editUser(iIDPersonaAutorizada){
 }
 
 function updateUser(){
+    var sts;
     iIDPersonaAutorizada =  $('#btnUpdateUser').val();
     nombre = $('#userNombreEdit').val();
     apellidoP = $('#userApellidoPEdit').val();
@@ -212,6 +251,12 @@ function updateUser(){
     password = $('#userPasswordEdit').val();
     curp = $('#userCURPEdit').val();
     rfc = $('#userRFCEdit').val();
+
+    if($('#userStatus').prop('checked')){
+             sts = 1;
+    }else{
+        sts = 0;
+    }
     
     $.ajax({
         url: "/admin/updateUser",
@@ -230,7 +275,8 @@ function updateUser(){
             telefono : telefono,
             password : password,
             curp : curp,
-            rfc : rfc
+            rfc : rfc,
+            sts: sts,
         },
         success: function (r) {
             // alert('Bienvenido '+ email);

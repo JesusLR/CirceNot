@@ -81,7 +81,13 @@ class UsuariosController extends Controller{
 
     public function updateUser(Request $request){
         try {
-             
+            $estatus;
+            if($request->sts == 1){
+                $estatus =1;
+            }else{
+                $estatus= 0;
+            }
+
             PersonasAutorizadas::where('iIDPersonaAutorizada', $request->iIDPersonaAutorizada)->update([
                 'cNombre' => $request->nombre,
                 'cPrimerApellido' => $request->apellidoP,
@@ -95,7 +101,7 @@ class UsuariosController extends Controller{
                 'iIDPermiso' => $request->permiso,
                 'iIDPuesto' => $request->puesto,
                 'iTelefono' => $request->telefono,
-                'lActivo' => 1,
+                'lActivo' => $estatus,
                 // 'iIDGestoria' 
             ]);
 
