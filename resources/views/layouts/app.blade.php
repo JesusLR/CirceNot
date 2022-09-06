@@ -15,6 +15,8 @@
    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   {{-- Fancy box --}}
+   <script src="{{ asset('js/plugins/jquery.fancybox.min.js') }}">
    {{-- select2 --}}
    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
@@ -30,6 +32,8 @@
   <link href="{{asset('css/nucleo-svg.css')}}" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{asset('css/argon-dashboard.css?v=2.0.5')}}" rel="stylesheet" />
+  <link href="{{ asset('css/jquery.fancybox.min.css') }}" rel="stylesheet"/>
+  <link href="{{ asset('css/fancybox-custom.css') }}" rel="stylesheet"/>
 
     <!-- Scripts -->
     <script src="{{ asset('js/Not/usuarios.js') }}" defer></script>
