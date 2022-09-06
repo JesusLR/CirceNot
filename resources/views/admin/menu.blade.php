@@ -14,9 +14,9 @@
           </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link " href="../../../pages/dashboards/default.html">
+          <a class="nav-link " href="{{route('administracion_documentos')}}">
             <span class="sidenav-mini-icon"> D </span>
-            <span class="sidenav-normal"> Default </span>
+            <span class="sidenav-normal"> Catalogo de documentos </span>
           </a>
         </li>
         <li class="nav-item ">

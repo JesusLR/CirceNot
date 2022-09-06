@@ -12,6 +12,8 @@
             
             @include('admin.menu')
 
+            @include('catalogos.menu')
+
             {{-- @include('admin.menu') ACA SE PUEDE INCLUIR TRO APARTADO DEL MENU --}}
            
           </ul>

@@ -2,6 +2,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\CatalogoDocumentosController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin/')->group(function () {
@@ -14,4 +15,8 @@ Route::prefix('admin/')->group(function () {
     Route::post('createUser', [UsuariosController::class, 'createUser']);
     Route::post('editUser', [UsuariosController::class, 'editUser']);
     Route::post('updateUser', [UsuariosController::class, 'updateUser']);
+    Route::get('catalogosAdmin', [CatalogoDocumentosController::class, 'catalogosAdmin'])->name('administracion_documentos');
+    Route::get('gridDocs', [CatalogoDocumentosController::class, 'gridDocs'])->name('grid_documentos');
+    Route::post('createDoc', [CatalogoDocumentosController::class, 'createDoc'])->name('createDoc');
+    Route::post('consultarDocumento/{id}', [CatalogoDocumentosController::class, 'consultarDocumento']);
 });

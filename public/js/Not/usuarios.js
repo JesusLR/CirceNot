@@ -45,6 +45,17 @@ $(document).ready(function() {
         onLoadSuccess: function(data) {},
     });
     // $("#gridUsers").bootstrapTable("refresh");
+    // $('#userPermiso').select2({
+    //     placeholder: "--Seleccionar predio--",
+    //     language: {
+    //         noResults: function() {
+    //             return "No se han cargado predios";
+    //         },
+    //         searching: function() {
+    //             return "Buscando..";
+    //         },
+    //     },
+    // });
 })
 
 function usuarioNombreFormatter(value, row) {
