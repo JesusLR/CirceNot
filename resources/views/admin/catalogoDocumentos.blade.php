@@ -46,8 +46,21 @@
                 <hr class="horizontal dark my-3">
                 <form class="form-control dropzone" id="dropzone" method="POST" action="{{route('createDoc')}}" accept-charset="UTF-8" enctype="multipart/form-data">
                 @csrf
+
+                <div class="row">
+                  <div class="col-8">
                     <label for="projectName" class="form-label">Nombre</label>
-                <input type="text" class="form-control" name="docNombre" id="docNombre">
+                    <input type="text" class="form-control" name="docNombre" id="docNombre">
+                  </div>
+                  <div class="col-4">
+                    <label class="form-label">Categoria</label>
+                    <select class="form-control" name="categoriaDoc" id="categoriaDoc">
+                      <option value="0">Selecciona una opcion</option>
+                      <option value="1">Administracion</option>
+                      <option value="2">Contratos</option>
+                    </select>
+                  </div>
+                </div>
                 {{-- <div class="row mt-4">
                   <div class="col-12 col-md-6">
                     <div class="form-group">
@@ -66,8 +79,8 @@
                 </div> --}}
                 <label class="mt-4">Descripcion</label>
                 <textarea class="form-control" name='descripcionDoc' id="descripcionDoc" rows="3"></textarea>
-                {{-- <div class="row">
-                  <div class="col-6">
+                {{-- <div class="row"> --}}
+                  {{-- <div class="col-6">
                     <label class="form-label">Start Date</label>
                     <input class="form-control datetimepicker" type="text" placeholder="Please select start date" data-input>
                   </div>
@@ -76,8 +89,8 @@
                     <input class="form-control datetimepicker" type="text" placeholder="Please select end date" data-input>
                   </div>
                 </div> --}}
-                <label class="mt-4 form-label">Archivo</label>
-                
+                {{-- <label class="mt-4 form-label">Archivo</label> --}}
+                <br>
                   <div class="fallback">
                     <input name="fileDoc" id="fileDoc" type="file" multiple />
                   </div>

@@ -1,5 +1,6 @@
 @if (Session::has('success'))
 <script>
+    $("#gridDocs").bootstrapTable("refresh");
     Swal.fire({
         icon: 'success',
         title: 'Éxito',

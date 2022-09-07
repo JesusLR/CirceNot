@@ -19,4 +19,6 @@ Route::prefix('admin/')->group(function () {
     Route::get('gridDocs', [CatalogoDocumentosController::class, 'gridDocs'])->name('grid_documentos');
     Route::post('createDoc', [CatalogoDocumentosController::class, 'createDoc'])->name('createDoc');
     Route::post('consultarDocumento/{id}', [CatalogoDocumentosController::class, 'consultarDocumento']);
+    Route::post('stsDoc', [CatalogoDocumentosController::class, 'stsDoc']);
+    Route::post('deleteDoc', [CatalogoDocumentosController::class, 'deleteDoc']);
 });
