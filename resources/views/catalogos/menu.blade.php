@@ -22,13 +22,13 @@
             <div class="collapse " id="vrExamples">
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                  <a class="nav-link " href="{{route('catalogoDoc_Administracion')}}">
+                  <a class="nav-link " id="btnDocUno" href="{{route('catalogoDoc_Administracion')}}">
                     <span class="sidenav-mini-icon text-xs"> A </span>
                     <span class="sidenav-normal"> Administracion </span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link " href="{{route('catalogoDoc_Contratos')}}">
+                  <a class="nav-link " id="btnDocDos" href="{{route('catalogoDoc_Contratos')}}">
                     <span class="sidenav-mini-icon text-xs"> C </span>
                     <span class="sidenav-normal"> Contratos </span>
                   </a>

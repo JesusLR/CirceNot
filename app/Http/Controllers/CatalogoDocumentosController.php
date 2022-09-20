@@ -136,4 +136,23 @@ class CatalogoDocumentosController extends Controller
         }
     }
 
+    public function docUsers(Request $request){
+        try {
+
+            $docs = CatalogoDocumentos::where('iIDCategoria', $request->iIDCategoria)->get();
+
+            return response()->json([
+                'lSuccess' => true,
+                'data' => $docs,
+            ]);
+           
+         } catch (Exception $err) {
+             $conexion->rollback();
+             return response()->json([
+                 'lSuccess' => false,
+                 'cMensaje' => $err->getMessage(),
+             ]);
+        }
+    }
+
 }

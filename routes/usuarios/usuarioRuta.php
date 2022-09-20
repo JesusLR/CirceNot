@@ -8,5 +8,5 @@ Route::prefix('/')->group(function () {
     Route::post('inicio-sesion', [LoginController::class, 'loginPersonaAutorizada'])->name('usuario_inicio_sesion');
     Route::get('catalogoDocAdmin', [CatalogoDocumentosController::class, 'catalogoDocAdmin'])->name('catalogoDoc_Administracion');
     Route::get('catalogoDocContratos', [CatalogoDocumentosController::class, 'catalogoDocContratos'])->name('catalogoDoc_Contratos');
-
+    Route::post('docUsers', [CatalogoDocumentosController::class, 'docUsers']);
 });

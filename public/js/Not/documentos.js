@@ -5,6 +5,59 @@ $(document).ready(function() {
         },
     });
 
+    $.ajax({
+        url: "/docUsers",
+        type: "post",
+        dataType: "json",
+        data: {
+            iIDCategoria: 1,
+        },
+        success: function (r) {
+            if(r.lSuccess){
+                var html = '';
+                r.data.forEach(function (lst) {
+                   html += '<div class="col-lg-6 col-md-6 col-12">'+
+                            '<div class="card  mb-8">'+
+                                '<div class="card-body p-3">'+
+                                '<div class="row">'+
+                                    '<div class="col-8">'+
+                                    '<div class="numbers">'+
+                                        '<p class="text-sm mb-0 text-uppercase font-weight-bold">Documento</p>'+
+                                        '<h5 class="font-weight-bolder">'+
+                                        ' ' +lst.cNombre+''+
+                                        '</h5>'+
+                                        '<p class="mb-0">'+
+                                        ''+lst.cDescripcion+''+
+                                        '</p>'+
+                                    '</div>'+
+                                    '</div>'+
+                                    '<div class="col-4 text-end">'+
+                                    '<div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">'+
+                                        '<i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>'+
+                                    '</div>'+
+                                    '</div>'+
+                                '</div>'+
+                                '</div>'+
+                                '</div>'+
+                            '</div>';                    
+                });
+                $('#divDocumentoUno').html(html);
+            }else{
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'warning',
+                    title: r.cMensaje,
+                    showConfirmButton: false,
+                    timer: 3000
+              })
+            }
+            
+    },
+        error: function (err) {
+            
+        },
+    });
+
     // $('#categoriaDoc').select2({
     //     placeholder: "--Seleccionar predio--",
     //     language: {
@@ -206,3 +259,60 @@ function modalDocumentos(){
     $('#categoriaDoc').val(0);
     $('#docsModal').modal('show');
 }
+
+// $("#btnDocUno").click(function() {
+//     alert('hola')
+//     $.ajax({
+//         url: "/docUsers",
+//         type: "post",
+//         dataType: "json",
+//         data: {
+//             iIDCategoria: 1,
+//         },
+//         success: function (r) {
+//             if(r.lSuccess){
+//                 var html = '';
+//                 r.data.forEach(function (lst) {
+//                    html += '<div class="col-lg-3 col-md-6 col-12">'+
+//                             '<div class="card  mb-4">'+
+//                                 '<div class="card-body p-3">'+
+//                                 '<div class="row">'+
+//                                     '<div class="col-8">'+
+//                                     '<div class="numbers">'+
+//                                         '<p class="text-sm mb-0 text-uppercase font-weight-bold">Todays Money</p>'+
+//                                         '<h5 class="font-weight-bolder">'+
+//                                         '$53,000'+
+//                                         '</h5>'+
+//                                         '<p class="mb-0">'+
+//                                         '<span class="text-success text-sm font-weight-bolder">+55%</span>'+
+//                                         'since yesterday'+
+//                                         '</p>'+
+//                                     '</div>'+
+//                                     '</div>'+
+//                                     '<div class="col-4 text-end">'+
+//                                     '<div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">'+
+//                                         '<i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>'+
+//                                     '</div>'+
+//                                     '</div>'+
+//                                 '</div>'+
+//                                 '</div>'+
+//                                 '</div>'+
+//                             '</div>';                    
+//                 });
+//                 $('#divDocumentoUno').html(html);
+//             }else{
+//                 Swal.fire({
+//                     position: 'top-end',
+//                     icon: 'warning',
+//                     title: r.cMensaje,
+//                     showConfirmButton: false,
+//                     timer: 3000
+//               })
+//             }
+            
+//     },
+//         error: function (err) {
+            
+//         },
+//     });
+// });
