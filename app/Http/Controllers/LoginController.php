@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Administrador;
 use App\Models\PersonasAutorizadas;
+use App\Models\Gestoria;
+use App\Models\GestoriaPatente;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -32,14 +34,23 @@ class LoginController extends Controller
 
         if($administrador){
             if (Auth::guard('admin')->attempt($credenciales)) {
+                $existeGestoria = Gestoria::select('*')->count();
                  $request->session()->regenerate();
-                  return redirect()->route('admin_vista_home');
+
+                 if($existeGestoria > 0){
+                    return redirect()->route('admin_vista_home');
+                 }else{
+                    return redirect()->route('administracion_gestoria');
+                    // return redirect()->route('admin_vista_home');
+                 }
                 // return view('admin.adminHome');
             }else{
-                dd('USUARIO O CONTRASEÑA INCORRECTOS');
+                // dd('USUARIO O CONTRASEÑA INCORRECTOS');
+                return back()->with('err', 'USUARIO O CONTRASEÑA INCORRECTOS');
             }
         }else{
-            dd('USUARIO O CONTRASEÑA INCORRECTOS');
+            return back()->with('err', 'USUARIO O CONTRASEÑA INCORRECTOS');
+            // dd('USUARIO O CONTRASEÑA INCORRECTOS');
         }
     }
 

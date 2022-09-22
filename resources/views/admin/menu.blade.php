@@ -20,9 +20,9 @@
           </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link " href="../../../pages/dashboards/automotive.html">
-            <span class="sidenav-mini-icon"> A </span>
-            <span class="sidenav-normal"> Automotive </span>
+          <a class="nav-link " href="{{route('administracion_gestoria')}}">
+            <span class="sidenav-mini-icon"> G </span>
+            <span class="sidenav-normal"> Gestionar Gestoria </span>
           </a>
         </li>
         <li class="nav-item ">

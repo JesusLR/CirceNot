@@ -215,6 +215,7 @@
 <!-- Kanban scripts -->
 <script src="{{asset('js/plugins/dragula/dragula.min.js')}}"></script>
 <script src="{{asset('js/plugins/jkanban/jkanban.js')}}"></script>
+<script src="{{ asset('js/plugins/multistep-form.js') }}" defer></script>
 <script>
   var win = navigator.platform.indexOf('Win') > -1;
   if (win && document.querySelector('#sidenav-scrollbar')) {

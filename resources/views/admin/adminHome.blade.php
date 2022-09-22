@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('admin.mesages')
 <div class="card">
     <!-- Card image -->
     <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
