@@ -14,6 +14,8 @@
 
             @include('catalogos.menu')
 
+            @include('clientes.menu')
+
             {{-- @include('admin.menu') ACA SE PUEDE INCLUIR TRO APARTADO DEL MENU --}}
            
           </ul>
@@ -28,7 +30,7 @@
               </div>
             </div>
           </div>
-          <a href="https://www.creative-tim.com/learning-lab/bootstrap/overview/argon-dashboard" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Contacto</a>
+          <a href="https://www.whatsapp.com/?lang=es" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Contacto</a>
         </div>
       </aside>
 

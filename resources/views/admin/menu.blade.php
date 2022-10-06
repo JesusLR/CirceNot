@@ -25,13 +25,13 @@
             <span class="sidenav-normal"> Gestionar Gestoria </span>
           </a>
         </li>
-        <li class="nav-item ">
+        {{-- <li class="nav-item ">
           <a class="nav-link " href="../../../pages/dashboards/smart-home.html">
             <span class="sidenav-mini-icon"> S </span>
             <span class="sidenav-normal"> Smart Home </span>
           </a>
-        </li>
-        <li class="nav-item ">
+        </li> --}}
+        {{-- <li class="nav-item ">
           <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#vrExamples">
             <span class="sidenav-mini-icon"> V </span>
             <span class="sidenav-normal"> Virtual Reality <b class="caret"></b></span>
@@ -52,13 +52,13 @@
               </li>
             </ul>
           </div>
-        </li>
-        <li class="nav-item ">
+        </li> --}}
+        {{-- <li class="nav-item ">
           <a class="nav-link " href="../../../pages/dashboards/crm.html">
             <span class="sidenav-mini-icon"> C </span>
             <span class="sidenav-normal"> CRM </span>
           </a>
-        </li>
+        </li> --}}
       </ul>
     </div>
   </li>

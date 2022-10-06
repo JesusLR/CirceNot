@@ -88,7 +88,7 @@
             <!--form panels-->
             <div class="row">
               <div class="col-12 col-lg-8 m-auto">
-                <form class="multisteps-form__form mb-8" method="POST" action="{{route('createGestoria')}}" accept-charset="UTF-8" enctype="multipart/form-data" id="formInfoNotaria">
+                <form class="multisteps-form__form mb-8" method="POST" action="{{route('createGestoria')}}" accept-charset="UTF-8" enctype="multipart/form-data" id="formInfoNotaria" novalidate>
                     @csrf
                     <!--single form panel-->
                   <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">

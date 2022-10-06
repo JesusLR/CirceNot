@@ -14,7 +14,7 @@ class GestoriaController extends Controller
 
    public function createGestoria(Request $request){
     try {
-        // dd($request->all());
+        dd($request->apellitoPatNotario);
         $request->file('logoNotaria')->store('public');
         $request->file('fileNombramientoNotario')->store('public');
         
@@ -27,7 +27,7 @@ class GestoriaController extends Controller
             'cLogoGestoria' => 'Nombre del documento',
             'cRutaLogoGestoria' => $request->file('logoNotaria')->store('public'),
             'lActivo' => 1,
-            'iPA' => $request->telNotaria,
+            'iPA' => $request->checkProtocoloAbierto,
             'iPC' => 0,
             'iPE' => 0,
             'cPA_Acta' => $request->numActaProtocolo,
