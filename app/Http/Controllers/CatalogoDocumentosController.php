@@ -53,14 +53,16 @@ class CatalogoDocumentosController extends Controller
         try {
 
             $doc = CatalogoDocumentos::where('iIDCatalogoDocumento', $id)->first();
-
+            // dd(public_path());
+            $storage = public_path().$doc->cRuta;
+            // dd($storage);
             $headers = array(
                 'Content-Type' => 'application/pdf',
-                'Content-Length' => filesize($doc->cRuta),
+                'Content-Length' =>   $storage,
                 'X-UA-Compatible' => 'IE=Edge,chrome=1',
             );
 
-            return response()->file($doc->cRuta, $headers);
+            return response()->file($storage, $headers);
            
          } catch (Exception $err) {
              $conexion->rollback();

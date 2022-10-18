@@ -109,8 +109,8 @@ $("#btnNewUser").click(function() {
     $('#userApellidoM').val("");
     $('#userEmail').val("");
     $('#userEmailDos').val("");
-    $('#userPermiso').val("");
-    $('#userPuesto').val("");
+    $('#userPermiso').val(0);
+    $('#userPuesto').val(0);
     $('#userUsuario').val("");
     $('#userTEL').val("");
     $('#userPassword').val("");
@@ -141,6 +141,8 @@ function createUser(){
     password = $('#userPassword').val();
     curp = $('#userCURP').val();
     rfc = $('#userRFC').val();
+
+    validacionCreateUser(nombre, apellidoP, apellidoM, email, email2, permiso, puesto, usuario, telefono, password, curp, rfc);
     
     $.ajax({
         url: "/admin/createUser",
@@ -268,6 +270,8 @@ function updateUser(){
     }else{
         sts = 0;
     }
+
+    validacionCreateUser(nombre, apellidoP, apellidoM, email, email2, permiso, puesto, usuario, telefono, password, curp, rfc);
     
     $.ajax({
         url: "/admin/updateUser",
@@ -305,4 +309,149 @@ function updateUser(){
             
         },
     });
+}
+
+function validacionCreateUser(nombre, apellidoP, apellidoM, email, email2, permiso, puesto, usuario, telefono, password, curp, rfc){
+    if(nombre == "" || apellidoP == "" || apellidoM == ""){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'La informacion del usuario no puede estar vacia',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        return false;
+    }
+
+    if(usuario == "" ){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Debe ingresar un nombre de usuario',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        return false;
+    }
+
+    if(permiso == 0){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Debe asignarle un permiso al usuario',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        return false;
+    }
+
+    if(puesto == 0){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Debe asignarle un puesto al usuario',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        return false;
+    }
+
+    if(email == "" || email2 == "" ){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Los campos del email no pueden estar vacios',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        return false;
+    }
+
+    if(telefono == "" ){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Debe ingresar un numero de telefono',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        return false;
+    }
+
+    if(telefono.length < 10){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Debe ingresar un numero de telefono valido',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        return false;
+    }
+
+    if(password.length < 6){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'La contraseña debe tener al menos 6 caracteres',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        return false;
+    }
+
+    if(password == ""){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Ingresar una contraseña para el usuario',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        return false;
+    }
+
+    if(curp.length < 18){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Debe ingresar una CURP valida',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        return false;
+    }
+
+    if(curp == ""){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Debe ingresar el CURP del usuario',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        return false;
+    }
+
+    if(curp.length < 10){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Debe ingresar un RFC validO',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        return false;
+    }
+
+    if(rfc == ""){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Debe ingresar el RFC del usuario',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        return false;
+    }
 }
