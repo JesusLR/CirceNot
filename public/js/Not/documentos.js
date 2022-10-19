@@ -5,11 +5,11 @@ $(document).ready(function() {
         },
     });
 // apartado para cargar los ducumentos en su respectivo lugar
-    if($('#docAdminPlant').val() == 1){
-        documentosUser(1);
-    }else if($('#docAdminPlant').val() == 2){
-        documentosUser(2);
-    }
+    // if($('#docAdminPlant').val() == 1){
+    //     documentosUser(1);
+    // }else if($('#docAdminPlant').val() == 2){
+    //     documentosUser(2);
+    // }
 
     // $('#categoriaDoc').select2({
     //     placeholder: "--Seleccionar predio--",
@@ -232,61 +232,61 @@ function verPlantillaUsuario(){
     $('#modalPlantillaUsuario').modal('show');
 }
 
-function documentosUser(valorPlantillaDoc){
-    $.ajax({
-        url: "/docUsers",
-        type: "post",
-        dataType: "json",
-        data: {
-            iIDCategoria: valorPlantillaDoc,
-        },
-        success: function (r) {
-            if(r.lSuccess){
-                var html = '';
-                console.log(r.data)
-                r.data.forEach(function (lst) {
-                   html += '<div class="col-xl-3 col-md-6 mb-xl-0 mb-4 mt-4">'+
-                   '<div class="card card-blog card-plain">'+
-                     '<div class="position-relative">'+
-                      ' <a class="d-block shadow-xl border-radius-xl">'+
-                         '<img src="http://circenot.test/img/img_documents.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">'+
-                       '</a>'+
-                     '</div>'+
-                     '<div class="card-body px-1 pb-0">'+
-                       '<a href="javascript:;">'+
-                         '<h5>'+
-                           lst.cNombre+
-                         '</h5>'+
-                       '</a>'+
-                       '<p class="mb-4 text-sm">'+
-                         lst.cDescripcion+
-                       '</p>'+
-                       '<div class="d-flex align-items-center justify-content-between">'+
-                         '<button type="button" onclick="verPlantillaUsuario()" class="btn btn-outline-primary btn-sm mb-0">Ver documento</button>'+
-                       '</div>'+
-                     '</div>'+
-                   '</div>'+
-                 '</div>';                 
-                            '</div>';                    
-                 '</div>';                 
-                });
-                $('#divDocumentoUno').html(html);
-            }else{
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'warning',
-                    title: r.cMensaje,
-                    showConfirmButton: false,
-                    timer: 3000
-              })
-            }
+// function documentosUser(valorPlantillaDoc){
+//     $.ajax({
+//         url: "/docUsers",
+//         type: "post",
+//         dataType: "json",
+//         data: {
+//             iIDCategoria: valorPlantillaDoc,
+//         },
+//         success: function (r) {
+//             if(r.lSuccess){
+//                 var html = '';
+//                 console.log(r.data)
+//                 r.data.forEach(function (lst) {
+//                    html += '<div class="col-xl-3 col-md-6 mb-xl-0 mb-4 mt-4">'+
+//                    '<div class="card card-blog card-plain">'+
+//                      '<div class="position-relative">'+
+//                       ' <a class="d-block shadow-xl border-radius-xl">'+
+//                          '<img src="http://circenot.test/img/img_documents.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">'+
+//                        '</a>'+
+//                      '</div>'+
+//                      '<div class="card-body px-1 pb-0">'+
+//                        '<a href="javascript:;">'+
+//                          '<h5>'+
+//                            lst.cNombre+
+//                          '</h5>'+
+//                        '</a>'+
+//                        '<p class="mb-4 text-sm">'+
+//                          lst.cDescripcion+
+//                        '</p>'+
+//                        '<div class="d-flex align-items-center justify-content-between">'+
+//                          '<button type="button" onclick="verPlantillaUsuario('+lst.iIDCatalogoDocumento+')" class="btn btn-outline-primary btn-sm mb-0">Ver documento</button>'+
+//                        '</div>'+
+//                      '</div>'+
+//                    '</div>'+
+//                  '</div>';                 
+//                 '</div>';                    
+//                 '</div>';                 
+//                 });
+//                 $('#divDocumentoUno').html(html);
+//             }else{
+//                 Swal.fire({
+//                     position: 'top-end',
+//                     icon: 'warning',
+//                     title: r.cMensaje,
+//                     showConfirmButton: false,
+//                     timer: 3000
+//               })
+//             }
             
-    },
-        error: function (err) {
+//     },
+//         error: function (err) {
             
-        },
-    });
-}
+//         },
+//     });
+// }
 
 // $("#btnAceptLogin").click(function() {
 

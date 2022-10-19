@@ -75,7 +75,8 @@ class CatalogoDocumentosController extends Controller
     }
 
     public function catalogoDocAdmin(){
-        return view('catalogos.catalogoDoc_administracion');
+        $docs =  CatalogoDocumentos::select('*')->where('lActivo', 1)->where('iIDCategoria', 1)->get();
+        return view('catalogos.catalogoDoc_administracion', compact('docs'));
     }
 
     public function catalogoDocContratos(){
