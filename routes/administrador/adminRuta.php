@@ -24,4 +24,6 @@ Route::prefix('admin/')->group(function () {
     Route::post('deleteDoc', [CatalogoDocumentosController::class, 'deleteDoc']);
     Route::get('gestoriaCreate', [GestoriaController::class, 'gestoriaCreate'])->name('administracion_gestoria');
     Route::post('createGestoria', [GestoriaController::class, 'createGestoria'])->name('createGestoria');
+    Route::post('docprueba', [CatalogoDocumentosController::class, 'docprueba'])->name('docprueba_pure');
+    // Route::get('docpruebaget', [CatalogoDocumentosController::class, 'docpruebaget'])->name('docpruebaget');
 });

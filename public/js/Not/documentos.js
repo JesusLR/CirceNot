@@ -4,59 +4,12 @@ $(document).ready(function() {
             "X-CSRF-Token": $("meta[name=csrf-token]").attr("content")
         },
     });
-
-    $.ajax({
-        url: "/docUsers",
-        type: "post",
-        dataType: "json",
-        data: {
-            iIDCategoria: 1,
-        },
-        success: function (r) {
-            if(r.lSuccess){
-                var html = '';
-                r.data.forEach(function (lst) {
-                   html += '<div class="col-lg-6 col-md-6 col-12">'+
-                            '<div class="card  mb-8">'+
-                                '<div class="card-body p-3">'+
-                                '<div class="row">'+
-                                    '<div class="col-8">'+
-                                    '<div class="numbers">'+
-                                        '<p class="text-sm mb-0 text-uppercase font-weight-bold">Documento</p>'+
-                                        '<h5 class="font-weight-bolder">'+
-                                        ' ' +lst.cNombre+''+
-                                        '</h5>'+
-                                        '<p class="mb-0">'+
-                                        ''+lst.cDescripcion+''+
-                                        '</p>'+
-                                    '</div>'+
-                                    '</div>'+
-                                    '<div class="col-4 text-end">'+
-                                    '<div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">'+
-                                        '<i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>'+
-                                    '</div>'+
-                                    '</div>'+
-                                '</div>'+
-                                '</div>'+
-                                '</div>'+
-                            '</div>';                    
-                });
-                $('#divDocumentoUno').html(html);
-            }else{
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'warning',
-                    title: r.cMensaje,
-                    showConfirmButton: false,
-                    timer: 3000
-              })
-            }
-            
-    },
-        error: function (err) {
-            
-        },
-    });
+// apartado para cargar los ducumentos en su respectivo lugar
+    if($('#docAdminPlant').val() == 1){
+        documentosUser(1);
+    }else if($('#docAdminPlant').val() == 2){
+        documentosUser(2);
+    }
 
     // $('#categoriaDoc').select2({
     //     placeholder: "--Seleccionar predio--",
@@ -91,7 +44,8 @@ $(document).ready(function() {
             title: "Nombre",
         },{
             field: "iIDCategoria",
-            title: "Categoria"
+            title: "Categoria",
+            formatter: "docCategoriaFormatter"
         },{
             field: "cDescripcion",
             title: "Descripcion",
@@ -121,6 +75,19 @@ function docFormatter(value, row) {
     html += '<a href="javascript:;" class="mx-3" onclick="confirmDeleteDoc('+row.iIDCatalogoDocumento+')" data-bs-toggle="tooltip" data-bs-original-title="Eliminar Documento">' +
             '<i class="fas fa-trash"></i>'+
             '</a>';
+
+    return html;
+}
+
+function docCategoriaFormatter(value, row) {
+    var html = '';
+
+    if(row.iIDCategoria == 1){
+        html += 'Administracion';
+    }else{
+        html += 'Contratos';
+    }
+
 
     return html;
 }
@@ -260,6 +227,88 @@ function modalDocumentos(){
     $('#docsModal').modal('show');
 }
 
-// $("#btnSaveDoc").click(function() {
-//     $('#formCreateDoc').submit();
+function verPlantillaUsuario(){
+    CKEDITOR.replace("plantillaDocUser", "hola");
+    $('#modalPlantillaUsuario').modal('show');
+}
+
+function documentosUser(valorPlantillaDoc){
+    $.ajax({
+        url: "/docUsers",
+        type: "post",
+        dataType: "json",
+        data: {
+            iIDCategoria: valorPlantillaDoc,
+        },
+        success: function (r) {
+            if(r.lSuccess){
+                var html = '';
+                console.log(r.data)
+                r.data.forEach(function (lst) {
+                   html += '<div class="col-xl-3 col-md-6 mb-xl-0 mb-4 mt-4">'+
+                   '<div class="card card-blog card-plain">'+
+                     '<div class="position-relative">'+
+                      ' <a class="d-block shadow-xl border-radius-xl">'+
+                         '<img src="http://circenot.test/img/img_documents.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">'+
+                       '</a>'+
+                     '</div>'+
+                     '<div class="card-body px-1 pb-0">'+
+                       '<a href="javascript:;">'+
+                         '<h5>'+
+                           lst.cNombre+
+                         '</h5>'+
+                       '</a>'+
+                       '<p class="mb-4 text-sm">'+
+                         lst.cDescripcion+
+                       '</p>'+
+                       '<div class="d-flex align-items-center justify-content-between">'+
+                         '<button type="button" onclick="verPlantillaUsuario()" class="btn btn-outline-primary btn-sm mb-0">Ver documento</button>'+
+                       '</div>'+
+                     '</div>'+
+                   '</div>'+
+                 '</div>';                 
+                            '</div>';                    
+                 '</div>';                 
+                });
+                $('#divDocumentoUno').html(html);
+            }else{
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'warning',
+                    title: r.cMensaje,
+                    showConfirmButton: false,
+                    timer: 3000
+              })
+            }
+            
+    },
+        error: function (err) {
+            
+        },
+    });
+}
+
+// $("#btnAceptLogin").click(function() {
+
+  
+//     email = $('#userInputLog').val();
+//     password = $('#passInputLog').val();
+    
+//     $.ajax({
+//         url: "/admin/loginPanel",
+//         type: "POST",
+//         dataType: "json",
+//         data: {
+//             email: email,
+//             password: password,
+//         },
+//         dataType: "json",
+//         success: function (r) {
+//             // alert('Bienvenido '+ email);
+//     },
+//         error: function (err) {
+            
+//         },
+//     });
+
 // });

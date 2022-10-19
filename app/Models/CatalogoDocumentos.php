@@ -17,6 +17,7 @@ class CatalogoDocumentos extends Model
         'cRuta',
         'cDescripcion',
         'iIDCategoria',
-        'lActivo'
+        'lActivo',
+        'cPlantilla'
     ];
 }

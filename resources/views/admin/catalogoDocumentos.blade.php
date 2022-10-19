@@ -16,6 +16,11 @@
                 <button type="button" class="btn btn-xs btn-primary mb-0" id="btnNewDoc" onclick="modalDocumentos()">
                   <i class="fas fa-plus pe-2"></i> Nuevo Documento
                 </button>
+                {{-- <button type="button" id="btnPruebaDoc" class="btn btn-primary btn-sm float-right">Prueba</button>
+                <form id="pruebadocdiv" method="POST" action="{{route('docprueba_pure')}}" accept-charset="UTF-8" enctype="multipart/form-data">
+                  @csrf
+                  <input type="text" value="5" name="inputrueba">
+                </form> --}}
               </div>
             </p>
           </div>
@@ -79,6 +84,9 @@
                 </div> --}}
                 <label class="mt-4">Descripcion</label>
                 <textarea class="form-control" name='descripcionDoc' id="descripcionDoc" rows="3" required></textarea>
+
+                <label class="mt-4">Plantilla</label>
+                <textarea class="ckeditor" name='plantillaDoc' id="plantillaDoc" rows="3" required></textarea>
                 {{-- <div class="row"> --}}
                   {{-- <div class="col-6">
                     <label class="form-label">Start Date</label>

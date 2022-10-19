@@ -37,6 +37,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/Not/usuarios.js') }}" defer></script>
     <script src="{{ asset('js/Not/clientes.js') }}" defer></script>
+    <script src="{{ asset('vendors/ckeditor/ckeditor.js') }}" defer></script>
     <script src="{{ asset('js/plugins/jquery.fancybox.min.js') }}" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.css">
     <script src="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.js"></script>

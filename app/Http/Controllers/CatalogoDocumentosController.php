@@ -35,6 +35,7 @@ class CatalogoDocumentosController extends Controller
                 'cRuta' => $request->file('fileDoc')->store('public'),
                 'cDescripcion' => $request->descripcionDoc,
                 'iIDCategoria' => $request->categoriaDoc,
+                'cPlantilla' => $request->plantillaDoc,
                 'lActivo' => 1,
             ]);
             
@@ -141,7 +142,7 @@ class CatalogoDocumentosController extends Controller
     public function docUsers(Request $request){
         try {
 
-            $docs = CatalogoDocumentos::where('iIDCategoria', $request->iIDCategoria)->get();
+            $docs = CatalogoDocumentos::where('iIDCategoria', $request->iIDCategoria)->where('lActivo', 1)->get();
 
             return response()->json([
                 'lSuccess' => true,
@@ -157,4 +158,17 @@ class CatalogoDocumentosController extends Controller
         }
     }
 
+    // public function docprueba(Request $request){
+    //     // dd($request->all());
+    //     $phpWord = new \PhpOffice\PhpWord\PhpWord();
+    //     $doc = CatalogoDocumentos::where('iIDCatalogoDocumento', $request->inputrueba)->first();
+    //     $section = $phpWord->addSection();
+    //     // $text = $section->addText($request->get('emp_name'));
+    //     // $text = $section->addText($request->get('emp_salary'));
+    //     $text = $section->addText($doc->cDescripcion);
+          
+    //     $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+    //     $objWriter->save('Appdividend.docx');
+    //     return response()->download(public_path('Appdividend.docx'));
+    // }
 }

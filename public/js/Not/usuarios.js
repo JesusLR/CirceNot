@@ -28,11 +28,11 @@ $(document).ready(function() {
         },{
             field: "iIDPermiso",
             title: "Permiso",
-            // formatter: "usuarioPermisoFormatter"
+            formatter: "usuarioPermisoFormatter"
         },{
             field: "iIDPuesto",
             title: "Puesto",
-            // formatter: "usuarioPuestoFormatter"
+            formatter: "usuarioPuestoFormatter"
         },{
             field: "lActivo",
             title: "Estatus",
@@ -67,6 +67,28 @@ function usuarioNombreFormatter(value, row) {
     '<p class="text-xs text-secondary mb-0">'+row.cUsuario+'</p>'+
     '</div>';
 
+    return html;
+}
+
+function usuarioPermisoFormatter(value, row) {
+    var html;
+    if(row.iIDPermiso == 1){
+        html = 'Administrador';
+    }else{
+        html = 'Usuario';
+    }
+    return html;
+}
+
+function usuarioPuestoFormatter(value, row) {
+    var html;
+    if(row.iIDPuesto == 1){
+        html = 'Notario';
+    }else if(row.iIDPuesto == 2){
+        html = 'Jefe';
+    }else{
+        html = 'Usuario';
+    }
     return html;
 }
 
