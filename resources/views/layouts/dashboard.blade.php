@@ -9,15 +9,17 @@
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse  w-auto h-auto" id="sidenav-collapse-main">
           <ul class="navbar-nav">
-            
+
             @include('admin.menu')
 
             @include('catalogos.menu')
 
             @include('clientes.menu')
 
+            @include('servicios.menu')
+
             {{-- @include('admin.menu') ACA SE PUEDE INCLUIR TRO APARTADO DEL MENU --}}
-           
+
           </ul>
         </div>
         <div class="sidenav-footer mx-3 my-3">

@@ -33,7 +33,7 @@ class LoginController extends Controller
         $administrador = Administrador::where('email', $request->email)->first();
 
         if($administrador){
-            if (Auth::guard('admin')->attempt($credenciales)) {
+            if (!Auth::guard('admin')->attempt($credenciales)) {
                 $existeGestoria = Gestoria::select('*')->count();
                  $request->session()->regenerate();
 

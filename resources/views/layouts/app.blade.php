@@ -15,10 +15,10 @@
    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   
+
    {{-- select2 --}}
   {{-- //  {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
-  {{-- //  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}} 
+  {{-- //  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
    {{-- Sweet Alerts --}}
    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!--     Fonts and icons     -->
@@ -37,6 +37,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/Not/usuarios.js') }}" defer></script>
     <script src="{{ asset('js/Not/clientes.js') }}" defer></script>
+    <script src="{{ asset('js/Not/services.js') }}" defer></script>
+    <script src="{{ asset('js/Not/presupuestos.js') }}" defer></script>
     <script src="{{ asset('js/plugins/jquery.fancybox.min.js') }}" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.css">
     <script src="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.js"></script>
@@ -65,7 +67,7 @@
         {{-- Inicia contenido sin cards --}}
         @yield('content')
         {{-- Termina contenido --}}
-        
+
         <footer class="footer pt-3  ">
           <div class="container-fluid">
             <div class="row align-items-center justify-content-lg-between">
@@ -187,7 +189,7 @@
         searchable: false,
         fixedHeight: true
       });
-  
+
       const dataTableSearch = new simpleDatatables.DataTable("#datatable-search", {
         searchable: true,
         fixedHeight: true
@@ -207,7 +209,7 @@
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     {{-- <script src="../../assets/js/argon-dashboard.min.js?v=2.0.5"></script> --}}
   </body>
-  
+
 <!--   Core JS Files   -->
 <script src="{{asset('js/core/popper.min.js')}}"></script>
 <script src="{{asset('js/core/bootstrap.min.js')}}"></script>

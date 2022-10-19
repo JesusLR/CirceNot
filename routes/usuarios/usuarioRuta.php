@@ -2,6 +2,8 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CatalogoDocumentosController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\PresupuestoController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/')->group(function () {
@@ -24,4 +26,20 @@ Route::prefix('/')->group(function () {
     Route::post('updateClienteM', [ClientesController::class, 'updateClienteM'])->name('updateClienteM');
     Route::get('prospectosMorView', [ClientesController::class, 'prospectosMorView'])->name('prospectos_moral_vista');
     Route::get('consultarProspectosM', [ClientesController::class, 'consultarProspectosM'])->name('consultarProspectosM');
+
+    //Services
+    Route::get('newService', [ServiceController::class, 'newService'])->name('new_service');
+    Route::post('createService', [ServiceController::class, 'createService'])->name('createService');
+    Route::get('ServiceIndex', [ServiceController::class, 'ServiceIndex'])->name('service_index');
+    Route::get('getServices', [ServiceController::class, 'getServices'])->name('getServices');
+    Route::post('getServicesById', [ServiceController::class, 'getServicesById'])->name('getServicesById');
+
+    //presupuesto
+    Route::get('newPresupuesto', [PresupuestoController::class, 'newPresupuesto'])->name('newPresupuesto');
+    Route::post('createPresupuesto', [PresupuestoController::class, 'createPresupuesto'])->name('createPresupuesto');
+    Route::get('presupuestosIndex', [PresupuestoController::class, 'presupuestosIndex'])->name('presupuestosIndex');
+    Route::get('getPresupuestos', [PresupuestoController::class, 'getPresupuestos'])->name('getPresupuestos');
+    Route::post('createPDFpresupuesto', [PresupuestoController::class, 'createPDFpresupuesto'])->name('createPDFpresupuesto');
+
+
 });
