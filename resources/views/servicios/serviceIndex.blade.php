@@ -15,13 +15,14 @@
                 </button>
               </div>
             </p> --}}
-          </div>
+
           <div class="row" style="margin-bottom: 20px;">
             <div class="col-md-12">
                 <table class="table table-striped" id="gridServices">
                 </table>
             </div>
         </div>
+    </div>
         </div>
       </div>
     </div>
