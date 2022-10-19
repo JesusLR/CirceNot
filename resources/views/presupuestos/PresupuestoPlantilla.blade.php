@@ -85,7 +85,7 @@
     @endif
     <div id="header">
         <div>
-            {{-- <img class="logo" src="{{ $imgLogo }}" width="240" height="60"> --}}
+            <img class="logo" src="img/R.png" width="240" height="60">
             <table class="table" width="100%" style="border: hidden;">
                 <tr>
                     <td width="15%" style="border: hidden;"></td>

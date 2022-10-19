@@ -6,7 +6,7 @@
       <div class="col-12">
         <div class="card">
           <!-- Card header -->
-          <div class="card-header">
+          <div class="card-body">
             <h5 class="mb-0">Panel de Presupuestos</h5>
 
             {{-- <p class="text-sm mb-0">
@@ -16,13 +16,14 @@
                 </button>
               </div>
             </p> --}}
-          </div>
+
           <div class="row" style="margin-bottom: 20px;">
             <div class="col-md-12">
                 <table class="table table-striped" id="gridPresupuestos">
                 </table>
             </div>
         </div>
+    </div>
         </div>
       </div>
     </div>
