@@ -38,7 +38,7 @@
                         </div>
                       </div>
                     </div>
-
+                    {{-- Modal de plantilla --}}
                     <div class="modal fade bd-example-modal-lg" id="modalPlantillaUsuario{{$doc->iIDCatalogoDocumento}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
@@ -47,12 +47,21 @@
                             </h5>
                           </div>
                           <div class="modal-body">
+                            <input type="text" id="idPlantillaDB" hidden>
                                   <label class="mt-4">Documento</label>
                                   <textarea class="ckeditor" name='plantillaDocUser{{$doc->iIDCatalogoDocumento}}' id="plantillaDocUser{{$doc->iIDCatalogoDocumento}}" rows="3">{{$doc->cPlantilla}}</textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="descargarPlantillaUsuario({{$doc->iIDCatalogoDocumento}})" id="btnDescargarPlantilla" class="btn btn-danger">Descargar</button>
                         </div>
                       </div>
                     </div>
                   </div>
+
+                  <form class="multisteps-form__form mb-8" method="POST" action="{{route('createPlantillaPDF')}}" accept-charset="UTF-8" enctype="multipart/form-data" id="createPlantillaPDFForm{{$doc->iIDCatalogoDocumento}}" novalidate>
+                    @csrf
+                <input type="text" class="form-control" id="idPlantillaPDF" name="idPlantillaPDF" value ="" hidden>
+                  </form>
                   {{-- Fin modal plantilla --}}
                     @endforeach
                     {{-- <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
@@ -72,8 +81,6 @@
             </div>
           </div>
         </div>
-
-        {{-- Modal de plantilla --}}
 
 
 @endsection

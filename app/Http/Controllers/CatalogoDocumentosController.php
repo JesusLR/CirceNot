@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CatalogoDocumentos;
 use Illuminate\Http\Request;
+use PDF;
 
 class CatalogoDocumentosController extends Controller
 {
@@ -14,9 +15,9 @@ class CatalogoDocumentosController extends Controller
     public function gridDocs(){
         try {
             $docs =  CatalogoDocumentos::select('*')->where('lActivo', '<>', 2)->get();
-             
+
              return $docs;
-         
+
          } catch (Exception $err) {
              $conexion->rollback();
              return response()->json([
@@ -38,7 +39,7 @@ class CatalogoDocumentosController extends Controller
                 'cPlantilla' => $request->plantillaDoc,
                 'lActivo' => 1,
             ]);
-            
+
             return back()->with('success', 'Documento creado con exito!');
          } catch (Exception $err) {
              $conexion->rollback();
@@ -47,7 +48,7 @@ class CatalogoDocumentosController extends Controller
                  'cMensaje' => $err->getMessage(),
              ]);
         }
-    
+
     }
 
     public function consultarDocumento($id){
@@ -64,7 +65,7 @@ class CatalogoDocumentosController extends Controller
             );
 
             return response()->file($storage, $headers);
-           
+
          } catch (Exception $err) {
              $conexion->rollback();
              return response()->json([
@@ -87,7 +88,7 @@ class CatalogoDocumentosController extends Controller
         try {
 
             $doc = CatalogoDocumentos::where('iIDCatalogoDocumento', $request->iIDCatalogoDocumento)->first();
-            
+
             if($request->sts == 1){
                 CatalogoDocumentos::where('iIDCatalogoDocumento', $request->iIDCatalogoDocumento)->update([
                     'lActivo' => 0,
@@ -107,7 +108,7 @@ class CatalogoDocumentosController extends Controller
                     'cMensaje' => 'Documento '.$doc->cNombre.' activado',
                 ]);
             }
-           
+
          } catch (Exception $err) {
              $conexion->rollback();
              return response()->json([
@@ -121,7 +122,7 @@ class CatalogoDocumentosController extends Controller
         try {
 
             $doc = CatalogoDocumentos::where('iIDCatalogoDocumento', $request->iIDCatalogoDocumento)->first();
-            
+
             CatalogoDocumentos::where('iIDCatalogoDocumento', $request->iIDCatalogoDocumento)->update([
                 'lActivo' => 2,
             ]);
@@ -130,7 +131,7 @@ class CatalogoDocumentosController extends Controller
                 'lSuccess' => true,
                 'cMensaje' => 'Documento '.$doc->cNombre.' eliminado',
             ]);
-           
+
          } catch (Exception $err) {
              $conexion->rollback();
              return response()->json([
@@ -149,7 +150,7 @@ class CatalogoDocumentosController extends Controller
                 'lSuccess' => true,
                 'data' => $docs,
             ]);
-           
+
          } catch (Exception $err) {
              $conexion->rollback();
              return response()->json([
@@ -157,6 +158,16 @@ class CatalogoDocumentosController extends Controller
                  'cMensaje' => $err->getMessage(),
              ]);
         }
+    }
+
+    public function createPlantillaPDF(Request $request){
+
+        $plantilla = CatalogoDocumentos::where('iIDCatalogoDocumento', $request->idPlantillaPDF)
+        ->first();
+        // dd($plantilla);
+
+        $pdf = PDF::loadView('catalogos.documentoPlantilla', compact('plantilla'));
+        return $pdf->download($plantilla->cNombre.'.pdf');
     }
 
     // public function docprueba(Request $request){
@@ -167,7 +178,7 @@ class CatalogoDocumentosController extends Controller
     //     // $text = $section->addText($request->get('emp_name'));
     //     // $text = $section->addText($request->get('emp_salary'));
     //     $text = $section->addText($doc->cDescripcion);
-          
+
     //     $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
     //     $objWriter->save('Appdividend.docx');
     //     return response()->download(public_path('Appdividend.docx'));

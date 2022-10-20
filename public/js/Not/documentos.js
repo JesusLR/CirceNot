@@ -67,7 +67,7 @@ $(document).ready(function() {
 
 function docFormatter(value, row) {
     var html = '';
-    
+
     html += '<a href="javascript:;" class="mx-3" onclick="verDoc('+row.iIDCatalogoDocumento+')" data-bs-toggle="tooltip" data-bs-original-title="Ver Documento">' +
             '<i class="fas fa-file"></i>'+
             '</a>';
@@ -131,10 +131,10 @@ function stsDoc(id,sts){
                     timer: 3000
               })
             }
-            
+
     },
         error: function (err) {
-            
+
         },
     });
 }
@@ -150,7 +150,7 @@ function confirmDeleteDoc(id){
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           deleteDoc(id);
-        } 
+        }
       })
 }
 
@@ -181,10 +181,10 @@ function deleteDoc(id){
                     timer: 3000
               })
             }
-            
+
     },
         error: function (err) {
-            
+
         },
     });
 }
@@ -227,9 +227,10 @@ function modalDocumentos(){
     $('#docsModal').modal('show');
 }
 
-function verPlantillaUsuario(){
-    CKEDITOR.replace("plantillaDocUser", "hola");
-    $('#modalPlantillaUsuario').modal('show');
+function descargarPlantillaUsuario(iIDDocumento){
+    $("#idPlantillaPDF").val(iIDDocumento);
+    // console.log( $("#idPresupuestoPDF").val());
+    $("#createPlantillaPDFForm"+iIDDocumento).submit();
 }
 
 // function documentosUser(valorPlantillaDoc){
@@ -266,9 +267,9 @@ function verPlantillaUsuario(){
 //                        '</div>'+
 //                      '</div>'+
 //                    '</div>'+
-//                  '</div>';                 
-//                 '</div>';                    
-//                 '</div>';                 
+//                  '</div>';
+//                 '</div>';
+//                 '</div>';
 //                 });
 //                 $('#divDocumentoUno').html(html);
 //             }else{
@@ -280,20 +281,20 @@ function verPlantillaUsuario(){
 //                     timer: 3000
 //               })
 //             }
-            
+
 //     },
 //         error: function (err) {
-            
+
 //         },
 //     });
 // }
 
 // $("#btnAceptLogin").click(function() {
 
-  
+
 //     email = $('#userInputLog').val();
 //     password = $('#passInputLog').val();
-    
+
 //     $.ajax({
 //         url: "/admin/loginPanel",
 //         type: "POST",
@@ -307,7 +308,7 @@ function verPlantillaUsuario(){
 //             // alert('Bienvenido '+ email);
 //     },
 //         error: function (err) {
-            
+
 //         },
 //     });
 

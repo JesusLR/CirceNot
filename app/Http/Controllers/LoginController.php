@@ -26,6 +26,8 @@ class LoginController extends Controller
 
     public function loginAdministrador(Request $request)
     {
+    //    $a =  Hash::make($request->password);
+    //     dd($a);
         $credenciales = $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6',

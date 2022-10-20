@@ -27,6 +27,7 @@ Route::prefix('/')->group(function () {
     Route::get('prospectosMorView', [ClientesController::class, 'prospectosMorView'])->name('prospectos_moral_vista');
     Route::get('consultarProspectosM', [ClientesController::class, 'consultarProspectosM'])->name('consultarProspectosM');
 
+    Route::post('createPlantillaPDF', [CatalogoDocumentosController::class, 'createPlantillaPDF'])->name('createPlantillaPDF');
     //Services
     Route::get('newService', [ServiceController::class, 'newService'])->name('new_service');
     Route::post('createService', [ServiceController::class, 'createService'])->name('createService');
