@@ -24,6 +24,10 @@ class LoginController extends Controller
         return view('admin.adminHome');
     }
 
+    public function userHome(){
+        return view('autorizados.userHome');
+    }
+
     public function loginAdministrador(Request $request)
     {
     //    $a =  Hash::make($request->password);
@@ -62,22 +66,18 @@ class LoginController extends Controller
     public function vistaPersonaAutorizada(){
         return view('autorizados.auth.login');
     }
-    // public function loginPersonaAutorizada(Request $request){
-    //     dd($request->all());
-    //     $credenciales = $request->validate([
-    //         'email' => 'required|email',
-    //         'password' => 'required|min:6',
-    //     ]);
-    //     $personaAutorizada = PersonasAutorizadas::where('email', $request->email)->first();
-    //     if(!is_null($personaAutorizada)){
-    //         if(Auth::guard('autorizados')->attempt($credenciales)){
-    //             $request->session()->regenerate();
-    //             return redirect()->route('usuario_vista_login');
-    //         }
-    //     }else{
-    //         dd('USUARIO O CONTRASEÑA INCORRECTOS');
-    //     }
-    // }
+
+    public function loginPersonaAutorizada(Request $request){
+        // dd($request->all());
+        $personaAutorizada = PersonasAutorizadas::where('email', $request->userInputLogAutorizado)->where('password', $request->passInputLogAutorizado)->first();
+        // dd(isset($personaAutorizada));
+
+        if(isset($personaAutorizada)){
+            return redirect()->route('usuario_inicio_sesion');
+        }else{
+            return back()->with('err', 'USUARIO O CONTRASEÑA INCORRECTOS');
+        }
+    }
 
 
     // public function acceso()

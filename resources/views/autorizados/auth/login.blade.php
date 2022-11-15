@@ -67,13 +67,14 @@
                                     <p class="mb-0">Enter your email and password to sign in</p>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form">
+                                    <form role="form" action='{{route('user_vista_home')}}' method='POST'>
+                                        @csrf
                                         <div class="mb-3">
-                                            <input id="userInputLog" type="email" class="form-control form-control-lg"
+                                            <input id="userInputLogAutorizado" name="userInputLogAutorizado" type="email" class="form-control form-control-lg"
                                                 placeholder="Email">
                                         </div>
                                         <div class="mb-3">
-                                            <input id="passInputLog" type="password"
+                                            <input id="passInputLogAutorizado" name="passInputLogAutorizado" type="password"
                                                 class="form-control form-control-lg" placeholder="Password">
                                         </div>
                                         <div class="form-check form-switch">
@@ -81,7 +82,7 @@
                                             <label class="form-check-label" for="rememberMe">Remember me</label>
                                         </div>
                                         <div class="text-center">
-                                            <button id="btnAceptLogin" type="button"
+                                            <button id="btnAceptLoginAutorizado" type="submit"
                                                 class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Aceptar</button>
                                         </div>
                                     </form>

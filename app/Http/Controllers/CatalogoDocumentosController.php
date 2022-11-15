@@ -164,7 +164,6 @@ class CatalogoDocumentosController extends Controller
 
         $plantilla = CatalogoDocumentos::where('iIDCatalogoDocumento', $request->idPlantillaPDF)
         ->first();
-        // dd($plantilla);
 
         $pdf = PDF::loadView('catalogos.documentoPlantilla', compact('plantilla'));
         return $pdf->download($plantilla->cNombre.'.pdf');
