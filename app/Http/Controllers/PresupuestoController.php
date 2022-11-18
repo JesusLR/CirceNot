@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Servicios;
 use App\Models\Clientes;
 use App\Models\Presupuestos;
+use App\Models\CatalogoDocumentos;
 use App\Models\PresupuestoService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB as DB;
@@ -100,11 +101,14 @@ class PresupuestoController extends Controller
 
         $lMarcaAgua = false;
 
+        $plantilla = CatalogoDocumentos::where('iIDCatalogoDocumento', 1)
+        ->first();
+
         // dd($presupuesto, $servicios);
 
 
         // view()->share('productos', $productos);
-        $pdf = PDF::loadView('presupuestos.PresupuestoPlantilla', compact('presupuesto', 'servicios','lMarcaAgua'));
+        $pdf = PDF::loadView('presupuestos.PresupuestoPlantilla', compact('presupuesto', 'servicios','lMarcaAgua','plantilla'));
         return $pdf->download('archivo-pdf.pdf');
     }
 }
