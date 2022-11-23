@@ -77,9 +77,9 @@
     </style>
 </head>
 
-<body style='margin-top:100px;margin-left:0;margin-right:0; margin-bottom: 10px;'>
+<body style='margin-top:10px;margin-left:0;margin-right:0; margin-bottom: 10px;'>
 
-    <div id="headerDoc">
+    {{-- <div id="headerDoc"> --}}
         {{-- <div>
             <img class="logo" src="img/R.png" width="240" height="60">
             <table class="table" width="100%" style="border: hidden;">
@@ -95,18 +95,18 @@
                 </tr>
             </table>
         </div> --}}
-    </div>
+    {{-- </div> --}}
     <div id="contentDoc">
-        {{!! $plantilla->cPlantilla !!}}
+        {!! $plantilla !!}
      </div>
-    <div id="footerDoc">
+    {{-- <div id="footerDoc">
         <p class="page" style="text-align: left; font-size: 12px; line-height: 10px; font-family: 'Barlow-Regular';">
             footer
         </p>
         <p style="text-align: right; font-size: 12px; line-height: 10px; font-family: 'Barlow-Regular';">
             footer2
         </p>
-    </div>
+    </div> --}}
 </body>
 
 </html>

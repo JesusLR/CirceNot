@@ -49,8 +49,12 @@
                           <div class="modal-body">
                             <input type="text" id="idPlantillaDB" hidden>
                                   <label class="mt-4">Documento</label>
-                                  <textarea class="ckeditor" name='plantillaDocUser{{$doc->iIDCatalogoDocumento}}' id="plantillaDocUser{{$doc->iIDCatalogoDocumento}}" rows="3">{{$doc->cPlantilla}}</textarea>
-                        </div>
+                                  <form class="multisteps-form__form mb-8" method="POST" action="{{route('createPlantillaPDF')}}" accept-charset="UTF-8" enctype="multipart/form-data" id="createPlantillaPDFForm{{$doc->iIDCatalogoDocumento}}" novalidate>
+                                    @csrf
+                                    <textarea class="ckeditor" name='plantillaDocUser' id="plantillaDocUser" rows="8">{{$doc->cPlantilla}}</textarea>
+                                    <input type="text" class="form-control" id="idPlantillaPDF" name="idPlantillaPDF" value ="{{$doc->iIDCatalogoDocumento}}" hidden>
+                                </form>
+                                </div>
                         <div class="modal-footer">
                             <button type="button" onclick="descargarPlantillaUsuario({{$doc->iIDCatalogoDocumento}})" id="btnDescargarPlantilla" class="btn btn-danger">Descargar</button>
                         </div>
@@ -58,10 +62,6 @@
                     </div>
                   </div>
 
-                  <form class="multisteps-form__form mb-8" method="POST" action="{{route('createPlantillaPDF')}}" accept-charset="UTF-8" enctype="multipart/form-data" id="createPlantillaPDFForm{{$doc->iIDCatalogoDocumento}}" novalidate>
-                    @csrf
-                <input type="text" class="form-control" id="idPlantillaPDF" name="idPlantillaPDF" value ="" hidden>
-                  </form>
                   {{-- Fin modal plantilla --}}
                     @endforeach
                     {{-- <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
