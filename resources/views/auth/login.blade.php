@@ -3,7 +3,7 @@
 * Argon Dashboard 2 PRO - v2.0.5
 =========================================================
 
-* Product Page:  https://www.creative-tim.com/product/argon-dashboard-pro 
+* Product Page:  https://www.creative-tim.com/product/argon-dashboard-pro
 * Copyright 2022 Creative Tim (https://www.creative-tim.com)
 * Coded by Creative Tim
 
@@ -73,7 +73,7 @@
                       <label class="form-check-label" for="rememberMe">Remember me</label>
                     </div>
                     <div class="text-center">
-                      <button id="btnAceptLogin" type="button" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Aceptar</button>
+                      <button id="btnAceptLogin2" type="button" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Aceptar</button>
                     </div>
                   </form>
                 </div>

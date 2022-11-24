@@ -28,36 +28,43 @@ class LoginController extends Controller
         return view('autorizados.userHome');
     }
 
-    public function loginAdministrador(Request $request)
-    {
+    public function loginAdministrador(Request $request){
     //    $a =  Hash::make($request->password);
-    //     dd($a);
-        $credenciales = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:6',
-        ]);
-        $administrador = Administrador::where('email', $request->email)->first();
+        // dd('h');
+        try {
+            $credenciales = $request->validate([
+                'email' => 'required|email',
+                'password' => 'required|min:6',
+            ]);
+            $administrador = Administrador::where('email', $request->email)->first();
 
-        if($administrador){
-            if (Auth::guard('admin')->attempt($credenciales)) {
-                $existeGestoria = Gestoria::select('*')->count();
-                 $request->session()->regenerate();
+            if($administrador){
+                if (Auth::guard('admin')->attempt($credenciales)) {
+                    $existeGestoria = Gestoria::select('*')->count();
+                     $request->session()->regenerate();
 
-                 if($existeGestoria > 0){
-                    return redirect()->route('admin_vista_home');
-                 }else{
-                    return redirect()->route('administracion_gestoria');
-                    // return redirect()->route('admin_vista_home');
-                 }
-                // return view('admin.adminHome');
+                     if($existeGestoria > 0){
+                        return redirect()->route('admin_vista_home');
+                     }else{
+                        return redirect()->route('administracion_gestoria');
+                        // return redirect()->route('admin_vista_home');
+                     }
+                    // return view('admin.adminHome');
+                }else{
+                    // dd('USUARIO O CONTRASEÑA INCORRECTOS');
+                    return back()->with('err', 'USUARIO O CONTRASEÑA INCORRECTOS');
+                }
             }else{
-                // dd('USUARIO O CONTRASEÑA INCORRECTOS');
                 return back()->with('err', 'USUARIO O CONTRASEÑA INCORRECTOS');
+                // dd('USUARIO O CONTRASEÑA INCORRECTOS');
             }
-        }else{
-            return back()->with('err', 'USUARIO O CONTRASEÑA INCORRECTOS');
-            // dd('USUARIO O CONTRASEÑA INCORRECTOS');
+        } catch (Exception $err) {
+            return response()->json([
+                'lSuccess' => false,
+                'cMensaje' => $err->getMessage(),
+            ]);
         }
+
     }
 
     /**

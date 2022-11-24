@@ -14,10 +14,9 @@ class GestoriaController extends Controller
 
    public function createGestoria(Request $request){
     try {
-        dd($request->apellitoPatNotario);
         $request->file('logoNotaria')->store('public');
         $request->file('fileNombramientoNotario')->store('public');
-        
+
         Gestoria::create([
             'cNombreGestoria' => $request->nomNotaria,
             'iNumGestoria' => $request->numNotaria,
@@ -55,7 +54,7 @@ class GestoriaController extends Controller
 
         return redirect()->route('admin_vista_home')->with('success', 'Bienvenido '.$request->nomNotario.'!');
         // return back()->with('success', 'Documento creado con exito!');
-     } catch (Exception $err) {
+    } catch (Exception $err) {
          $conexion->rollback();
          return response()->json([
              'lSuccess' => false,
