@@ -13,8 +13,14 @@ class CreateCatalogoDocumentosTable extends Migration
      */
     public function up()
     {
-        Schema::create('catalogo_documentos', function (Blueprint $table) {
-            $table->id();
+        Schema::create('tbCatalogoDocumentos', function (Blueprint $table) {
+            $table->id('iIDCatalogoDocumento');
+            $table->string('cNombre');
+            $table->string('cRuta');
+            $table->string('cDescripcion');
+            $table->string('iIDCategoria');
+            $table->string('cPlantilla');
+            $table->boolean('lActivo');
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ class CreateCatalogoDocumentosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('catalogo_documentos');
+        Schema::dropIfExists('tbCatalogoDocumentos');
     }
 }

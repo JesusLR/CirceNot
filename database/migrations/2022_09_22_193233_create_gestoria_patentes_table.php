@@ -13,8 +13,22 @@ class CreateGestoriaPatentesTable extends Migration
      */
     public function up()
     {
-        Schema::create('gestoria_patentes', function (Blueprint $table) {
-            $table->id();
+        Schema::create('tbGestoriaPatente', function (Blueprint $table) {
+            $table->id('iIDGestoriaPatente');
+            $table->string('cNombreTitular');
+            $table->string('cApellitoPatTitular');
+            $table->string('cApellitoMatTitular');
+            $table->string('cDireccion');
+            $table->string('cCorreo');
+            $table->string('iTelefono');
+            $table->string('iCelular');
+            $table->string('cProfesionTitular');
+            $table->string('cRFC');
+            $table->string('cCURP');
+            $table->string('cFechaNombramiento');
+            $table->string('cRutaNombramiento');
+            $table->string('cNombramiento');
+            $table->boolean('lActivo');
             $table->timestamps();
         });
     }
@@ -26,6 +40,6 @@ class CreateGestoriaPatentesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gestoria_patentes');
+        Schema::dropIfExists('tbGestoriaPatente');
     }
 }

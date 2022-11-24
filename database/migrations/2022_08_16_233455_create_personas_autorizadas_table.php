@@ -19,8 +19,16 @@ class CreatePersonasAutorizadasTable extends Migration
             $table->string('cPrimerApellido');
             $table->string('cSegundoApellido');
             $table->string('email')->unique();
+            $table->string('emailDos')->unique();
+            $table->string('cUsuario');
             $table->string('password');
-            $table->rememberToken();
+            $table->string('cCURP');
+            $table->string('cRFC');
+            $table->string('iIDPermiso');
+            $table->string('iIDPuesto');
+            $table->string('iTelefono');
+            $table->boolean('lActivo');
+            // $table->rememberToken();
             $table->timestamps();
         });
     }
