@@ -15,12 +15,12 @@ class personaAutorizadaSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('personas_autorizadas')->insert([
-            'cNombre' => 'Rodrigo',
-            'cPrimerApellido' => 'Diaz',
-            'cSegundoApellido' => 'Serviran',
-            'email' => 'rodrigo@example.com',
-            'password' => bcrypt('1234567'),
-        ]);
+        // DB::table('personas_autorizadas')->insert([
+        //     'cNombre' => 'Cosme',
+        //     'cPrimerApellido' => 'Magaña',
+        //     'cSegundoApellido' => 'Serviran',
+        //     'email' => 'cosme@example.com',
+        //     'password' => bcrypt('1234567'),
+        // ]);
     }
 }
