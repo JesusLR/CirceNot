@@ -177,6 +177,11 @@
                 </table>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+            {!! $idPresupuestoPDF !!}
+            </div>
+        </div>
     </div>
 </body>
 

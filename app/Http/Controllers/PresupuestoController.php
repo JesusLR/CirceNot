@@ -9,6 +9,7 @@ use App\Models\PresupuestoService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB as DB;
 use PDF;
+use \Milon\Barcode\DNS1D;
 class PresupuestoController extends Controller
 {
     //
@@ -76,6 +77,7 @@ class PresupuestoController extends Controller
 
             'lSuccess' => true,
             'cMensaje' => "",
+            'idPresupuesto' => $presupuesto->id,
         ]);
 
 
@@ -101,14 +103,16 @@ class PresupuestoController extends Controller
 
         $lMarcaAgua = false;
 
-        $plantilla = CatalogoDocumentos::where('iIDCatalogoDocumento', 1)
-        ->first();
+        // $plantilla = CatalogoDocumentos::where('iIDCatalogoDocumento', 1)
+        // ->first();
+
+        $idPresupuestoPDF = DNS1D::getBarcodeHTML($request->idPresupuestoPDF, 'C39');
 
         // dd($presupuesto, $servicios);
 
 
         // view()->share('productos', $productos);
-        $pdf = PDF::loadView('presupuestos.PresupuestoPlantilla', compact('presupuesto', 'servicios','lMarcaAgua','plantilla'));
+        $pdf = PDF::loadView('presupuestos.PresupuestoPlantilla', compact('presupuesto', 'servicios','lMarcaAgua','idPresupuestoPDF'));
         return $pdf->download('archivo-pdf.pdf');
     }
 }
