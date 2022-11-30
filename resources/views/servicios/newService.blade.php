@@ -36,8 +36,8 @@
           <!--form panels-->
           <div class="row">
             <div class="col-12 col-lg-8 m-auto">
-              <form class="multisteps-form__form mb-8" method="POST" action="{{route('createService')}}" accept-charset="UTF-8" enctype="multipart/form-data" id="formNewCliente" novalidate>
-                  @csrf
+              <form   class="multisteps-form__form mb-8" accept-charset="UTF-8" enctype="multipart/form-data" id="formNewCliente" >
+
                   <!--single form panel-->
                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
                   <h5 class="font-weight-bolder mb-0">Servicio</h5>
@@ -50,7 +50,7 @@
                               <label class="form-label">Nombre del servicio
                               </label>
                               <div class="input-group">
-                                <input id="nameService" name="nameService" class="form-control" type="text" placeholder="Nombre del servicio" required="required">
+                                <input id="nameService" maxlength="150" name="nameService" class="form-control" type="text" placeholder="Nombre del servicio" required="required">
                               </div>
                             </div>
                           </div>
@@ -58,7 +58,7 @@
                             <div class="col-10">
                                 <label class="form-label">Descripción</label>
                                 <div class="input-group">
-                                  <input id="description" name="description" class="form-control" type="text" placeholder="Descripción">
+                                  <input id="description" maxlength="250" name="description" class="form-control" type="text" placeholder="Descripción">
                                 </div>
                             </div>
                             <div class="col-sm-6 col-6">
@@ -78,8 +78,9 @@
                               </div>
 
                           </div>
+                        </form>
                           <div class="button-row d-flex mt-4">
-                            <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send" id="saveInfoService">Guardar</button>
+                            <button class="btn bg-gradient-dark ms-auto mb-0"  title="Send" id="saveInfoService">Guardar</button>
                         </div>
 
 
@@ -96,7 +97,7 @@
                 </div>
 
 
-              </form>
+
             </div>
           </div>
         </div>

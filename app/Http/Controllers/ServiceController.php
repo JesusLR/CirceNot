@@ -31,8 +31,13 @@ class ServiceController extends Controller
 
                 ]);
 
-                return redirect()->route('service_index')->with('success', 'Servicio '.strtoupper($request->nameService).' creado con exito!');
+                // return redirect()->route('service_index')->with('success', 'Servicio '.strtoupper($request->nameService).' creado con exito!');
 
+                return response()->json([
+                    'lSuccess' => true,
+                    'cMensaje' => '',
+
+                ]);
 
 
          } catch (Exception $err) {
