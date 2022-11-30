@@ -64,7 +64,7 @@
                   <p class="mb-0">Panel administrativo</p>
                 </div>
                 <div class="card-body">
-                  <form role="form" action='{{route('user_vista_home')}}' method='POST'>
+                  <form role="form" action='{{route('admin_login_inicio_sesion')}}' method='POST'>
                     @csrf
                     <div class="mb-3">
                       <input id="userInputLog" type="email" name="email" class="form-control form-control-lg" placeholder="Email" >

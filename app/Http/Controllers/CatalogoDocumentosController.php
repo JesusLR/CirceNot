@@ -161,12 +161,13 @@ class CatalogoDocumentosController extends Controller
     }
 
     public function createPlantillaPDF(Request $request){
-
-        $plantilla = CatalogoDocumentos::where('iIDCatalogoDocumento', $request->idPlantillaPDF)
+        // dd($request->all());
+        $doc = CatalogoDocumentos::where('iIDCatalogoDocumento', $request->idPlantillaPDF)
         ->first();
-
+        $plantilla = $request->plantillaDocUser;
+        // dd($doc);
         $pdf = PDF::loadView('catalogos.documentoPlantilla', compact('plantilla'));
-        return $pdf->download($plantilla->cNombre.'.pdf');
+        return $pdf->download(''.$doc->cNombre.'.pdf');
     }
 
     // public function docprueba(Request $request){

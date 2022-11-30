@@ -13,8 +13,24 @@ class CreateGestoriasTable extends Migration
      */
     public function up()
     {
-        Schema::create('gestorias', function (Blueprint $table) {
-            $table->id();
+        Schema::create('tbGestoria', function (Blueprint $table) {
+            $table->id('iIDGestoria');
+            $table->integer('iIDGestoriaPatente');
+            $table->string('cNombreGestoria');
+            $table->integer('iNumGestoria');
+            $table->string('cDomicilioGestoria');
+            $table->string('cEmailGestoria');
+            $table->string('iTelGestoria');
+            $table->string('cLogoGestoria');
+            $table->string('cRutaLogoGestoria');
+            $table->boolean('lActivo');
+            $table->boolean('lPA');
+            $table->boolean('lPC');
+            $table->boolean('lPE');
+            $table->string('cPA_Libro');
+            $table->string('cPA_Acta');
+            $table->integer('iPA_FojaInic');
+            $table->integer('iPA_FojaFin');
             $table->timestamps();
         });
     }
@@ -26,6 +42,6 @@ class CreateGestoriasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gestorias');
+        Schema::dropIfExists('tbGestoria');
     }
 }
