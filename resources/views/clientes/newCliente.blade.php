@@ -75,7 +75,7 @@
                                                     <div class="input-group">
                                                         <input id="clienteNombre" maxlength="255" name="clienteNombre"
                                                             class="form-control" type="text" placeholder="Juan"
-                                                            required="required">
+                                                           >
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
@@ -83,7 +83,7 @@
                                                     <div class="input-group">
                                                         <input id="clienteApellidoP" maxlength="255" name="clienteApellidoP"
                                                             class="form-control" type="text" placeholder="Lopez"
-                                                            required="required">
+                                                           >
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
@@ -91,7 +91,7 @@
                                                     <div class="input-group">
                                                         <input id="clienteApellidoM" maxlength="255" name="clienteApellidoM"
                                                             class="form-control" type="text" placeholder="Perez"
-                                                            required="required">
+                                                           >
                                                     </div>
                                                 </div>
                                             </div>
@@ -260,7 +260,7 @@
                                                     <div class="input-group">
                                                         <input id="clienteRazonSocial" maxlength="255"
                                                             name="clienteRazonSocial" class="form-control" type="text"
-                                                            placeholder="Empresa S.A. de C.V." required="required">
+                                                            placeholder="Empresa S.A. de C.V.">
                                                     </div>
                                                 </div>
                                             </div>
@@ -272,7 +272,7 @@
                                                     <div class="input-group">
                                                         <input id="clienteCorreoM" maxlength="255" name="clienteCorreoM"
                                                             class="form-control" type="text"
-                                                            placeholder="example@hotmail.com" required="required">
+                                                            placeholder="example@hotmail.com">
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
@@ -281,7 +281,7 @@
                                                     <div class="input-group">
                                                         <input id="telClienteM" maxlength="10" name="telClienteM"
                                                             class="form-control" type="text"
-                                                            placeholder="969 123 4567" required="required">
+                                                            placeholder="969 123 4567">
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
@@ -291,7 +291,7 @@
                                                         <input id="celClienteM" maxlength="10"
                                                             onkeypress="return soloNumeros(event)" name="celClienteM"
                                                             class="form-control" type="text"
-                                                            placeholder="999 123 4567" required="required">
+                                                            placeholder="999 123 4567">
                                                     </div>
                                                 </div>
                                             </div>
@@ -303,7 +303,7 @@
                                                     <div class="input-group">
                                                         <input id="clienteDomicilioM" maxlength="255"
                                                             name="clienteDomicilioM" class="form-control" type="text"
-                                                            placeholder="Merida, Yucatan" required="required">
+                                                            placeholder="Merida, Yucatan">
                                                     </div>
                                                 </div>
                                                 <div class="col-3">
@@ -312,7 +312,7 @@
                                                     <div class="input-group">
                                                         <input id="clienteEntidadM" maxlength="255"
                                                             name="clienteEntidadM" class="form-control" type="text"
-                                                            placeholder="MEXICO" required="required">
+                                                            placeholder="MEXICO">
                                                     </div>
                                                 </div>
                                                 <div class="col-3">
@@ -322,7 +322,7 @@
                                                         <input id="clientCodigoPostM"
                                                             onkeypress="return soloNumeros(event)" maxlength="5"
                                                             name="clientCodigoPostM" class="form-control" type="text"
-                                                            placeholder="97300" required="required">
+                                                            placeholder="97300">
                                                     </div>
                                                 </div>
                                             </div>
@@ -334,7 +334,7 @@
                                                     <div class="input-group">
                                                         <input id="clienteRFCM" maxlength="13" name="clienteRFCM"
                                                             class="form-control" type="text" placeholder="..."
-                                                            required="required">
+                                                           >
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
@@ -343,7 +343,7 @@
                                                     <div class="input-group">
                                                         <input id="clienteRegimenM" maxlength="255"
                                                             name="clienteRegimenM" class="form-control" type="text"
-                                                            placeholder="..." required="required">
+                                                            placeholder="...">
                                                     </div>
                                                 </div>
                                             </div>
@@ -458,10 +458,12 @@
                                             <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button"
                                                 title="Anterior">Anterior</button>
                                             <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
-                                                title="Guardar" id="">Guardar</button>
+                                                title="Send" id="saveInfoCliente">Guardar</button>
                                         </div>
                                     </div>
                                 </div>
+
+
                             </form>
                         </div>
                     </div>
