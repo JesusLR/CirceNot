@@ -3,30 +3,29 @@
 @section('content')
 <div class="container-fluid py-4">
     <div class="row mt-4">
-      <div class="col-12">
-        <div class="card">
-          <!-- Card header -->
-          <div class="card-header">
-            <h5 class="mb-0">Administracion de usuarios</h5>
-            <p class="text-sm mb-0">
-              <div class="text-end ms-auto">
-                <button type="button" class="btn btn-xs btn-primary mb-0" id="btnNewUser">
-                  <i class="fas fa-plus pe-2"></i> Nuevo Usuario
-                </button>
-              </div>
-            </p>
-          </div>
-          <div class="row" style="margin-bottom: 20px;">
-            <div class="col-md-12">
-                <table class="table table-striped" id="gridUsers">
-                </table>
+        <div class="col-12">
+            <div class="card">
+                                <!-- Card header -->
+                <div class="card-body">
+                    <h5 class="mb-0">Administración de usuarios</h5>
+                    <p class="text-sm mb-0">
+                        <div class="text-end ms-auto">
+                            <button type="button" class="btn btn-xs btn-primary mb-0" id="btnNewUser">
+                            <i class="fas fa-plus pe-2"></i> Nuevo Usuaio
+                            </button>
+                        </div>
+                    </p>
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-md-12">
+                            <table class="table table-striped" id="gridUsers">
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-      </div>
     </div>
-
-  </div>
+</div>
 
   <!-- Modal -->
   {{-- MODAL DE USUARIOS --}}
@@ -38,10 +37,10 @@
         </h5>
       </div>
       <div class="modal-body">
-        
+
         {{-- <div class="card mt-4" id="basic-info"> --}}
           <div class="card-header">
-            <h5>Informacion Basica</h5>
+            <h5>Información Básica</h5>
           </div>
           {{-- <div class="card-body pt-0"> --}}
             <div class="row">
@@ -49,26 +48,26 @@
                 <label class="form-label">Nombre(s)
                 </label>
                 <div class="input-group">
-                  <input id="userNombre" name="userNombre" class="form-control" type="text" placeholder="Juan" required="required">
+                  <input id="userNombre" maxlength="255" name="userNombre" class="form-control" type="text" placeholder="Juan" required="required">
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">Apellido Paterno</label>
+                <label class="form-label">Primer Apellido</label>
                 <div class="input-group">
-                  <input id="userApellidoP" name="userApellidoP" class="form-control" type="text" placeholder="Lopez" required="required">
+                  <input id="userApellidoP" maxlength="255" name="userApellidoP" class="form-control" type="text" placeholder="Lopez" required="required">
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">Apellido Materno</label>
+                <label class="form-label">Segundo Apellido</label>
                 <div class="input-group">
-                  <input id="userApellidoM" name="userApellidoM" class="form-control" type="text" placeholder="Perez" required="required">
+                  <input id="userApellidoM" maxlength="255" name="userApellidoM" class="form-control" type="text" placeholder="Perez" required="required">
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-4 col-6">
                 <label class="form-label mt-4">Usuario</label>
-                <input id="userUsuario" name="userUsuario" class="form-control" type="text" placeholder="Juan.lopez" required="required">
+                <input id="userUsuario" maxlength="255" name="userUsuario" class="form-control" type="text" placeholder="Juan.lopez" required="required">
               </div>
               <div class="col-sm-4 col-6">
                 <label class="form-label mt-4">Permiso</label>
@@ -92,13 +91,13 @@
               <div class="col-6">
                 <label class="form-label mt-4">Email Personal</label>
                 <div class="input-group">
-                  <input id="userEmail" name="userEmail" class="form-control" type="email" placeholder="example@email.com">
+                  <input id="userEmail" name="userEmail" maxlength="255" class="form-control" type="email" placeholder="example@email.com">
                 </div>
               </div>
               <div class="col-6">
                 <label class="form-label mt-4">Email Laboral</label>
                 <div class="input-group">
-                  <input id="userEmailDos" name="userEmailDos" class="form-control" type="email" placeholder="example@email.com">
+                  <input id="userEmailDos" name="userEmailDos" maxlength="255" class="form-control" type="email" placeholder="example@email.com">
                 </div>
               </div>
             </div>
@@ -106,24 +105,24 @@
               <div class="col-6">
                 <label class="form-label mt-4">Contraseña</label>
                 <div class="input-group">
-                  <input id="userPassword" name="userPassword" class="form-control" type="text" placeholder="***** ...">
+                  <input id="userPassword" maxlength="255" name="userPassword" class="form-control" type="text" placeholder="***** ...">
                 </div>
               </div>
               <div class="col-6">
-                <label class="form-label mt-4">Numero de telefono</label>
+                <label class="form-label mt-4">Numero de teléfono</label>
                 <div class="input-group">
-                  <input id="userTEL" name="userTEL" class="form-control" type="number" placeholder="+40 735 631 620">
+                  <input id="userTEL" onkeypress="return soloNumeros(event)" name="userTEL" class="form-control" type="text" maxlength="10" placeholder="+40 735 631 620">
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6 align-self-center">
                 <label class="form-label mt-4">CURP</label>
-                <input class="form-control" id="userCURP" placeholder="CURP" />
+                <input class="form-control" maxlength="18" id="userCURP" type="text" placeholder="CURP" />
               </div>
               <div class="col-md-6">
                 <label class="form-label mt-4">RFC</label>
-                <input class="form-control" id="userRFC" type="text" placeholder="RFC" />
+                <input class="form-control" maxlength="13" id="userRFC" type="text" placeholder="RFC" />
               </div>
             </div>
           {{-- </div> --}}
@@ -147,10 +146,10 @@
         </h5>
       </div>
       <div class="modal-body">
-        
+
         {{-- <div class="card mt-4" id="basic-info"> --}}
           <div class="card-header">
-            <h5>Informacion Basica</h5>
+            <h5>Información Básica</h5>
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" id="userStatus" checked="">
               <label class="form-check-label" for="userStatus">Estatus</label>
@@ -162,26 +161,26 @@
                 <label class="form-label">Nombre(s)
                 </label>
                 <div class="input-group">
-                  <input id="userNombreEdit" name="userNombreEdit" class="form-control" type="text" placeholder="Juan" required="required">
+                  <input id="userNombreEdit" maxlength="255" name="userNombreEdit" class="form-control" type="text" placeholder="Juan" required="required">
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">Apellido Paterno</label>
+                <label class="form-label">Primer Apellido</label>
                 <div class="input-group">
-                  <input id="userApellidoPEdit" name="userApellidoPEdit" class="form-control" type="text" placeholder="Lopez" required="required">
+                  <input id="userApellidoPEdit" maxlength="255" name="userApellidoPEdit" class="form-control" type="text" placeholder="Lopez" required="required">
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">Apellido Materno</label>
+                <label class="form-label">Segundo Apellido</label>
                 <div class="input-group">
-                  <input id="userApellidoMEdit" name="userApellidoMEdit" class="form-control" type="text" placeholder="Perez" required="required">
+                  <input id="userApellidoMEdit" maxlength="255" name="userApellidoMEdit" class="form-control" type="text" placeholder="Perez" required="required">
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-4 col-6">
                 <label class="form-label mt-4">Usuario</label>
-                <input id="userUsuarioEdit" name="userUsuarioEdit" class="form-control" type="text" placeholder="Juan.lopez" required="required">
+                <input id="userUsuarioEdit" maxlength="255" name="userUsuarioEdit" class="form-control" type="text" placeholder="Juan.lopez" required="required">
               </div>
               <div class="col-sm-4 col-6">
                 <label class="form-label mt-4">Permiso</label>
@@ -205,13 +204,13 @@
               <div class="col-6">
                 <label class="form-label mt-4">Email Personal</label>
                 <div class="input-group">
-                  <input id="userEmailEdit" name="userEmailEdit" class="form-control" type="email" placeholder="example@email.com">
+                  <input id="userEmailEdit" maxlength="255" name="userEmailEdit" class="form-control" type="email" placeholder="example@email.com">
                 </div>
               </div>
               <div class="col-6">
                 <label class="form-label mt-4">Email Laboral</label>
                 <div class="input-group">
-                  <input id="userEmailDosEdit" name="userEmailDosEdit" class="form-control" type="email" placeholder="example@email.com">
+                  <input id="userEmailDosEdit" maxlength="255" name="userEmailDosEdit" class="form-control" type="email" placeholder="example@email.com">
                 </div>
               </div>
             </div>
@@ -219,24 +218,24 @@
               <div class="col-6">
                 <label class="form-label mt-4">Contraseña</label>
                 <div class="input-group">
-                  <input id="userPasswordEdit" name="userPasswordEdit" class="form-control" type="text" placeholder="***** ...">
+                  <input id="userPasswordEdit" maxlength="255" name="userPasswordEdit" class="form-control" type="text" placeholder="***** ...">
                 </div>
               </div>
               <div class="col-6">
-                <label class="form-label mt-4">Numero de telefono</label>
+                <label class="form-label mt-4">Numero de teléfono</label>
                 <div class="input-group">
-                  <input id="userTELEdit" name="userTELEdit" class="form-control" type="number" placeholder="+40 735 631 620">
+                  <input id="userTELEdit" maxlength="10" onkeypress="return soloNumeros(event)" name="userTELEdit" class="form-control" type="text" placeholder="+40 735 631 620">
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6 align-self-center">
                 <label class="form-label mt-4">CURP</label>
-                <input class="form-control" id="userCURPEdit" placeholder="CURP" />
+                <input class="form-control" maxlength="18" id="userCURPEdit" placeholder="CURP" />
               </div>
               <div class="col-md-6">
                 <label class="form-label mt-4">RFC</label>
-                <input class="form-control" id="userRFCEdit" type="text" placeholder="RFC" />
+                <input class="form-control" maxlength="13" id="userRFCEdit" type="text" placeholder="RFC" />
               </div>
             </div>
           {{-- </div> --}}

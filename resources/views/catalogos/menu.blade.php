@@ -3,7 +3,7 @@
       <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
         <i class="ni ni-single-02 text-primary text-sm opacity-10"></i>
       </div>
-      <span class="nav-link-text ms-1">Catalogos</span>
+      <span class="nav-link-text ms-1">Catálogos</span>
     </a>
     <div class="collapse " id="catalogoPanel">
       <ul class="nav ms-4">
@@ -21,18 +21,28 @@
             </a>
             <div class="collapse " id="vrExamples">
               <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
+                @foreach ($services as $service)
+                    <li class="nav-item">
+                        <a class="nav-link " id="btnDocUno" href="{{route('catalogoDoc_Administracion')}}">
+                        <span class="sidenav-mini-icon text-xs"> A </span>
+                        <span class="sidenav-normal"> {{$service->name}} </span>
+                        </a>
+                    </li>
+                @endforeach
+
+                {{-- <li class="nav-item">
                   <a class="nav-link " id="btnDocUno" href="{{route('catalogoDoc_Administracion')}}">
                     <span class="sidenav-mini-icon text-xs"> A </span>
                     <span class="sidenav-normal"> Administracion </span>
                   </a>
-                </li>
-                <li class="nav-item">
+                </li> --}}
+
+                {{-- <li class="nav-item">
                   <a class="nav-link " id="btnDocDos" href="{{route('catalogoDoc_Contratos')}}">
                     <span class="sidenav-mini-icon text-xs"> C </span>
                     <span class="sidenav-normal"> Contratos </span>
                   </a>
-                </li>
+                </li> --}}
               </ul>
             </div>
           </li>

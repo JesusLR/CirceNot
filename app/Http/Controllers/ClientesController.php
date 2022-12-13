@@ -46,7 +46,7 @@ class ClientesController extends Controller
 
     public function createCliente(Request $request){
         try {
-
+            dd($request->all());
             if($request->clienteTipo == 1){ //Persona Fisica
 
                 $request->file('clienteIdentificacionF')->store('public');

@@ -3,7 +3,7 @@
 * Argon Dashboard 2 PRO - v2.0.5
 =========================================================
 
-* Product Page:  https://www.creative-tim.com/product/argon-dashboard-pro 
+* Product Page:  https://www.creative-tim.com/product/argon-dashboard-pro
 * Copyright 2022 Creative Tim (https://www.creative-tim.com)
 * Coded by Creative Tim
 
@@ -20,7 +20,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../../../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../../../assets/img/favicon.png">
   <title>
-    Argon Dashboard 2 PRO by Creative Tim
+    CIRCENOT
   </title>
        <!--AJAX and JQuery-->
    {{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -28,10 +28,10 @@
    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   
+
    {{-- select2 --}}
   {{-- //  {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
-  {{-- //  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}} 
+  {{-- //  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
    {{-- Sweet Alerts --}}
    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!--     Fonts and icons     -->
@@ -58,6 +58,11 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <style>
+        input[type="text"] {
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
@@ -66,6 +71,7 @@
   <main class="main-content position-relative border-radius-lg ">
 
     <div class="container-fluid py-4">
+        @include('admin.mesages')
       <div class="row mb-5">
         <div class="col-12">
           <div class="multisteps-form mb-5">
@@ -75,7 +81,7 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="multisteps-form__progress">
-                      <button class="multisteps-form__progress-btn js-active" type="button" title="Notaria"><span>Notaria</span>
+                      <button class="multisteps-form__progress-btn js-active" type="button" title="Notaria"><span>Notaría</span>
                       </button>
                       <button class="multisteps-form__progress-btn" type="button" title="Protocolo">Protocolo</button>
                       <button class="multisteps-form__progress-btn" type="button" title="Protocolo">Notario</button>
@@ -92,39 +98,42 @@
                     @csrf
                     <!--single form panel-->
                   <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
-                    <h5 class="font-weight-bolder mb-0">Notaria</h5>
-                    <p class="mb-0 text-sm">Informacion General de la notaria</p>
+                    <h5 class="font-weight-bolder mb-0">Notaría</h5>
+                    <p class="mb-0 text-sm">Información General de la notaría</p>
                     <div class="multisteps-form__content">
                       <div class="row mt-3">
                         <div class="col-12 col-sm-6">
-                          <label>Nombre de la notaria</label>
-                          <input class="multisteps-form__input form-control" name="nomNotaria" id="nomNotaria" type="text" placeholder="Notaria... " />
+                          <label class="@error('nomNotaria') border-danger text-danger @enderror">Nombre de la notaría</label>
+                          <input maxlength="255" class="multisteps-form__input form-control @error('nomNotaria') is-invalid @enderror" value="{{ old('nomNotaria') }}" name="nomNotaria" id="nomNotaria" type="text" placeholder="Nombre" />
+                                {{-- @error('nomNotaria')
+                                    <strong class="text-danger">{{ $message }}</strong>
+                                @enderror --}}
                         </div>
                         <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                          <label>Numero de notaria</label>
-                          <input class="multisteps-form__input form-control" name="numNotaria" id="numNotaria" type="number" placeholder="... " />
+                          <label class="@error('numNotaria') border-danger text-danger @enderror">Numero de notaría</label>
+                          <input maxlength="255" class="multisteps-form__input form-control @error('numNotaria') is-invalid @enderror" value="{{ old('numNotaria') }}" name="numNotaria" id="numNotaria" type="number" placeholder="... " />
                         </div>
                       </div>
                       <div class="row mt-3">
                         <div class="col-12 col-sm-12">
-                          <label>Domicilio</label>
-                          <input class="multisteps-form__input form-control" name="domicilioNotaria" id="domicilioNotaria" type="text" placeholder="Calle... " />
+                          <label class="@error('domicilioNotaria') border-danger text-danger @enderror">Domicilio</label>
+                          <input maxlength="255" class="multisteps-form__input form-control @error('domicilioNotaria') is-invalid @enderror" name="domicilioNotaria" id="domicilioNotaria" type="text" value="{{ old('domicilioNotaria') }}" placeholder="Calle... " />
                         </div>
                       </div>
                       <div class="row mt-3">
                         <div class="col-12 col-sm-6">
-                          <label>Email</label>
-                          <input class="multisteps-form__input form-control" name="emailNotaria" id="emailNotaria" type="email" placeholder="******" />
+                          <label class="@error('emailNotaria') border-danger text-danger @enderror">Correo electrónico</label>
+                          <input maxlength="255" class="multisteps-form__input form-control @error('emailNotaria') is-invalid @enderror" value="{{ old('emailNotaria') }}" name="emailNotaria" id="emailNotaria" type="email" placeholder="Correo" />
                         </div>
                         <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                          <label>Telefono</label>
-                          <input class="multisteps-form__input form-control" name="telNotaria" id="telNotaria" type="number" placeholder="******" />
+                          <label class="@error('telNotaria') border-danger text-danger @enderror">Teléfono</label>
+                          <input class="multisteps-form__input form-control @error('telNotaria') is-invalid @enderror" value="{{ old('telNotaria') }}" maxlength="10" onkeypress="return soloNumeros(event)" name="telNotaria" id="telNotaria" type="text" placeholder="Teléfono" />
                         </div>
                       </div>
                       <div class="row mt-3">
                         <div class="col-12 col-sm-12">
-                            <label>Logotipo</label>
-                            <div class="form-control dropzone">
+                            <label class="@error('logoNotaria') border-danger text-danger @enderror">Logotipo</label>
+                            <div class="form-control dropzone @error('logoNotaria') is-invalid @enderror">
                                 <div class="fallback">
                                     <input name="logoNotaria" id="logoNotaria" type="file" multiple />
                                 </div>
@@ -152,19 +161,19 @@
                       <div class="row mt-3" id="divProtocoloAbierto">
                         <div class="col-12 col-sm-6">
                           <label>Libro</label>
-                          <input class="multisteps-form__input form-control" name="numLibroProtocolo" id="numLibroProtocolo" type="text" placeholder="Libro..." />
+                          <input maxlength="255" class="multisteps-form__input form-control" name="numLibroProtocolo" id="numLibroProtocolo" type="text" placeholder="Libro..." />
                         </div>
                         <div class="col-12 col-sm-6 ">
                           <label>Acta</label>
-                          <input class="multisteps-form__input form-control" name="numActaProtocolo" id="numActaProtocolo" type="text" placeholder="Acta..." />
+                          <input maxlength="255" class="multisteps-form__input form-control" name="numActaProtocolo" id="numActaProtocolo" type="text" placeholder="Acta..." />
                         </div>
                         <div class="col-12 col-sm-6 ">
                             <label>Foja Inicial</label>
-                            <input class="multisteps-form__input form-control" name="numFojaIniProtocolo" id="numFojaIniProtocolo" type="number" placeholder="0..." />
+                            <input maxlength="11" class="multisteps-form__input form-control" name="numFojaIniProtocolo" id="numFojaIniProtocolo" type="number" placeholder="0..." />
                         </div>
                         <div class="col-12 col-sm-6 ">
                             <label>Foja Final</label>
-                            <input class="multisteps-form__input form-control" name="numFojaFinProtocolo" id="numFojaFinProtocolo" type="number" placeholder="0..." />
+                            <input maxlength="11" class="multisteps-form__input form-control" name="numFojaFinProtocolo" id="numFojaFinProtocolo" type="number" placeholder="0..." />
                         </div>
                       </div>
                       {{-- fin apartado protocolo abierto --}}
@@ -177,71 +186,71 @@
                   <!--single form panel-->
                   <div class="card multisteps-form__panel p-3 border-radius-xl bg-white" data-animation="FadeIn">
                     <h5 class="font-weight-bolder">Notario</h5>
-                    <p class="mb-0 text-sm">Informacion General del notario titular</p>
+                    <p class="mb-0 text-sm">Información general del notario titular</p>
                     <div class="multisteps-form__content">
                       <div class="row mt-3">
                         <div class="col-6">
-                          <label>Nombre</label>
-                          <input class="multisteps-form__input form-control" id="nomNotario" name="nomNotario" type="text" placeholder="Juan" />
+                          <label class="@error('nomNotario') border-danger text-danger @enderror">Nombre(s)</label>
+                          <input maxlength="255" class="multisteps-form__input form-control @error('nomNotario') is-invalid @enderror" value="{{ old('nomNotario') }}" id="nomNotario" name="nomNotario" type="text" placeholder="Nombre(s)" />
                         </div>
                         <div class="col-3">
-                          <label>Apellido Pat.</label>
-                          <input class="multisteps-form__input form-control" id="apellitoPatNotario" name="apellitoPatNotario" type="text" placeholder="Lopez" />
+                          <label class="@error('apellitoPatNotario') border-danger text-danger @enderror">Primer Apellido</label>
+                          <input maxlength="255" class="multisteps-form__input form-control @error('apellitoPatNotario') is-invalid @enderror" value="{{ old('apellitoPatNotario') }}" id="apellitoPatNotario" name="apellitoPatNotario" type="text" placeholder="Lopez" />
                         </div>
                         <div class="col-3">
-                          <label>Apellido Mat.</label>
-                          <input class="multisteps-form__input form-control" id="apellitoMatNotario" name="apellitoMatNotario" type="text" placeholder="Perez" />
+                          <label class="@error('apellitoMatNotario') border-danger text-danger @enderror">Segundo Apellido</label>
+                          <input maxlength="255" class="multisteps-form__input form-control @error('apellitoMatNotario') is-invalid @enderror" value="{{ old('apellitoMatNotario') }}" id="apellitoMatNotario" name="apellitoMatNotario" type="text" placeholder="Perez" />
                         </div>
                       </div>
                       <div class="row mt-3">
                         <div class="col-12">
-                          <label>Direccion</label>
-                          <input class="multisteps-form__input form-control" name="direccionNotario" id="direccionNotario" type="text" placeholder="Calle..." />
+                          <label class="@error('direccionNotario') border-danger text-danger @enderror">Dirección</label>
+                          <input maxlength="255" class="multisteps-form__input form-control @error('direccionNotario') is-invalid @enderror" value="{{ old('direccionNotario') }}" name="direccionNotario" id="direccionNotario" type="text" placeholder="Calle..." />
                         </div>
                       </div>
                       <div class="row mt-3">
                         <div class="col-6">
-                          <label>Correo</label>
-                          <input class="multisteps-form__input form-control" name="correoNotario" id="correoNotario" type="text" placeholder="example@hotmail.com" />
+                          <label class="@error('correoNotario') border-danger text-danger @enderror">Correo</label>
+                          <input maxlength="255" class="multisteps-form__input form-control @error('correoNotario') is-invalid @enderror" value="{{ old('correoNotario') }}" name="correoNotario" id="correoNotario" type="text" placeholder="example@hotmail.com" />
                         </div>
                         <div class="col-3">
-                            <label>Telefono</label>
-                            <input class="multisteps-form__input form-control" name="telNotario" id="telNotario" type="number" placeholder="969..." />
+                            <label class="@error('telNotario') border-danger text-danger @enderror">Teléfono a 10 dígitos</label>
+                            <input maxlength="10" class="multisteps-form__input form-control @error('telNotario') is-invalid @enderror" value="{{ old('telNotario') }}" onkeypress="return soloNumeros(event)" maxlength="10" name="telNotario" id="telNotario" type="text" placeholder="Teléfono" />
                         </div>
                         <div class="col-3">
-                            <label>Celular</label>
-                            <input class="multisteps-form__input form-control" name="celNotario" id="celNotario" type="number" placeholder="999..." />
+                            <label class="@error('celNotario') border-danger text-danger @enderror">Celular a 10 dígitos</label>
+                            <input maxlength="10" class="multisteps-form__input form-control @error('celNotario') is-invalid @enderror" value="{{ old('celNotario') }}" onkeypress="return soloNumeros(event)" maxlength="10" name="celNotario" id="celNotario" type="text" placeholder="Teléfono" />
                         </div>
                       </div>
                       <div class="row mt-3">
                         <div class="col-12">
-                          <label>Profesion</label>
-                          <input class="multisteps-form__input form-control" name="profesionNotario" id="profesionNotario" type="text" placeholder="Lic..." />
+                          <label class="@error('profesionNotario') border-danger text-danger @enderror">Profesion</label>
+                          <input maxlength="255" class="multisteps-form__input form-control @error('profesionNotario') is-invalid @enderror" value="{{ old('profesionNotario') }}" name="profesionNotario" id="profesionNotario" type="text" placeholder="Lic..." />
                         </div>
                       </div>
                       <div class="row mt-3">
                         <div class="col-6">
-                          <label>RFC</label>
-                          <input class="multisteps-form__input form-control" name="curpNotario" id="curpNotario" type="text" placeholder="..." />
+                          <label class="@error('curpNotario') border-danger text-danger @enderror">RFC</label>
+                          <input maxlength="18" class="multisteps-form__input form-control @error('curpNotario') is-invalid @enderror" value="{{ old('curpNotario') }}" name="curpNotario" id="curpNotario" type="text" placeholder="..." />
                         </div>
                         <div class="col-6">
-                            <label>CURP</label>
-                            <input class="multisteps-form__input form-control" name="rfcNotario" id="rfcNotario" type="text" placeholder="..." />
+                            <label class="@error('rfcNotario') border-danger text-danger @enderror">CURP</label>
+                            <input maxlength="13" class="multisteps-form__input form-control @error('rfcNotario') is-invalid @enderror" value="{{ old('rfcNotario') }}" name="rfcNotario" id="rfcNotario" type="text" placeholder="..." />
                         </div>
                       </div>
                       <div class="row mt-3">
                         <div class="col-3">
-                            <label>Fecha de nombramiento</label>
-                            <input class="multisteps-form__input form-control" name="fechaNombNotario" id="fechaNombNotario" type="date" placeholder="..." />
+                            <label class="@error('fechaNombNotario') border-danger text-danger @enderror">Fecha de nombramiento</label>
+                            <input class="multisteps-form__input form-control @error('fechaNombNotario') is-invalid @enderror" value="{{ old('fechaNombNotario') }}" name="fechaNombNotario" id="fechaNombNotario" type="date" placeholder="..." />
                         </div>
                         <div class="col-12">
-                          <label>Nombramiento</label>
-                          <div  class="form-control dropzone">
+                          <label class="@error('fileNombramientoNotario') border-danger text-danger @enderror">Nombramiento</label>
+                          <div  class="form-control dropzone @error('fileNombramientoNotario') is-invalid @enderror">
                             <div class="fallback">
-                                <input name="fileNombramientoNotario" id="fileNombramientoNotario" type="file" multiple />
+                                <input name="fileNombramientoNotario" id="fileNombramientoNotario" type="file" required multiple />
                             </div>
                           </div>
-                            
+
                         </div>
                       </div>
                       <div class="row">

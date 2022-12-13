@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\CatalogoDocumentos;
+use App\Models\Servicios;
 use Illuminate\Http\Request;
 use PDF;
 
 class CatalogoDocumentosController extends Controller
 {
     public function catalogosAdmin(){
-        return view('admin.catalogoDocumentos');
+
+        $services = Servicios::where('lActivo', 1)->get();
+        // dd($services[0]->name);
+        return view('admin.catalogoDocumentos', ['services' => $services]);
     }
 
     public function gridDocs(){

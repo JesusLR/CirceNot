@@ -14,7 +14,7 @@ class CreatePersonasAutorizadasTable extends Migration
     public function up()
     {
         Schema::create('personas_autorizadas', function (Blueprint $table) {
-            $table->id();
+            $table->id('iIDPersonaAutorizada');
             $table->string('cNombre');
             $table->string('cPrimerApellido');
             $table->string('cSegundoApellido');

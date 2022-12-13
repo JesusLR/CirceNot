@@ -6,7 +6,7 @@
       <div class="col-12">
         <div class="card">
           <!-- Card header -->
-          <div class="card-header">
+          <div class="card-body">
             <h5 class="mb-0">Panel de prospectos</h5>
             {{-- <p class="text-sm mb-0">
               <div class="text-end ms-auto">
@@ -15,21 +15,21 @@
                 </button>
               </div>
             </p> --}}
+            <input type="text" value="EditPersonaMoralProspecto" name="cClavePlantilla" id="cClavePlantilla" hidden>
+            <div class="row" style="margin-bottom: 20px;">
+              <div class="col-md-12">
+                  <table class="table table-striped" id="gridProspectosM">
+                  </table>
+              </div>
           </div>
-          <input type="text" value="EditPersonaMoralProspecto" name="cClavePlantilla" id="cClavePlantilla" hidden>
-          <div class="row" style="margin-bottom: 20px;">
-            <div class="col-md-12">
-                <table class="table table-striped" id="gridProspectosM">
-                </table>
-            </div>
-        </div>
+          </div>
         </div>
       </div>
     </div>
 
   </div>
 
-   
+
 {{-- Seccion de modal --}}
 
 {{-- Modal edit Cliente Fisico --}}
@@ -41,7 +41,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Editar Cliente</h5>
       </div>
       <div class="modal-body">
-         
+
         {{-- <div id="infoClienteMoral"> --}}
             <div class="row mt-3">
                 <div class="col-12">
@@ -64,7 +64,7 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="row mt-3">
                 <div class="col-4">
                   <label class="form-label">Correo Electronico
@@ -154,5 +154,5 @@
 {{-- Fin Modal edit Cliente Fisico --}}
 
 {{-- Fin seccion de modal --}}
-  
+
 @endsection

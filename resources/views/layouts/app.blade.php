@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,30 +10,34 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-     <!--AJAX and JQuery-->
-   {{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!--AJAX and JQuery-->
+    {{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> --}}
-   <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
 
-   {{-- select2 --}}
-  {{-- //  {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
-  {{-- //  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
-   {{-- Sweet Alerts --}}
-   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <!-- Nucleo Icons -->
-  <link href="{{asset('css/nucleo-icons.css')}}" rel="stylesheet" />
-  <link href="{{asset('css/nucleo-svg.css')}}" rel="stylesheet" />
-  <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="{{asset('css/nucleo-svg.css')}}" rel="stylesheet" />
-  <!-- CSS Files -->
-  <link id="pagestyle" href="{{asset('css/argon-dashboard.css?v=2.0.5')}}" rel="stylesheet" />
-  <link href="{{ asset('css/jquery.fancybox.min.css') }}" rel="stylesheet"/>
-  <link href="{{ asset('css/fancybox-custom.css') }}" rel="stylesheet"/>
+    {{-- select2 --}}
+    {{-- //  {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
+    {{-- //  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
+    {{-- Sweet Alerts --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link href="{{ asset('css/nucleo-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/nucleo-svg.css') }}" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <link href="{{ asset('css/nucleo-svg.css') }}" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link id="pagestyle" href="{{ asset('css/argon-dashboard.css?v=2.0.5') }}" rel="stylesheet" />
+    <link href="{{ asset('css/jquery.fancybox.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/fancybox-custom.css') }}" rel="stylesheet" />
 
     <!-- Scripts -->
     <script src="{{ asset('js/Not/usuarios.js') }}" defer></script>
@@ -53,38 +58,46 @@
 
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    <style>
+        input[type="text"] {
+            text-transform: uppercase;
+        }
+    </style>
 </head>
+
 <body class="g-sidenav-show   bg-gray-100">
     <div class="min-height-300 bg-primary position-absolute w-100"></div>
 
-        @include('layouts.dashboard')
+    @include('layouts.dashboard')
 
     <main class="main-content position-relative border-radius-lg ">
-      <!-- Navbar -->
+        <!-- Navbar -->
 
         @include('layouts.navBar')
 
-      <!-- End Navbar -->
-      <div class="container-fluid py-4">
+        <!-- End Navbar -->
+        <div class="container-fluid py-4">
 
-        {{-- Inicia contenido sin cards --}}
-        @yield('content')
-        {{-- Termina contenido --}}
+            {{-- Inicia contenido sin cards --}}
+            @yield('content')
+            {{-- Termina contenido --}}
 
-        <footer class="footer pt-3  ">
-          <div class="container-fluid">
-            <div class="row align-items-center justify-content-lg-between">
-              <div class="col-lg-6 mb-lg-0 mb-4">
-                <div class="copyright text-center text-sm text-muted text-lg-start">
-                  © <script>
-                    document.write(new Date().getFullYear())
-                  </script>,
-                  Hecho por
-                  <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">CIRCE.</a>
-                  Todos los derechos reservados
-                </div>
-              </div>
-              <div class="col-lg-6">
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row align-items-center ">
+                        <div class="col">
+                            <div class="copyright text-center text-sm text-muted ">
+                                ©
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script>,
+                                Hecho por
+                                <a href="https://www.creative-tim.com" class="font-weight-bold"
+                                    target="_blank">CIRCE.</a>
+                                Todos los derechos reservados
+                            </div>
+                        </div>
+                        {{-- <div class="col-lg-6">
                 <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                   <li class="nav-item">
                     <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
@@ -99,11 +112,11 @@
                     <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
                   </li>
                 </ul>
-              </div>
-            </div>
-          </div>
-        </footer>
-      </div>
+              </div> --}}
+                    </div>
+                </div>
+            </footer>
+        </div>
     </main>
 
     {{-- ruedita de configuracion --}}
@@ -186,7 +199,7 @@
           </div>
         </div>
       </div> --}}
-      {{-- Fin ruedita de configuracion --}}
+    {{-- Fin ruedita de configuracion --}}
     {{-- <script>
       const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
         searchable: false,
@@ -199,40 +212,41 @@
       });
     </script> --}}
     <script>
-      var win = navigator.platform.indexOf('Win') > -1;
-      if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-          damping: '0.5'
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-      }
     </script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     {{-- <script src="../../assets/js/argon-dashboard.min.js?v=2.0.5"></script> --}}
-  </body>
+</body>
 
 <!--   Core JS Files   -->
-<script src="{{asset('js/core/popper.min.js')}}"></script>
-<script src="{{asset('js/core/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/plugins/perfect-scrollbar.min.js')}}"></script>
-<script src="{{asset('js/plugins/smooth-scrollbar.min.js')}}"></script>
+<script src="{{ asset('js/core/popper.min.js') }}"></script>
+<script src="{{ asset('js/core/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/plugins/perfect-scrollbar.min.js') }}"></script>
+<script src="{{ asset('js/plugins/smooth-scrollbar.min.js') }}"></script>
 <!-- Kanban scripts -->
-<script src="{{asset('js/plugins/dragula/dragula.min.js')}}"></script>
-<script src="{{asset('js/plugins/jkanban/jkanban.js')}}"></script>
+<script src="{{ asset('js/plugins/dragula/dragula.min.js') }}"></script>
+<script src="{{ asset('js/plugins/jkanban/jkanban.js') }}"></script>
 <script src="{{ asset('js/plugins/multistep-form.js') }}" defer></script>
 <script>
-  var win = navigator.platform.indexOf('Win') > -1;
-  if (win && document.querySelector('#sidenav-scrollbar')) {
-    var options = {
-      damping: '0.5'
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
-    Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-  }
 </script>
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{asset('js/argon-dashboard.min.js?v=2.0.5')}}"></script>
+<script src="{{ asset('js/argon-dashboard.min.js?v=2.0.5') }}"></script>
+
 </html>

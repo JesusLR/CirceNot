@@ -16,8 +16,8 @@ class CreateGestoriaPatentesTable extends Migration
         Schema::create('tbGestoriaPatente', function (Blueprint $table) {
             $table->id('iIDGestoriaPatente');
             $table->string('cNombreTitular');
-            $table->string('cApellitoPatTitular');
-            $table->string('cApellitoMatTitular');
+            $table->string('cApellidoPatTitular');
+            $table->string('cApellidoMatTitular');
             $table->string('cDireccion');
             $table->string('cCorreo');
             $table->string('iTelefono');
