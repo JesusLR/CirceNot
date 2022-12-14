@@ -8,7 +8,7 @@ $(document).ready(function() {
 
     // $("#formService").data("validator").resetForm();
 
-    $("#formNewCliente").validate({
+    $("#formNewService").validate({
         ignore: [],
         errorPlacement: function () { },
         invalidHandler: function () {

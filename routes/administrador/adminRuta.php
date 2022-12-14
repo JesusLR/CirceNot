@@ -13,7 +13,7 @@ Route::prefix('admin/')->group(function () {
     Route::get('logout', [LoginController::class, 'logout'])->name('admin_logout');
     Route::get('usuariosAdmin', [UsuariosController::class, 'usuariosAdmin'])->name('administracion_usuarios');
     Route::get('gridUsers', [UsuariosController::class, 'gridUsers'])->name('grid_usuarios');
-    Route::post('createUser', [UsuariosController::class, 'createUser']);
+    Route::post('createUser', [UsuariosController::class, 'createUser'])->name('create_adminUser');;
     Route::post('editUser', [UsuariosController::class, 'editUser']);
     Route::post('updateUser', [UsuariosController::class, 'updateUser']);
     Route::get('catalogosAdmin', [CatalogoDocumentosController::class, 'catalogosAdmin'])->name('administracion_documentos');

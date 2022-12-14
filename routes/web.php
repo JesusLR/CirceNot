@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Servicios;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/usuarios', [App\Http\Controllers\UsuariosController::class, 'usuarios'])->name('usuarios');
 */
+
+// Route::get('/', function () {
+//     $services = Servicios::where('lActivo', 1)->get();
+//     return view('', ['services' => $services]);
+// });

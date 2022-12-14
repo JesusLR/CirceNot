@@ -17,7 +17,7 @@
         <li class="nav-item ">
           <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#collapseClienteF">
             <span class="sidenav-mini-icon"> C </span>
-            <span class="sidenav-normal"> Personas Fisicas <b class="caret"></b></span>
+            <span class="sidenav-normal"> Personas Físicas <b class="caret"></b></span>
           </a>
           <div class="collapseClienteF " id="collapseClienteF">
             <ul class="nav nav-sm flex-column">

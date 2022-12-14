@@ -44,11 +44,11 @@ $(document).ready(function() {
             title: "Nombre",
         },{
             field: "iIDCategoria",
-            title: "Categoria",
+            title: "Categoría",
             formatter: "docCategoriaFormatter"
         },{
             field: "cDescripcion",
-            title: "Descripcion",
+            title: "Descripción",
             // formatter: "usuarioPermisoFormatter"
         },{
             field: "lActivo",

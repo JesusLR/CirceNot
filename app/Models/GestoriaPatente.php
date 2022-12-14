@@ -10,11 +10,11 @@ class GestoriaPatente extends Model
     use HasFactory;
     protected $table = 'tbGestoriaPatente';
 
-    protected $fillable = 
+    protected $fillable =
     [
         'cNombreTitular',
-        'cApellitoPatTitular',
-        'cApellitoMatTitular',
+        'cApellidoPatTitular',
+        'cApellidoMatTitular',
         'cDireccion',
         'cCorreo',
         'iTelefono',

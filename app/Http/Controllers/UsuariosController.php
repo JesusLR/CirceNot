@@ -9,7 +9,7 @@ use App\Models\PersonasAutorizadas;
 use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller{
-    
+
     public function usuariosAdmin(){
         return view('admin.adminUsers');
     }
@@ -17,9 +17,9 @@ class UsuariosController extends Controller{
     public function gridUsers(){
         try {
            $users =  PersonasAutorizadas::select('*')->get();
-            
+
             return $users;
-        
+
         } catch (Exception $err) {
             $conexion->rollback();
             return response()->json([
@@ -31,29 +31,29 @@ class UsuariosController extends Controller{
 
     public function createUser(Request $request){
         try {
-             
+
             PersonasAutorizadas::create([
-                'cNombre' => $request->nombre,
-                'cPrimerApellido' => $request->apellidoP,
-                'cSegundoApellido' => $request->apellidoM,
+                'cNombre' => strtoupper($request->nombre),
+                'cPrimerApellido' => strtoupper($request->apellidoP),
+                'cSegundoApellido' => strtoupper($request->apellidoM),
                 'email' => $request->email,
                 'emailDos' => $request->email2,
-                'cUsuario' => $request->usuario,
+                'cUsuario' => strtoupper($request->usuario),
                 'password' => $request->password,
-                'cCURP' => $request->curp,
-                'cRFC' => $request->rfc,
+                'cCURP' => strtoupper($request->curp),
+                'cRFC' => strtoupper($request->rfc),
                 'iIDPermiso' => $request->permiso,
                 'iIDPuesto' => $request->puesto,
                 'iTelefono' => $request->telefono,
                 'lActivo' => 1,
-                // 'iIDGestoria' 
+                // 'iIDGestoria'
             ]);
 
             return response()->json([
                 'lSuccess' => true,
                 'cMensaje' => 'Usuario creado con exito!',
             ]);
-         
+
          } catch (Exception $err) {
              $conexion->rollback();
              return response()->json([
@@ -65,11 +65,11 @@ class UsuariosController extends Controller{
 
     public function editUser(Request $request){
         try {
-             
+
             $user = PersonasAutorizadas::where('iIDPersonaAutorizada', $request->iIDPersonaAutorizada)->first();
 
             return $user;
-         
+
          } catch (Exception $err) {
              $conexion->rollback();
              return response()->json([
@@ -102,14 +102,14 @@ class UsuariosController extends Controller{
                 'iIDPuesto' => $request->puesto,
                 'iTelefono' => $request->telefono,
                 'lActivo' => $estatus,
-                // 'iIDGestoria' 
+                // 'iIDGestoria'
             ]);
 
             return response()->json([
                 'lSuccess' => true,
                 'cMensaje' => 'Usuario actualizado con exito!',
             ]);
-         
+
          } catch (Exception $err) {
              $conexion->rollback();
              return response()->json([

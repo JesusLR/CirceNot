@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@include('clientes.mesages')
+@include('servicios.mesages')
 <style>
   input[type="text"] {
       text-transform: uppercase;
@@ -36,8 +36,7 @@
           <!--form panels-->
           <div class="row">
             <div class="col-12 col-lg-8 m-auto">
-              <form   class="multisteps-form__form mb-8" accept-charset="UTF-8" enctype="multipart/form-data" id="formNewCliente" >
-
+              <form   class="multisteps-form__form mb-8" accept-charset="UTF-8" enctype="multipart/form-data" id="formNewService" >
                   <!--single form panel-->
                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
                   <h5 class="font-weight-bolder mb-0">Servicio</h5>

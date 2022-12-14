@@ -3,7 +3,7 @@
       <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
         <i class="ni ni-single-02 text-primary text-sm opacity-10"></i>
       </div>
-      <span class="nav-link-text ms-1">ADMINISTRADOR</span>
+      <span class="nav-link-text ms-1">Administrador</span>
     </a>
     <div class="collapse " id="adminpanel">
       <ul class="nav ms-4">
@@ -16,13 +16,13 @@
         <li class="nav-item ">
           <a class="nav-link " href="{{route('administracion_documentos')}}">
             <span class="sidenav-mini-icon"> D </span>
-            <span class="sidenav-normal"> Catalogo de documentos </span>
+            <span class="sidenav-normal"> Catálogo de documentos </span>
           </a>
         </li>
         <li class="nav-item ">
           <a class="nav-link " href="{{route('administracion_gestoria')}}">
             <span class="sidenav-mini-icon"> G </span>
-            <span class="sidenav-normal"> Gestionar Gestoria </span>
+            <span class="sidenav-normal"> Gestionar Gestoría </span>
           </a>
         </li>
         {{-- <li class="nav-item ">

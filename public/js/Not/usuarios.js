@@ -139,6 +139,31 @@ $("#btnNewUser").click(function() {
     $('#userCURP').val("");
     $('#userRFC').val("");
     $('#usersModal').modal('show');
+
+    $('#userNombre').removeClass( "is-valid" )
+    $('#userNombre').removeClass( "is-invalid" )
+    $('#userApellidoP').removeClass( "is-valid" )
+    $('#userApellidoP').removeClass( "is-invalid" )
+    $('#userApellidoM').removeClass( "is-valid" )
+    $('#userApellidoM').removeClass( "is-invalid" )
+    $('#userEmail').removeClass( "is-valid" )
+    $('#userEmail').removeClass( "is-invalid" )
+    $('#userEmailDos').removeClass( "is-valid" )
+    $('#userEmailDos').removeClass( "is-invalid" )
+    $('#userPermiso').removeClass( "is-valid" )
+    $('#userPermiso').removeClass( "is-invalid" )
+    $('#userPuesto').removeClass( "is-valid" )
+    $('#userPuesto').removeClass( "is-invalid" )
+    $('#userUsuario').removeClass( "is-valid" )
+    $('#userUsuario').removeClass( "is-invalid" )
+    $('#userTEL').removeClass( "is-valid" )
+    $('#userTEL').removeClass( "is-invalid" )
+    $('#userPassword').removeClass( "is-valid" )
+    $('#userPassword').removeClass( "is-invalid" )
+    $('#userCURP').removeClass( "is-valid" )
+    $('#userCURP').removeClass( "is-invalid" )
+    $('#userRFC').removeClass( "is-valid" )
+    $('#userRFC').removeClass( "is-invalid" )
 });
 
 $("#btnSaveUser").click(function() {
@@ -163,9 +188,106 @@ function createUser(){
     password = $('#userPassword').val();
     curp = $('#userCURP').val();
     rfc = $('#userRFC').val();
+    sts = true;
 
-    validacionCreateUser(nombre, apellidoP, apellidoM, email, email2, permiso, puesto, usuario, telefono, password, curp, rfc);
-    
+    if(nombre == "" ){
+          $('#userNombre').removeClass( "is-valid" ).addClass('is-invalid');
+        sts = false;
+    }else{
+        $('#userNombre').removeClass( "is-invalid" ).addClass('is-valid');
+    }
+
+    if(apellidoP == "" ){
+        $('#userApellidoP').removeClass( "is-valid" ).addClass('is-invalid');
+      sts = false;
+    }else{
+        $('#userApellidoP').removeClass( "is-invalid" ).addClass('is-valid');
+    }
+
+    if(apellidoM == "" ){
+        $('#userApellidoM').removeClass( "is-valid" ).addClass('is-invalid');
+      sts = false;
+    }else{
+        $('#userApellidoM').removeClass( "is-invalid" ).addClass('is-valid');
+    }
+
+    if(email == "" ){
+        $('#userEmail').removeClass( "is-valid" ).addClass('is-invalid');
+      sts = false;
+    }else{
+        $('#userEmail').removeClass( "is-invalid" ).addClass('is-valid');
+    }
+
+    if(email2 == "" ){
+        $('#userEmailDos').removeClass( "is-valid" ).addClass('is-invalid');
+        sts = false;
+    }else{
+        $('#userEmailDos').removeClass( "is-invalid" ).addClass('is-valid');
+    }
+
+    if(permiso == 0 ){
+        $('#userPermiso').removeClass( "is-valid" ).addClass('is-invalid');
+        sts = false;
+    }else{
+        $('#userPermiso').removeClass( "is-invalid" ).addClass('is-valid');
+    }
+
+    if(puesto == 0 ){
+        $('#userPuesto').removeClass( "is-valid" ).addClass('is-invalid');
+        sts = false;
+    }else{
+        $('#userPuesto').removeClass( "is-invalid" ).addClass('is-valid');
+    }
+
+    if(usuario == "" ){
+        $('#userUsuario').removeClass( "is-valid" ).addClass('is-invalid');
+        sts = false;
+    }else{
+        $('#userUsuario').removeClass( "is-invalid" ).addClass('is-valid');
+    }
+
+    if(telefono == "" || telefono == 0){
+        $('#userTEL').removeClass( "is-valid" ).addClass('is-invalid');
+        sts = false;
+    }else{
+        $('#userTEL').removeClass( "is-invalid" ).addClass('is-valid');
+    }
+
+    if(password == "" ){
+        $('#userPassword').removeClass( "is-valid" ).addClass('is-invalid');
+        sts = false;
+    }else{
+        $('#userPassword').removeClass( "is-invalid" ).addClass('is-valid');
+    }
+
+    if(curp == "" ){
+        $('#userCURP').removeClass( "is-valid" ).addClass('is-invalid');
+        sts = false;
+    }else{
+        $('#userCURP').removeClass( "is-invalid" ).addClass('is-valid');
+    }
+
+    if(rfc == "" ){
+        $('#userRFC').removeClass( "is-valid" ).addClass('is-invalid');
+        sts = false;
+    }else{
+        $('#userRFC').removeClass( "is-invalid" ).addClass('is-valid');
+    }
+
+    if(sts == false){
+            swal.fire({
+                title: "Aviso",
+                icon: 'error',
+                text: "No se han llenado todos los campos obligatorios, revisar campos resaltados",
+                type: "error",
+                showConfirmButton: true,
+                confirmButtonClass: "btn btn-danger btn-round",
+                confirmButtonText: "Aceptar",
+                buttonsStyling: false,
+            });
+            return false;
+    }
+
     $.ajax({
         url: "/admin/createUser",
         type: "post",
@@ -185,21 +307,51 @@ function createUser(){
             rfc : rfc
         },
         success: function (r) {
+            console.log(r)
+            if(r.lSuccess){
+                $('#usersModal').modal('hide');
+                swal.fire({
+                    title: "Exito",
+                    icon: 'success',
+                    text: r.cMensaje,
+                    type: "success",
+                    showConfirmButton: true,
+                    confirmButtonClass: "btn btn-success btn-round",
+                    confirmButtonText: "Aceptar",
+                    buttonsStyling: false,
+                });
+                $("#gridUsers").bootstrapTable("refresh");
+            }else{
+                swal.fire({
+                    title: "Aviso",
+                    icon: 'error',
+                    text: r.cMensaje,
+                    type: "error",
+                    showConfirmButton: true,
+                    confirmButtonClass: "btn btn-danger btn-round",
+                    confirmButtonText: "Aceptar",
+                    buttonsStyling: false,
+                });
+            }
             // alert('Bienvenido '+ email);
-            $('#usersModal').modal('hide');
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: r.cMensaje,
-                showConfirmButton: false,
-                timer: 3000
-              })
-              $("#gridUsers").bootstrapTable("refresh");
     },
         error: function (err) {
-            
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Ocurrio un problema con el procedimiento',
+                showConfirmButton: false,
+                timer: 3000
+            })
         },
     });
+}
+
+function soloNumeros(e) {
+    var key = window.event ? e.which : e.keyCode;
+    if (key < 48 || key > 57) {
+        e.preventDefault();
+    }
 }
 
 function infoUser(iIDPersonaAutorizada){
@@ -230,7 +382,7 @@ function infoUser(iIDPersonaAutorizada){
             $('#modalInfoUser').modal('show');
     },
         error: function (err) {
-            
+
         },
     });
 }
@@ -266,7 +418,7 @@ function editUser(iIDPersonaAutorizada){
             $('#editUsersModal').modal('show');
     },
         error: function (err) {
-            
+
         },
     });
 }
@@ -288,13 +440,13 @@ function updateUser(){
     rfc = $('#userRFCEdit').val();
 
     if($('#userStatus').prop('checked')){
-             sts = 1;
+        sts = 1;
     }else{
         sts = 0;
     }
 
-    validacionCreateUser(nombre, apellidoP, apellidoM, email, email2, permiso, puesto, usuario, telefono, password, curp, rfc);
-    
+    // validacionCreateUser(nombre, apellidoP, apellidoM, email, email2, permiso, puesto, usuario, telefono, password, curp, rfc);
+
     $.ajax({
         url: "/admin/updateUser",
         type: "post",
@@ -318,162 +470,192 @@ function updateUser(){
         success: function (r) {
             // alert('Bienvenido '+ email);
             $('#editUsersModal').modal('hide');
-            Swal.fire({
-                position: 'top-end',
+            swal.fire({
+                title: "Exito",
                 icon: 'success',
-                title: r.cMensaje,
-                showConfirmButton: false,
-                timer: 3000
-              })
+                text: r.cMensaje,
+                type: "success",
+                showConfirmButton: true,
+                confirmButtonClass: "btn btn-success btn-round",
+                confirmButtonText: "Aceptar",
+                buttonsStyling: false,
+            });
               $("#gridUsers").bootstrapTable("refresh");
     },
         error: function (err) {
-            
+
         },
     });
 }
 
-function validacionCreateUser(nombre, apellidoP, apellidoM, email, email2, permiso, puesto, usuario, telefono, password, curp, rfc){
-    if(nombre == "" || apellidoP == "" || apellidoM == ""){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'La informacion del usuario no puede estar vacia',
-            showConfirmButton: false,
-            timer: 3000
-          })
-        return false;
-    }
+// function validacionCreateUser(nombre, apellidoP, apellidoM, email, email2, permiso, puesto, usuario, telefono, password, curp, rfc){
+//     sts = true;
+//     if(nombre == "" ){
+//         // Swal.fire({
+//         //     position: 'top-end',
+//         //     icon: 'error',
+//         //     title: 'La informacion del usuario no puede estar vacia',
+//         //     showConfirmButton: false,
+//         //     timer: 3000
+//         //   })
+//           $('#userNombre').addClass('has-danger');
+//         sts = false;
+//     }
 
-    if(usuario == "" ){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'Debe ingresar un nombre de usuario',
-            showConfirmButton: false,
-            timer: 3000
-          })
-        return false;
-    }
+//     if(apellidoM == ""){
+//         // Swal.fire({
+//         //     position: 'top-end',
+//         //     icon: 'error',
+//         //     title: 'La informacion del usuario no puede estar vacia',
+//         //     showConfirmButton: false,
+//         //     timer: 3000
+//         //   })
+//           $('#userApellidoM').addClass('has-danger');
+//         sts = false;
+//     }
 
-    if(permiso == 0){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'Debe asignarle un permiso al usuario',
-            showConfirmButton: false,
-            timer: 3000
-          })
-        return false;
-    }
+//     if(apellidoP == ""){
+//         // Swal.fire({
+//         //     position: 'top-end',
+//         //     icon: 'error',
+//         //     title: 'La informacion del usuario no puede estar vacia',
+//         //     showConfirmButton: false,
+//         //     timer: 3000
+//         //   })
+//           $('#userApellidoP').addClass('has-danger');
+//         sts = false;
+//     }
 
-    if(puesto == 0){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'Debe asignarle un puesto al usuario',
-            showConfirmButton: false,
-            timer: 3000
-          })
-        return false;
-    }
+//     // if(usuario == "" ){
+//     //     Swal.fire({
+//     //         position: 'top-end',
+//     //         icon: 'error',
+//     //         title: 'Debe ingresar un nombre de usuario',
+//     //         showConfirmButton: false,
+//     //         timer: 3000
+//     //       })
+//     //     // return false;
+//     // }
 
-    if(email == "" || email2 == "" ){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'Los campos del email no pueden estar vacios',
-            showConfirmButton: false,
-            timer: 3000
-          })
-        return false;
-    }
+//     // if(permiso == 0){
+//     //     Swal.fire({
+//     //         position: 'top-end',
+//     //         icon: 'error',
+//     //         title: 'Debe asignarle un permiso al usuario',
+//     //         showConfirmButton: false,
+//     //         timer: 3000
+//     //       })
+//     //     return false;
+//     // }
 
-    if(telefono == "" ){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'Debe ingresar un numero de telefono',
-            showConfirmButton: false,
-            timer: 3000
-          })
-        return false;
-    }
+//     // if(puesto == 0){
+//     //     Swal.fire({
+//     //         position: 'top-end',
+//     //         icon: 'error',
+//     //         title: 'Debe asignarle un puesto al usuario',
+//     //         showConfirmButton: false,
+//     //         timer: 3000
+//     //       })
+//     //     return false;
+//     // }
 
-    if(telefono.length < 10){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'Debe ingresar un numero de telefono valido',
-            showConfirmButton: false,
-            timer: 3000
-          })
-        return false;
-    }
+//     // if(email == "" || email2 == "" ){
+//     //     Swal.fire({
+//     //         position: 'top-end',
+//     //         icon: 'error',
+//     //         title: 'Los campos del email no pueden estar vacios',
+//     //         showConfirmButton: false,
+//     //         timer: 3000
+//     //       })
+//     //     return false;
+//     // }
 
-    if(password.length < 6){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'La contraseña debe tener al menos 6 caracteres',
-            showConfirmButton: false,
-            timer: 3000
-          })
-        return false;
-    }
+//     // if(telefono == "" ){
+//     //     Swal.fire({
+//     //         position: 'top-end',
+//     //         icon: 'error',
+//     //         title: 'Debe ingresar un numero de telefono',
+//     //         showConfirmButton: false,
+//     //         timer: 3000
+//     //       })
+//     //     return false;
+//     // }
 
-    if(password == ""){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'Ingresar una contraseña para el usuario',
-            showConfirmButton: false,
-            timer: 3000
-          })
-        return false;
-    }
+//     // if(telefono.length < 10){
+//     //     Swal.fire({
+//     //         position: 'top-end',
+//     //         icon: 'error',
+//     //         title: 'Debe ingresar un numero de telefono valido',
+//     //         showConfirmButton: false,
+//     //         timer: 3000
+//     //       })
+//     //     return false;
+//     // }
 
-    if(curp.length < 18){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'Debe ingresar una CURP valida',
-            showConfirmButton: false,
-            timer: 3000
-          })
-        return false;
-    }
+//     // if(password.length < 6){
+//     //     Swal.fire({
+//     //         position: 'top-end',
+//     //         icon: 'error',
+//     //         title: 'La contraseña debe tener al menos 6 caracteres',
+//     //         showConfirmButton: false,
+//     //         timer: 3000
+//     //       })
+//     //     return false;
+//     // }
 
-    if(curp == ""){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'Debe ingresar el CURP del usuario',
-            showConfirmButton: false,
-            timer: 3000
-          })
-        return false;
-    }
+//     // if(password == ""){
+//     //     Swal.fire({
+//     //         position: 'top-end',
+//     //         icon: 'error',
+//     //         title: 'Ingresar una contraseña para el usuario',
+//     //         showConfirmButton: false,
+//     //         timer: 3000
+//     //       })
+//     //     return false;
+//     // }
 
-    if(curp.length < 10){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'Debe ingresar un RFC validO',
-            showConfirmButton: false,
-            timer: 3000
-          })
-        return false;
-    }
+//     // if(curp.length < 18){
+//     //     Swal.fire({
+//     //         position: 'top-end',
+//     //         icon: 'error',
+//     //         title: 'Debe ingresar una CURP valida',
+//     //         showConfirmButton: false,
+//     //         timer: 3000
+//     //       })
+//     //     return false;
+//     // }
 
-    if(rfc == ""){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'Debe ingresar el RFC del usuario',
-            showConfirmButton: false,
-            timer: 3000
-          })
-        return false;
-    }
-}
+//     // if(curp == ""){
+//     //     Swal.fire({
+//     //         position: 'top-end',
+//     //         icon: 'error',
+//     //         title: 'Debe ingresar el CURP del usuario',
+//     //         showConfirmButton: false,
+//     //         timer: 3000
+//     //       })
+//     //     return false;
+//     // }
+
+//     // if(curp.length < 10){
+//     //     Swal.fire({
+//     //         position: 'top-end',
+//     //         icon: 'error',
+//     //         title: 'Debe ingresar un CURP validO',
+//     //         showConfirmButton: false,
+//     //         timer: 3000
+//     //       })
+//     //     return false;
+//     // }
+
+//     // if(rfc == ""){
+//     //     Swal.fire({
+//     //         position: 'top-end',
+//     //         icon: 'error',
+//     //         title: 'Debe ingresar el RFC del usuario',
+//     //         showConfirmButton: false,
+//     //         timer: 3000
+//     //       })
+//     //     return false;
+//     // }
+//     return sts;
+// }

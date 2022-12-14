@@ -16,9 +16,9 @@ class CreateGestoriasTable extends Migration
         Schema::create('tbGestoria', function (Blueprint $table) {
             $table->id('iIDGestoria');
             $table->integer('iIDGestoriaPatente');
-            $table->string('cNombreGestoria');
-            $table->integer('iNumGestoria');
-            $table->string('cDomicilioGestoria');
+            $table->string('cNombreGestoria', 400);
+            $table->integer('iNumGestoria', 255);
+            $table->string('cDomicilioGestoria',255);
             $table->string('cEmailGestoria');
             $table->string('iTelGestoria');
             $table->string('cLogoGestoria');

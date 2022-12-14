@@ -6,7 +6,7 @@
       <div class="col-12">
         <div class="card">
           <!-- Card header -->
-          <div class="card-header">
+          <div class="card-body">
             <h5 class="mb-0">Panel de clientes</h5>
             {{-- <p class="text-sm mb-0">
               <div class="text-end ms-auto">
@@ -15,20 +15,20 @@
                 </button>
               </div>
             </p> --}}
-          </div>
-          <div class="row" style="margin-bottom: 20px;">
-            <div class="col-md-12">
-                <table class="table table-striped" id="gridClientesF">
-                </table>
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-12">
+                    <table class="table table-striped" id="gridClientesF">
+                    </table>
+                </div>
             </div>
-        </div>
+          </div>
         </div>
       </div>
     </div>
 
   </div>
 
-   
+
 {{-- Seccion de modal --}}
 
 {{-- Modal edit Cliente Fisico --}}
@@ -40,7 +40,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Editar Cliente</h5>
       </div>
       <div class="modal-body">
-         
+
         <div id="infoClienteFisica">
           <div class="row mt-3">
             <div class="col-12">
@@ -62,13 +62,13 @@
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">Apellido Paterno</label>
+                <label class="form-label">Primer Apellido</label>
                 <div class="input-group">
                   <input id="clienteApellidoPEdit" name="clienteApellidoPEdit" class="form-control" type="text" placeholder="Lopez" required="required">
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">Apellido Materno</label>
+                <label class="form-label">Segundo Apellido</label>
                 <div class="input-group">
                   <input id="clienteApellidoMEdit" name="clienteApellidoMEdit" class="form-control" type="text" placeholder="Perez" required="required">
                 </div>
@@ -211,5 +211,5 @@
 {{-- Fin Modal edit Cliente Fisico --}}
 
 {{-- Fin seccion de modal --}}
-  
+
 @endsection
