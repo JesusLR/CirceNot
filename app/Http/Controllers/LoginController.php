@@ -2,35 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Administrador;
+use App\Models\Gestoria;
+use App\Models\PersonasAutorizadas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Administrador;
-use App\Models\PersonasAutorizadas;
-use App\Models\Gestoria;
-use App\Models\GestoriaPatente;
-use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    /**
-     * Seccion ADMINISTRADOR
+    /***
+     * Verificación de tipo de guard
+     * guest: Invitado o en su caso de tipo admin o autorizados
      */
-    // public function vistaLoginAdmin()
+    // public function __construct()
     // {
-    //     return view('admin.auth.login');
+    //     $this->middleware('guest:admin')->except('logout');
     // }
-
-    public function adminHome(){
+    #Sección administrativa
+    public function login()
+    {
+        return view('admin.auth.login');
+    }
+    public function adminHome()
+    {
         return view('admin.adminHome');
     }
 
-    public function userHome(){
-        return view('autorizados.userHome');
-    }
-
-    public function loginAdministrador(Request $request){
-    //    $a =  Hash::make($request->password);
-        // dd('h');
+    public function loginAdministrador(Request $request)
+    {
         try {
             $credenciales = $request->validate([
                 'email' => 'required|email',
@@ -38,25 +37,20 @@ class LoginController extends Controller
             ]);
             $administrador = Administrador::where('email', $request->email)->first();
 
-            if($administrador){
+            if ($administrador) {
                 if (Auth::guard('admin')->attempt($credenciales)) {
                     $existeGestoria = Gestoria::select('*')->count();
-                     $request->session()->regenerate();
-
-                     if($existeGestoria > 0){
+                    $request->session()->regenerate();
+                    if ($existeGestoria > 0) {
                         return redirect()->route('admin_vista_home');
-                     }else{
+                    } else {
                         return redirect()->route('administracion_gestoria');
-                        // return redirect()->route('admin_vista_home');
-                     }
-                    // return view('admin.adminHome');
-                }else{
-                    // dd('USUARIO O CONTRASEÑA INCORRECTOS');
+                    }
+                } else {
                     return back()->with('err', 'USUARIO O CONTRASEÑA INCORRECTOS');
                 }
-            }else{
+            } else {
                 return back()->with('err', 'USUARIO O CONTRASEÑA INCORRECTOS');
-                // dd('USUARIO O CONTRASEÑA INCORRECTOS');
             }
         } catch (Exception $err) {
             return response()->json([
@@ -64,49 +58,18 @@ class LoginController extends Controller
                 'cMensaje' => $err->getMessage(),
             ]);
         }
-
     }
 
-    /**
-     * Seccion PERSONAS AUTORIZADAS
-     */
-    public function vistaPersonaAutorizada(){
-        return view('autorizados.auth.login');
-    }
-
-    public function loginPersonaAutorizada(Request $request){
-        // dd($request->all());
-        $personaAutorizada = PersonasAutorizadas::where('email', $request->userInputLogAutorizado)->where('password', $request->passInputLogAutorizado)->first();
-        // dd(isset($personaAutorizada));
-
-        if(isset($personaAutorizada)){
-            return redirect()->route('usuario_inicio_sesion');
-        }else{
-            return back()->with('err', 'USUARIO O CONTRASEÑA INCORRECTOS');
-        }
-    }
-
-
-    // public function acceso()
-    // {
-    //     return view('auth.login');
-    // }
-
-    public function login(Request $request)
-    {
-        // $credentials = $request->only('email', 'password');
-        // if (Auth::attempt($credentials)) {
-            return view('admin.auth.login');
-        // } else {
-        //     dd('No esta autorizado');
-        // }
-    }
-
+    #Fin sección administrativa
     public function logout(Request $request)
     {
-        Auth::logout();
+        //Auth::logout();
 
         $request->session()->invalidate();
         return redirect(route('admin.auth.login'));
+    }
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
 }

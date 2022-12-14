@@ -7,9 +7,7 @@ use App\Http\Controllers\GestoriaController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin/')->group(function () {
-    Route::get('login', [LoginController::class, 'login'])->name('admin_login_vista');
-    Route::post('loginPanel', [LoginController::class, 'loginAdministrador'])->name('admin_login_inicio_sesion');
-    Route::get('panel', [LoginController::class, 'adminHome'])->name('admin_vista_home');
+
     Route::get('logout', [LoginController::class, 'logout'])->name('admin_logout');
     Route::get('usuariosAdmin', [UsuariosController::class, 'usuariosAdmin'])->name('administracion_usuarios');
     Route::get('gridUsers', [UsuariosController::class, 'gridUsers'])->name('grid_usuarios');
@@ -27,3 +25,4 @@ Route::prefix('admin/')->group(function () {
     Route::post('docprueba', [CatalogoDocumentosController::class, 'docprueba'])->name('docprueba_pure');
     // Route::get('docpruebaget', [CatalogoDocumentosController::class, 'docpruebaget'])->name('docpruebaget');
 });
+
