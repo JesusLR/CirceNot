@@ -118,6 +118,9 @@
                 <tr>
                     <td style="font-size: 16px;">Nombre Notaria: </td>
                 </tr>
+                <tr>
+                    <td style="font-size: 16px;">Fecha de Expedicion: {{ date("d/m/Y", strtotime($presupuesto->created_at)) }}</td>
+                </tr>
 
                 <tr>
                     <td style="font-size: 16px;">Datos:</td>
@@ -181,6 +184,9 @@
             <div class="col-md-12">
             {!! $idPresupuestoPDF !!}
             </div>
+        </div>
+        <div class="row">
+            <h5> Este presupuesto tiene una vigencia de {{ $presupuesto->vigencia}} días naturales contados a partir de la fecha de su emisión</h5>
         </div>
     </div>
 </body>

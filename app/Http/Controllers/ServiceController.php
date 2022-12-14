@@ -80,5 +80,31 @@ class ServiceController extends Controller
              ]);
          }
     }
+    public function updateService(Request $request){
+        try {
+
+
+            Servicios::where('id', $request->idService)->update([
+                'name' => $request->nameService,
+                'description' => $request->description,
+                'type' => $request->type,
+                'Price' => $request->priceService,
+
+                // 'iIDGestoria'
+            ]);
+
+            return response()->json([
+                'lSuccess' => true,
+                'cMensaje' => 'Usuario actualizado con exito!',
+            ]);
+
+         } catch (Exception $err) {
+             $conexion->rollback();
+             return response()->json([
+                 'lSuccess' => false,
+                 'cMensaje' => $err->getMessage(),
+             ]);
+         }
+    }
 
 }

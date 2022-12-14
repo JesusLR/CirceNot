@@ -19,6 +19,12 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class = "col-md-5">
+                                <a>Vigencia(Dias Naturales):</a>
+                                <input type="text" class="form-control" id="vigencia" name="vigencia" value = 15>
+
+
+                            </div>
                             <label class="form-label">Servicios disponibles:</label>
 
                             <div class="col-md-5">

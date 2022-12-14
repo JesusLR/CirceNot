@@ -35,6 +35,8 @@ Route::prefix('/')->group(function () {
     Route::get('ServiceIndex', [ServiceController::class, 'ServiceIndex'])->name('service_index');
     Route::get('getServices', [ServiceController::class, 'getServices'])->name('getServices');
     Route::post('getServicesById', [ServiceController::class, 'getServicesById'])->name('getServicesById');
+    Route::post('getServicesById', [ServiceController::class, 'getServicesById'])->name('getServicesById');
+    Route::post('updateService', [ServiceController::class, 'updateService'])->name('updateService');
 
     //presupuesto
     Route::get('newPresupuesto', [PresupuestoController::class, 'newPresupuesto'])->name('newPresupuesto');

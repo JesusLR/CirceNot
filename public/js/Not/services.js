@@ -101,19 +101,114 @@ $(document).ready(function() {
         },{
             field: "cAccion",
             title: "Opciones",
-            formatter: "clienteFisFormatter",
+            formatter: "servicioFormatter",
         }],
         onLoadSuccess: function(data) {},
     });
 
 
-})
+});
+$("#btnUpdateService").click(function() {
+    updateService();
+});
+function updateService(){
+
+   idService =  $('#idServiceE').val();
+    nameService = $('#nameServiceE').val();
+    description = $('#descriptionE').val();
+    type = $('#typeServiceE').val();
+    priceService = $('#servicePriceE').val();
+
+    if(type>0){
+
+
+
+
+    $.ajax({
+        url: "/updateService",
+        type: "post",
+        dataType: "json",
+        data: {
+            idService: idService,
+            nameService : nameService,
+            description : description,
+            type : type,
+            priceService: priceService,
+
+        },
+        success: function (r) {
+            // alert('Bienvenido '+ email);
+            $('#editServiceModal').modal('hide');
+            swal.fire({
+                title: "Exito",
+                icon: 'success',
+                text: r.cMensaje,
+                type: "success",
+                showConfirmButton: true,
+                confirmButtonClass: "btn btn-success btn-round",
+                confirmButtonText: "Aceptar",
+                buttonsStyling: false,
+            });
+              $("#gridServices").bootstrapTable("refresh");
+    },
+        error: function (err) {
+
+        },
+    });
+}else{
+    Swal.fire({
+        // position: 'top-end',
+        icon: 'warning',
+        title: "Seleccione un tipo de servicio",
+        showConfirmButton: true,
+        timer: 3000
+  });
+
+}
+}
+
 function descriptionFormatter(value, row) {
     if (value.length > 20) {
         return value.substr(0, 20) + '...';
     } else {
         return value;
     }
+}
+function servicioFormatter(value, row) {
+    var html;
+
+    html =
+        '<a href="javascript:;" onclick="editService('+row.id+')" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Usuario">'+
+            '<i class="fas fa-user-edit text-secondary"></i>'+
+        '</a>';
+
+    return html;
+}
+
+function editService(id){
+    console.log(id);
+    $.ajax({
+        url: "/getServicesById",
+        type: "post",
+        dataType: "json",
+        data: {
+            idService: id
+        },
+        success: function (r) {
+            console.log(r[0].name);
+
+            $('#idServiceE').val(r[0].id);
+            $('#nameServiceE').val(r[0].name);
+            $('#descriptionE').val(r[0].Description);
+            $('#typeServiceE').val(r[0].Type);
+            $('#servicePriceE').val(r[0].Price);
+
+            $('#editServiceModal').modal('show');
+    },
+        error: function (err) {
+
+        },
+    });
 }
 function saveServiceform(){
 
