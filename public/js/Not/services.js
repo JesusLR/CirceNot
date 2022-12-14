@@ -119,7 +119,7 @@ function saveServiceform(){
 
     if($("#typeService").val() == 0){
         Swal.fire({
-            position: 'top-end',
+            // position: 'top-end',
             icon: 'warning',
             title: "Seleccione un tipo de servicio",
             showConfirmButton: true,
