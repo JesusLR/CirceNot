@@ -32,8 +32,9 @@ Route::prefix('administrador/')->group(function(){
 Route::prefix('autorizados/')->group(function(){
     Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'vistaPersonaAutorizada'])->name('usuario_vista_login');
     Route::post('panelUser', [App\Http\Controllers\Auth\LoginController::class, 'loginPersonaAutorizada'])->name('usuario_inicio_sesion_login');
-    Route::get('inicio-sesion', [App\Http\Controllers\Auth\LoginController::class, 'userHome'])->name('usuario_inicio_sesion')->middleware('auth:autorizados');
+    Route::get('inicio-sesion', [App\Http\Controllers\Auth\LoginController::class, 'userHome'])->name('usuario_inicio_sesion');
 });
+
 
 require __DIR__ . '/administrador/adminRuta.php';
 require __DIR__ .'/usuarios/usuarioRuta.php';

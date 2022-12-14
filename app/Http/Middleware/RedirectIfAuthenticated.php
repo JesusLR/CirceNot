@@ -11,6 +11,7 @@ class RedirectIfAuthenticated
 {
     public function handle($request, Closure $next, ...$guards)
     {
+        try{
         $guards = empty($guards) ? [null] : $guards;
         foreach ($guards as $guard) {
 
@@ -22,13 +23,16 @@ class RedirectIfAuthenticated
                     } else {
                         return redirect()->route('administracion_gestoria');
                     }
-
-                }else{
-                    return redirect()->route('usuario_inicio_sesion');
                 }
 
+                if($guard == 'auto'){
+                    return redirect()->route('usuario_inicio_sesion');
+                }
             }
         }
         return $next($request);
+    }catch(Exception $ex){
+dd($ex);
     }
+}
 }

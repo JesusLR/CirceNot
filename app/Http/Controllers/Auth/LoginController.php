@@ -22,7 +22,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+   // use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -42,21 +42,22 @@ class LoginController extends Controller
 
     public function loginPersonaAutorizada(Request $request)
     {
-        $credenciales = $request->only(['email', 'password']);
-        $personaAutorizada = PersonasAutorizadas::where('email', $request->email)->first();
 
-        if (!is_null($personaAutorizada)) {
-            if (Auth::guard('autorizados')->attempt($credenciales)) {
-                $request->session()->regenerate();
-                return redirect()->route('usuario_inicio_sesion');
-            } else {
-                return back()->with('err', 'USUARIO O CONTRASEÑA INCORRECTA. INTENTE NUEVAMENTE.');
-            }
-        } else {
-            return back()->with('err', 'USUARIO NO ENCONTRADO');
-        }
         try {
+            $credenciales = $request->only(['email', 'password']);
+            $personaAutorizada = PersonasAutorizadas::where('email', $request->email)->first();
 
+            if (!is_null($personaAutorizada)) {
+                if (Auth::guard('auto')->attempt($credenciales)) {
+                   $x = $request->session()->regenerate();
+
+                    return redirect()->route('usuario_inicio_sesion');
+                } else {
+                    return back()->with('err', 'USUARIO O CONTRASEÑA INCORRECTA. INTENTE NUEVAMENTE.');
+                }
+            } else {
+                return back()->with('err', 'USUARIO NO ENCONTRADO');
+            }
 
         } catch (\Throwable $th) {
             return back()->with('err', $th->getMessage());
@@ -64,6 +65,6 @@ class LoginController extends Controller
     }
     protected function guard()
     {
-        return Auth::guard('autorizados');
+        return Auth::guard('auto');
     }
 }

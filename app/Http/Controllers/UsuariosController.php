@@ -95,7 +95,7 @@ class UsuariosController extends Controller{
                 'email' => $request->email,
                 'emailDos' => $request->email2,
                 'cUsuario' => $request->usuario,
-                'password' => $request->password,
+                'password' => bcrypt($request->password),
                 'cCURP' => $request->curp,
                 'cRFC' => $request->rfc,
                 'iIDPermiso' => $request->permiso,

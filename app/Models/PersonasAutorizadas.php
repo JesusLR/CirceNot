@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class PersonasAutorizadas extends Authenticatable
 {
     use HasFactory;
-    protected $guard = 'autorizados';
+    protected $guard = 'auto';
     protected $table = 'personas_autorizadas';
 
     protected $fillable =
