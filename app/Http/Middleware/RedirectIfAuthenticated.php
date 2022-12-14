@@ -4,34 +4,31 @@ namespace App\Http\Middleware;
 
 use App\Providers\RouteServiceProvider;
 use Closure;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Gestoria;
 
 class RedirectIfAuthenticated
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @param  string|null  ...$guards
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
-     */
-    public function handle(Request $request, Closure $next, ...$guards)
+    public function handle($request, Closure $next, ...$guards)
     {
         $guards = empty($guards) ? [null] : $guards;
-
         foreach ($guards as $guard) {
+
             if (Auth::guard($guard)->check()) {
                 if($guard == 'admin'){
-                    return redirect()->route('admin_vista_home');
+                    $existeGestoria = Gestoria::select('*')->count();
+                    if ($existeGestoria > 0) {
+                        return redirect()->route('admin_vista_home');
+                    } else {
+                        return redirect()->route('administracion_gestoria');
+                    }
+
                 }else{
-                    return redirect(RouteServiceProvider::HOME);
+                    return redirect()->route('usuario_inicio_sesion');
                 }
 
             }
         }
-
         return $next($request);
     }
 }

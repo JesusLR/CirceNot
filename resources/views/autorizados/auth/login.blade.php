@@ -44,6 +44,7 @@
     <link href="{{ asset('css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('css/argon-dashboard.css?v=2.0.5') }}" rel="stylesheet" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="">
@@ -56,6 +57,7 @@
         </div>
     </div>
     <main class="main-content  mt-0">
+@include('autorizados.mesages')
         <section>
             <div class="page-header min-vh-100">
                 <div class="container">
@@ -67,14 +69,14 @@
                                     <p class="mb-0">Enter your email and password to sign in</p>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form" action='{{route('user_vista_home')}}' method='POST'>
+                                    <form role="form" action='{{route('usuario_inicio_sesion_login')}}' method='POST'>
                                         @csrf
                                         <div class="mb-3">
-                                            <input id="userInputLogAutorizado" name="userInputLogAutorizado" type="email" class="form-control form-control-lg"
+                                            <input id="userInputLogAutorizado" name="email" type="email" class="form-control form-control-lg"
                                                 placeholder="Email">
                                         </div>
                                         <div class="mb-3">
-                                            <input id="passInputLogAutorizado" name="passInputLogAutorizado" type="password"
+                                            <input id="passInputLogAutorizado" name="password" type="password"
                                                 class="form-control form-control-lg" placeholder="Password">
                                         </div>
                                         <div class="form-check form-switch">

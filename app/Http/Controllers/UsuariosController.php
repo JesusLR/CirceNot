@@ -39,7 +39,7 @@ class UsuariosController extends Controller{
                 'email' => $request->email,
                 'emailDos' => $request->email2,
                 'cUsuario' => strtoupper($request->usuario),
-                'password' => $request->password,
+                'password' => bcrypt( $request->password),
                 'cCURP' => strtoupper($request->curp),
                 'cRFC' => strtoupper($request->rfc),
                 'iIDPermiso' => $request->permiso,
