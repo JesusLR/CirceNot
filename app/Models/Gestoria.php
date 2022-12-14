@@ -9,8 +9,9 @@ class Gestoria extends Model
 {
     use HasFactory;
     protected $table = 'tbGestoria';
+    protected $primaryKey = "iIDGestoria";
 
-    protected $fillable = 
+    protected $fillable =
     [
         'iIDGestoriaPatente',
         'cNombreGestoria',

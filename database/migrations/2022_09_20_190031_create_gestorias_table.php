@@ -17,7 +17,7 @@ class CreateGestoriasTable extends Migration
             $table->id('iIDGestoria');
             $table->integer('iIDGestoriaPatente');
             $table->string('cNombreGestoria', 400);
-            $table->integer('iNumGestoria', 255);
+            $table->integer('iNumGestoria');
             $table->string('cDomicilioGestoria',255);
             $table->string('cEmailGestoria');
             $table->string('iTelGestoria');
