@@ -14,7 +14,7 @@ class ServiceController extends Controller
     }
 
     public function serviceIndex(){
-        return view('Servicios.serviceIndex');
+        return view('servicios.serviceIndex');
     }
 
     public function createService(Request $request){
