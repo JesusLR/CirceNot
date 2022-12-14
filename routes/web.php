@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Servicios;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +19,23 @@ use App\Models\Servicios;
 // Route::get('/', function () {
 //     return view('autorizados.auth.login');
 // });
-Route::get('/', function () {
+Route::get('/', function(){
     return redirect()->route('usuario_vista_login');
 });
+Auth::routes();
+Route::prefix('administrador/')->group(function(){
+    Route::get('login', [App\Http\Controllers\LoginController::class, 'login'])->name('admin_login_vista');
+    Route::post('loginPanel', [App\Http\Controllers\LoginController::class, 'loginAdministrador'])->name('admin_login_inicio_sesion');
+    Route::get('admin-home', [App\Http\Controllers\LoginController::class, 'adminHome'])->name('admin_vista_home')->middleware('auth:admin');
+});
+
+Route::prefix('autorizados/')->group(function(){
+    Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'vistaPersonaAutorizada'])->name('usuario_vista_login');
+    Route::post('panelUser', [App\Http\Controllers\Auth\LoginController::class, 'loginPersonaAutorizada'])->name('usuario_inicio_sesion_login');
+    Route::get('inicio-sesion', [App\Http\Controllers\Auth\LoginController::class, 'userHome'])->name('usuario_inicio_sesion');
+});
+
+
 require __DIR__ . '/administrador/adminRuta.php';
 require __DIR__ .'/usuarios/usuarioRuta.php';
 
@@ -30,7 +46,7 @@ Route::post('/login', [App\Http\Controllers\LoginController::class, 'login'])->n
 
 Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 
-//Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

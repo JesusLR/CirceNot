@@ -4,12 +4,11 @@ use App\Http\Controllers\CatalogoDocumentosController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\PresupuestoController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\PersonaLoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/')->group(function () {
-    Route::get('login', [LoginController::class, 'vistaPersonaAutorizada'])->name('usuario_vista_login');
-    Route::post('panelUser', [LoginController::class, 'loginPersonaAutorizada'])->name('user_vista_home');
-    Route::get('inicio-sesion', [LoginController::class, 'userHome'])->name('usuario_inicio_sesion');
+
     Route::get('catalogoDocAdmin', [CatalogoDocumentosController::class, 'catalogoDocAdmin'])->name('catalogoDoc_Administracion');
     Route::get('catalogoDocContratos', [CatalogoDocumentosController::class, 'catalogoDocContratos'])->name('catalogoDoc_Contratos');
     Route::post('docUsers', [CatalogoDocumentosController::class, 'docUsers']);

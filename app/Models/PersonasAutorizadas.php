@@ -3,15 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class PersonasAutorizadas extends Authenticatable
 {
     use HasFactory;
-    protected $guard = 'autorizados';
+    protected $guard = 'auto';
     protected $table = 'personas_autorizadas';
 
-    protected $fillable = 
+    protected $fillable =
     [
         'cNombre',
         'cPrimerApellido',
@@ -24,7 +25,7 @@ class PersonasAutorizadas extends Authenticatable
         'cRFC',
         'iIDPermiso',
         'iIDPuesto',
-        'iTelefono',    
+        'iTelefono',
         'created_at',
         'updated_at',
         'lActivo'
