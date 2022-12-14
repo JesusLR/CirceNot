@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
-use App\Models\Servicios;
+use App\Models\ServiciosTipo;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('catalogos.menu', function ($view) {
 
-            $services = Servicios::where('lActivo', 1)->get();
+            $services = ServiciosTipo::where('lActivo', 1)->get();
             return $view->with('services', $services);
         });
     }

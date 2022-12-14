@@ -44,8 +44,8 @@
                                 <!--single form panel-->
                                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"
                                     data-animation="FadeIn">
-                                    <h5 class="font-weight-bolder mb-0">Notaria</h5>
-                                    <p class="mb-0 text-sm">Informacion General de la notaria</p>
+                                    <h5 class="font-weight-bolder mb-0">Clientes</h5>
+                                    <p class="mb-0 text-sm">Registrar información de nuevo cliente o prospecto</p>
                                     <div class="multisteps-form__content">
                                         <div class="row mt-3">
                                             <div class="col-sm-6 col-6">
@@ -105,7 +105,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-3">
-                                                    <label class="form-label">Numero Telefonico</label>
+                                                    <label class="form-label">Número Telefónico</label>
                                                     <div class="input-group">
                                                         <input id="clienteTel" maxlength="10"
                                                             onkeypress="return soloNumeros(event)" name="clienteTel"
@@ -134,14 +134,14 @@
                                                         name="clienteRFC" type="text" placeholder="RFC" />
                                                 </div>
                                                 <div class="col-4">
-                                                    <label class="form-label">Ocupacion</label>
+                                                    <label class="form-label">Ocupación</label>
                                                     <input class="form-control" maxlength="255" id="clienteOcupacion"
                                                         name="clienteOcupacion" type="text" placeholder="Lic..." />
                                                 </div>
                                             </div>
                                             <div class="row mt-3">
                                                 <div class="col-3">
-                                                    <label class="form-label">Pais de Nacimiento</label>
+                                                    <label class="form-label">País de Nacimiento</label>
                                                     <input class="form-control" maxlength="255" id="clienteNac"
                                                         name="clienteNac" type="text" placeholder="Mexico" />
                                                 </div>
@@ -152,7 +152,7 @@
                                                         placeholder="Soltero/Casado" />
                                                 </div>
                                                 <div class="col-6">
-                                                    <label class="form-label">Nombre completo del conyugue</label>
+                                                    <label class="form-label">Nombre completo del cónyugue</label>
                                                     <input class="form-control" maxlength="255" id="clienteCony"
                                                         name="clienteCony" type="text"
                                                         placeholder="Maria Lopez Sanchez" />
@@ -170,17 +170,17 @@
                                                         name="clienteCalle" type="text" placeholder="..." />
                                                 </div>
                                                 <div class="col-3">
-                                                    <label class="form-label">Num. Ext.</label>
+                                                    <label class="form-label">Núm. Ext.</label>
                                                     <input class="form-control" maxlength="255" id="clienteNumEx"
                                                         name="clienteNumEx" type="text" placeholder="..." />
                                                 </div>
                                                 <div class="col-3">
-                                                    <label class="form-label">Num. Int</label>
+                                                    <label class="form-label">Núm. Int</label>
                                                     <input class="form-control" maxlength="255" id="clienteNumInt"
                                                         name="clienteNumInt" type="text" placeholder="..." />
                                                 </div>
                                                 <div class="col-3">
-                                                    <label class="form-label">Codigo Postal</label>
+                                                    <label class="form-label">Código Postal</label>
                                                     <input class="form-control" maxlength="5"
                                                         onkeypress="return soloNumeros(event)" id="clienteCp"
                                                         name="clienteCp" type="text" placeholder="..." />
@@ -216,17 +216,17 @@
                                                         name="clienteCalleFisc" type="text" placeholder="..." />
                                                 </div>
                                                 <div class="col-3">
-                                                    <label class="form-label">Num. Ext.</label>
+                                                    <label class="form-label">Núm. Ext.</label>
                                                     <input class="form-control" maxlength="255" id="clienteNumExFisc"
                                                         name="clienteNumExFisc" type="text" placeholder="..." />
                                                 </div>
                                                 <div class="col-3">
-                                                    <label class="form-label">Num. Int</label>
+                                                    <label class="form-label">Núm. Int</label>
                                                     <input class="form-control" maxlength="255" id="clienteNumIntFisc"
                                                         name="clienteNumIntFisc" type="text" placeholder="..." />
                                                 </div>
                                                 <div class="col-3">
-                                                    <label class="form-label">Codigo Postal</label>
+                                                    <label class="form-label">Código Postal</label>
                                                     <input class="form-control" maxlength="5"
                                                         onkeypress="return soloNumeros(event)" id="clienteCpFisc"
                                                         name="clienteCpFisc" type="text" placeholder="..." />
@@ -316,7 +316,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-3">
-                                                    <label class="form-label">Codigo Postal
+                                                    <label class="form-label">Código Postal
                                                     </label>
                                                     <div class="input-group">
                                                         <input id="clientCodigoPostM"
@@ -379,7 +379,7 @@
                                         <div id="infoClienteFisicaExpediente">
                                             <div class="row mt-3">
                                                 <div class="col-12 col-sm-12">
-                                                    <label>Identificacion Oficial</label>
+                                                    <label>Identificación oficial</label>
                                                     <div class="form-control dropzone">
                                                         <div class="fallback">
                                                             <input name="clienteIdentificacionF"

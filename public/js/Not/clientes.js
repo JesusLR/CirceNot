@@ -27,12 +27,19 @@ $(document).ready(function() {
         },
     });
 
-    $("#gridClientesF").bootstrapTable({
-        url: "/consultarRepresentantes",
+    $("#gridClientes").bootstrapTable({
+        url: "/consultarClientes",
         classes: "table-striped",
         uniqueId: "id",
-        method: "get",
+        method: "post",
         contentType: "application/x-www-form-urlencoded",
+        queryParams: function (p) {
+            return {
+                iTipoPersona: $("#filtroTipoPersonaGrid").val(),
+                iTipoCliente: $("#filtroTipoClienteGrid").val(),
+                cBuscador: $("#clienteBuscadorNombre").val(),
+            };
+        },
         pagination: true,
         pageSize: 10,
         columns: [{
@@ -40,13 +47,15 @@ $(document).ready(function() {
             title: "id",
             visible: false,
         },{
-            field: "iIDClienteF",
-            title: "iIDClienteF",
+            field: "iIDCliente",
+            title: "iIDCliente",
+            // formatter: "idClienteFormatter",
             visible: false,
         }, {
             field: "cNombreCompleto",
             title: "Nombre",
-            formatter: "nombreGridFisFormatter"
+            formatter: "nombreClienteFormatter",
+            width: "30%",
         },{
             field: "cRFC",
             title: "RFC",
@@ -55,6 +64,10 @@ $(document).ready(function() {
             field: "cEmail",
             title: "Email",
             // formatter: "usuarioPuestoFormatter"
+        },{
+            field: "cTipo",
+            title: "Tipo",
+            formatter: "clienteTipoFormatter"
         },{
             field: "lActivo",
             title: "Estatus",
@@ -62,50 +75,50 @@ $(document).ready(function() {
         },{
             field: "cAccion",
             title: "Acciones",
-            formatter: "clienteFisFormatter",
+            formatter: "clienteFormatter",
         }],
         onLoadSuccess: function(data) {},
     });
 
-    $("#gridClientesM").bootstrapTable({
-        url: "/consultarClientesM",
-        classes: "table-striped",
-        uniqueId: "id",
-        method: "get",
-        contentType: "application/x-www-form-urlencoded",
-        pagination: true,
-        pageSize: 10,
-        columns: [{
-            field: "id",
-            title: "id",
-            visible: false,
-        },{
-            field: "iIDClienteM",
-            title: "iIDClienteM",
-            visible: false,
-        }, {
-            field: "cRazonSocial",
-            title: "Nombre",
-            // formatter: "nombreGridMorFormatter"
-        },{
-            field: "cRFC",
-            title: "RFC",
-            // formatter: "usuarioPermisoFormatter"
-        },{
-            field: "cEmail",
-            title: "Email",
-            // formatter: "usuarioPuestoFormatter"
-        },{
-            field: "lActivo",
-            title: "Estatus",
-            formatter: "clienteMorStatusFormatter",
-        },{
-            field: "cAccion",
-            title: "Acciones",
-            formatter: "clienteMorFormatter",
-        }],
-        onLoadSuccess: function(data) {},
-    });
+    // $("#gridClientesM").bootstrapTable({
+    //     url: "/consultarClientesM",
+    //     classes: "table-striped",
+    //     uniqueId: "id",
+    //     method: "get",
+    //     contentType: "application/x-www-form-urlencoded",
+    //     pagination: true,
+    //     pageSize: 10,
+    //     columns: [{
+    //         field: "id",
+    //         title: "id",
+    //         visible: false,
+    //     },{
+    //         field: "iIDClienteM",
+    //         title: "iIDClienteM",
+    //         visible: false,
+    //     }, {
+    //         field: "cRazonSocial",
+    //         title: "Nombre",
+    //         // formatter: "nombreGridMorFormatter"
+    //     },{
+    //         field: "cRFC",
+    //         title: "RFC",
+    //         // formatter: "usuarioPermisoFormatter"
+    //     },{
+    //         field: "cEmail",
+    //         title: "Email",
+    //         // formatter: "usuarioPuestoFormatter"
+    //     },{
+    //         field: "lActivo",
+    //         title: "Estatus",
+    //         formatter: "clienteMorStatusFormatter",
+    //     },{
+    //         field: "cAccion",
+    //         title: "Acciones",
+    //         formatter: "clienteMorFormatter",
+    //     }],
+    //     onLoadSuccess: function(data) {},
+    // });
 
     $("#gridProspectosF").bootstrapTable({
         url: "/consultarProspectosFisic",
@@ -142,7 +155,7 @@ $(document).ready(function() {
         },{
             field: "cAccion",
             title: "Acciones",
-            formatter: "clienteFisFormatter",
+            formatter: "clienteFormatter",
         }],
         onLoadSuccess: function(data) {},
     });
@@ -194,17 +207,36 @@ $(document).ready(function() {
     $("#infoClienteMoralExpediente").hide();
 })
 
-function nombreGridFisFormatter(value, row) {
+function nombreClienteFormatter(value, row) {
+    var html = ""
+    var tipo = $("#filtroTipoPersonaGrid").val()
+
+    if(tipo == 1){
+        html = row.cNombre + ' ' + row.cApellidoPat+ ' ' + row.cApellidoMat;
+    }else{
+        html = row.cRazonSocial;
+    }
+
+    return html;
+}
+
+function clienteTipoFormatter(value, row){
     var html = ""
 
-    html = row.cNombre + ' ' + row.cApellidoPat+ ' ' + row.cApellidoMat;
-    
+    var tipo = $("#filtroTipoPersonaGrid").val()
+
+    if(tipo == 1){
+        html = 'FISICA';
+    }else{
+        html = 'MORAL';
+    }
+
     return html;
 }
 
 function clienteFisStatusFormatter(value, row) {
     var html = ""
-    
+
         if(row.lActivo == 1){
             html = '<span class="badge badge-sm badge-success">Activo</span>';
         }else{
@@ -214,16 +246,20 @@ function clienteFisStatusFormatter(value, row) {
     return html;
 }
 
-function clienteFisFormatter(value, row) {
+function clienteFormatter(value, row) {
     var html = ""
+    var tipo = $("#filtroTipoPersonaGrid").val()
 
-    // html = '<a href="javascript:;" onclick="infoUser('+row.iIDClienteF+')" data-bs-toggle="tooltip" data-bs-original-title="Tarjeta de presentacion">'+
-    //         ' <i class="fas fa-eye text-secondary"></i>'+
-    //         '</a>'+
+        if(tipo == 1){
             html = '<a href="javascript:;" onclick="editClienteF('+row.iIDClienteF+')" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Cliente">'+
+            '<i class="fas fa-user-edit text-secondary"></i>'+
+            '</a>';
+        }else{
+            html = '<a href="javascript:;" onclick="editClienteM('+row.iIDClienteM+')" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Cliente">'+
                         '<i class="fas fa-user-edit text-secondary"></i>'+
                     '</a>';
-    
+        }
+
     return html;
 }
 
@@ -236,13 +272,13 @@ function clienteMorFormatter(value, row) {
             html = '<a href="javascript:;" onclick="editClienteM('+row.iIDClienteM+')" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Cliente">'+
                         '<i class="fas fa-user-edit text-secondary"></i>'+
                     '</a>';
-    
+
     return html;
 }
 
 function clienteMorStatusFormatter(value, row) {
     var html = ""
-    
+
         if(row.lActivo == 1){
             html = '<span class="badge badge-sm badge-success">Activo</span>';
         }else{
@@ -272,7 +308,7 @@ $('#clienteTipo').on('change', function () {
 });
 
 function editClienteF(id){
-    
+
     $.ajax({
         url: "/editClienteF",
         type: "post",
@@ -308,20 +344,20 @@ function editClienteF(id){
             $('#clienteColoniaFiscEdit').val(r[0].cColonia2);
             $('#clienteCiudadFiscEdit').val(r[0].cCiudad2);
             $('#clienteEstadoFiscEdit').val(r[0].cEstado2);
-            
+
             $('#btnEditClienteFis').val(id);
 
             $('#modalEditClienteF').modal('show');
     },
         error: function (err) {
-            
+
         },
     });
 }
 
 function updateClienteF(id){
-    
-    
+
+
     $.ajax({
         url: "/updateClienteF",
         type: "post",
@@ -359,28 +395,34 @@ function updateClienteF(id){
         success: function (r) {
 
             if(r.lSuccess){
-                Swal.fire({
-                    position: 'top-end',
+                swal.fire({
+                    title: "Exito",
                     icon: 'success',
-                    title: r.cMensaje,
-                    showConfirmButton: false,
-                    timer: 3000
-                  })
+                    text: r.cMensaje,
+                    type: "success",
+                    showConfirmButton: true,
+                    confirmButtonClass: "btn btn-success btn-round",
+                    confirmButtonText: "Aceptar",
+                    buttonsStyling: false,
+                });
                   $("#gridClientesF").bootstrapTable("refresh");
                   $("#gridProspectosF").bootstrapTable("refresh");
                   $('#modalEditClienteF').modal('hide');
             }else{
-                Swal.fire({
-                    position: 'top-end',
+                swal.fire({
+                    title: "Aviso",
                     icon: 'error',
-                    title: r.cMensaje,
-                    showConfirmButton: false,
-                    timer: 3000
-                  })
+                    text: r.cMensaje,
+                    type: "error",
+                    showConfirmButton: true,
+                    confirmButtonClass: "btn btn-danger btn-round",
+                    confirmButtonText: "Aceptar",
+                    buttonsStyling: false,
+                });
             }
     },
         error: function (err) {
-            
+
         },
     });
 }
@@ -411,13 +453,13 @@ function editClienteM(id){
             $('#clienteRFCMEdit').val(r[0].cRFC);
             $('#clienteRegimenMEdit').val(r[0].cRegimenFisc);
             $('#clienteRepresentanteMEdit').val(r[0].iIDClienteF);
-        
+
             $('#btnEditClienteMor').val(id);
 
             $('#modalEditClienteM').modal('show');
     },
         error: function (err) {
-            
+
         },
     });
 }
@@ -465,7 +507,7 @@ function updateClienteM(id){
             }
     },
         error: function (err) {
-            
+
         },
     });
 }
@@ -474,4 +516,9 @@ $("#btnEditClienteMor").click(function() {
     // alert($('#btnEditClienteFis').val())
     var id = $('#btnEditClienteMor').val();
     updateClienteM(id);
+});
+
+$("#btnBusquedaCliente").click(function() {
+    $("#gridClientes").bootstrapTable("removeAll");
+    $("#gridClientes").bootstrapTable("refresh");
 });

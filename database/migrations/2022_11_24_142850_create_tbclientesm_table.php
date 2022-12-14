@@ -13,8 +13,8 @@ class CreateTbclientesmTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbclientesM', function (Blueprint $table) {
-            $table->id();
+        Schema::create('tbClienteM', function (Blueprint $table) {
+            $table->id('iIDClienteM');
             $table->string('cRazonSocial');
             $table->string('cEmail');
             $table->string('iTel');

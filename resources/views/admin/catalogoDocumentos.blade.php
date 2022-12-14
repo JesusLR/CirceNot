@@ -66,7 +66,7 @@
                                 <select class="form-control" name="categoriaDoc" id="categoriaDoc" required>
                                     <option value="">Selecciona una opcion</option>
                                     @foreach ($services as $service)
-                                        <option value={{ $service->id }}>{{ $service->name }}</option>
+                                        <option value={{ $service->iIDServiciosTipo }}>{{ $service->cNombre }}</option>
                                     @endforeach
                                 </select>
                             </div>

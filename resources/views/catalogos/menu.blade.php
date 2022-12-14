@@ -23,9 +23,9 @@
               <ul class="nav nav-sm flex-column">
                 @foreach ($services as $service)
                     <li class="nav-item">
-                        <a class="nav-link " id="btnDocUno" href="{{route('catalogoDoc_Administracion')}}">
+                        <a class="nav-link " id="btnDocUno" href="{{url('catalogoDoc/'.$service->iIDServiciosTipo.'')}}">
                         <span class="sidenav-mini-icon text-xs"> A </span>
-                        <span class="sidenav-normal"> {{$service->name}} </span>
+                        <span class="sidenav-normal"> {{$service->cNombre}} </span>
                         </a>
                     </li>
                 @endforeach
