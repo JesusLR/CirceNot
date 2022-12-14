@@ -22,11 +22,7 @@ class Handler extends ExceptionHandler
      *
      * @var array<int, string>
      */
-    protected $dontFlash = [
-        'current_password',
-        'password',
-        'password_confirmation',
-    ];
+    protected $dontFlash = ['current_password', 'password', 'password_confirmation'];
 
     /**
      * Register the exception handling callbacks for the application.
@@ -40,16 +36,22 @@ class Handler extends ExceptionHandler
         });
     }
     protected function unauthenticated($request, AuthenticationException $exception)
-        {
-            if ($request->expectsJson()) {
-                return response()->json(['error' => 'Unauthenticated.'], 401);
-            }
-            if ($request->is('admin') || $request->is('admin/*')) {
-                return redirect()->guest('/admin/login');
-            }
-            if ($request->is('autorizados') || $request->is('/*')) {
-                return redirect()->guest('/login');
-            }
-            return redirect()->guest(route('login'));
+    {
+        // if ($request->expectsJson()) {
+        //     return response()->json(['error' => 'Unauthenticated.'], 401);
+        // }
+        if (in_array('admin', $exception->guards())) {
+            return $request->expectsJson()
+                ? response()->json(
+                    ['message' => $exception->getMessage(),],401,): redirect()->guest(route('admin_login_vista'));
         }
+        return $request->expectsJson()
+            ? response()->json(
+                [
+                    'message' => $exception->getMessage(),
+                ],
+                401,
+            )
+            : redirect()->guest(route('usuario_vista_login'));
+    }
 }

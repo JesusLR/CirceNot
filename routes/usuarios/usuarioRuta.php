@@ -4,13 +4,20 @@ use App\Http\Controllers\CatalogoDocumentosController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\PresupuestoController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\PersonaLoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/')->group(function () {
+<<<<<<< HEAD
     Route::get('login', [LoginController::class, 'vistaPersonaAutorizada'])->name('usuario_vista_login');
     Route::post('panelUser', [LoginController::class, 'loginPersonaAutorizada'])->name('user_vista_home');
     Route::get('inicio-sesion', [LoginController::class, 'userHome'])->name('usuario_inicio_sesion');
     Route::get('catalogoDoc/{id}', [CatalogoDocumentosController::class, 'catalogoDoc'])->name('catalogoDocumentosPlantillas');
+=======
+
+    Route::get('catalogoDocAdmin', [CatalogoDocumentosController::class, 'catalogoDocAdmin'])->name('catalogoDoc_Administracion');
+    Route::get('catalogoDocContratos', [CatalogoDocumentosController::class, 'catalogoDocContratos'])->name('catalogoDoc_Contratos');
+>>>>>>> 266d954db02a6dcce689d48d148ee99bef97b154
     Route::post('docUsers', [CatalogoDocumentosController::class, 'docUsers']);
     Route::get('newCliente', [ClientesController::class, 'newCliente'])->name('nuevo_cliente');
     Route::post('createCliente', [ClientesController::class, 'createCliente'])->name('createCliente');
@@ -34,6 +41,8 @@ Route::prefix('/')->group(function () {
     Route::get('ServiceIndex', [ServiceController::class, 'ServiceIndex'])->name('service_index');
     Route::get('getServices', [ServiceController::class, 'getServices'])->name('getServices');
     Route::post('getServicesById', [ServiceController::class, 'getServicesById'])->name('getServicesById');
+    Route::post('getServicesById', [ServiceController::class, 'getServicesById'])->name('getServicesById');
+    Route::post('updateService', [ServiceController::class, 'updateService'])->name('updateService');
 
     //presupuesto
     Route::get('newPresupuesto', [PresupuestoController::class, 'newPresupuesto'])->name('newPresupuesto');

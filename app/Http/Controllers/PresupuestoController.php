@@ -25,7 +25,7 @@ class PresupuestoController extends Controller
     public function getPresupuestos(){
         try {
 
-            $Presupuestos = Presupuestos::select('Presupuestos.id as id','tbClienteF.cNombre as cNombre','tbClienteF.cApellidoPat as cApellidoPat','tbClienteF.cApellidoPat as cApellidoMat','Presupuestos.totales as totales','Presupuestos.lActivo as lActivo')
+            $Presupuestos = Presupuestos::select('Presupuestos.id as id','Presupuestos.folio as folio','tbClienteF.cNombre as cNombre','tbClienteF.cApellidoPat as cApellidoPat','tbClienteF.cApellidoPat as cApellidoMat','Presupuestos.totales as totales','Presupuestos.lActivo as lActivo')
             ->join('tbClienteF', 'Presupuestos.idClient','=','tbClienteF.iIDClienteF')
             ->where('Presupuestos.lActivo', 1)
             ->get();
@@ -42,6 +42,9 @@ class PresupuestoController extends Controller
     }
     public function createPresupuesto(Request $request){
         try {
+
+            $num = Presupuestos::count();
+            //  dd($request->all());
             DB::beginTransaction();
 
                 $presupuesto = Presupuestos::create([
@@ -51,6 +54,8 @@ class PresupuestoController extends Controller
                     'totalHonorarios' => $request->totalHonorarios,
                     'subtotalServicios' => $request->subtotalServicios,
                     'idClient' => (int)$request->idClient,
+                    'vigencia' => (int)$request->vigencia,
+                    'folio' => "00".(string)$num,
                     'userCreator' => "personal_notaria1",
                     'lActivo' => true,
 
@@ -77,7 +82,7 @@ class PresupuestoController extends Controller
 
             'lSuccess' => true,
             'cMensaje' => "",
-            'idPresupuesto' => $presupuesto->id,
+            'folioPresupuesto' => "00".$num,
         ]);
 
 
@@ -113,6 +118,6 @@ class PresupuestoController extends Controller
 
         // view()->share('productos', $productos);
         $pdf = PDF::loadView('presupuestos.PresupuestoPlantilla', compact('presupuesto', 'servicios','lMarcaAgua','idPresupuestoPDF'));
-        return $pdf->download('archivo-pdf.pdf');
+        return $pdf->download('presupuesto_00'.$presupuesto->id.'.pdf');
     }
 }

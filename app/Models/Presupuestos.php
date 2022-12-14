@@ -17,6 +17,8 @@ class Presupuestos extends Model
         'ivaHonorarios',
         'totalHonorarios',
         'subtotalServicios',
+        'vigencia',
+        'folio',
         'lActivo',
         'idClient',
 

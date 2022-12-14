@@ -44,9 +44,9 @@ return [
             'driver' => 'session',
             'provider' => 'admins'
         ],
-        'autorizados' => [
+        'auto' => [
             'driver' => 'session',
-            'provider' => 'pautorizado'
+            'provider' => 'autorizados'
         ]
 
     ],
@@ -77,7 +77,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Administrador::class,
         ],
-        'pautorizado' => [
+        'autorizados' => [
             'driver' => 'eloquent',
             'model' => App\Models\PersonasAutorizadas::class,
         ]
@@ -106,6 +106,18 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admin' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'auto' => [
+            'provider' => 'autorizados',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

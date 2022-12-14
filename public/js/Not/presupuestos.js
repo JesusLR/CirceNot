@@ -38,6 +38,11 @@ $(document).ready(function() {
             formatter: "nombreGridFisFormatter",
 
         },{
+            field: "folio",
+            title: "Folio",
+            // formatter: "usuarioPermisoFormatter"
+
+        },{
             field: "totales",
             title: "Total",
             // formatter: "usuarioPermisoFormatter"
@@ -265,6 +270,20 @@ function guardarPresupuesto() {
         });
         return false;
     }
+    if ($("#vigencia").val() <= 0) {
+        swal.fire({
+            title: "Aviso",
+            text: "Ingrese Vigencia Valida",
+            type: "warning",
+            showConfirmButton: true,
+            confirmButtonClass: "btn btn-success btn-round",
+            confirmButtonText: "Aceptar",
+            buttonsStyling: false,
+        });
+        return false;
+    }
+
+
     $.ajax({
         url: "/createPresupuesto",
         type: "post",
@@ -276,6 +295,7 @@ function guardarPresupuesto() {
             ivaHonorarios: $("#IVAHonorarios").val(),
             totalHonorarios: $("#totalHonorarios").val(),
             subtotalServicios: $("#subTotalPrice").val(),
+            vigencia: $("#vigencia").val(),
             presupuesto:$("#gridServicios").bootstrapTable("getData"),
 
         },
@@ -297,25 +317,35 @@ function guardarPresupuesto() {
             swal.close();
              console.log(r);
             if (r.lSuccess) {
+
                 swal.fire({
                     icon: "info",
-                    title: "Presupuesto",
+                    title: "Presupuesto Folio: "+r.folioPresupuesto,
                     text: "se guardo el presupuesto con exito",
 
-                    showConfirmButton: true,
-                    confirmButtonClass: "btn btn-primary btn-round",
-                    confirmButtonText: "Aceptar",
-                    buttonsStyling: false,
+                    showCancelButton: false,
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#FF8400",
+                    confirmButtonText: "¡Aceptar!",
+                    cancelButtonText: "Cancelar",
+                }).then((result) => {
+                    if (result.value != undefined) {
+                        $("#idClient").val(0);
+                        $("#typeServices").val(0);
+                        $("#subHonorarios").val("");
+                        $("#totales").val("");
+                        $("#honorarios").val(0);
+                        $("#IVAHonorarios").val("");
+                        $("#totalHonorarios").val("");
+                        $("#subTotalPrice").val("");
+                        location.href = "presupuestosIndex";
+                    }
                 });
 
-                 $("#idClient").val(0);
-                 $("#typeServices").val(0);
-                 $("#subHonorarios").val("");
-                 $("#totales").val("");
-                 $("#honorarios").val(0);
-                 $("#IVAHonorarios").val("");
-                 $("#totalHonorarios").val("");
-                 $("#subTotalPrice").val("");
+
+
 
 
 
