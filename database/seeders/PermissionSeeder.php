@@ -14,6 +14,8 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        $permission = Permission::create(['name' => 'usuarios'], ['name' => 'catalogo documentos'], ['name' => 'gestionar gestoria']);
+        Permission::create(['name' => 'Notario', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'Jefe', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'Usuario', 'guard_name' => 'auto']);
     }
 }

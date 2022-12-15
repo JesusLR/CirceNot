@@ -24,6 +24,6 @@ class personaAutorizadaSeeder extends Seeder
             'emailDos' => 'cosme2@example.com',
             'cUsuario' => 'cosme.magana',
             'password' => bcrypt('1234567')
-        ]);
+        ])->assignRole('Usuario');
     }
 }
