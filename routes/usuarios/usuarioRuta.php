@@ -8,7 +8,7 @@ use App\Http\Controllers\PersonaLoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/')->group(function () {
-
+    Route::post('user-logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('usuario_logout');
     Route::get('catalogoDocAdmin', [CatalogoDocumentosController::class, 'catalogoDocAdmin'])->name('catalogoDoc_Administracion');
     Route::get('catalogoDocContratos', [CatalogoDocumentosController::class, 'catalogoDocContratos'])->name('catalogoDoc_Contratos');
     Route::post('docUsers', [CatalogoDocumentosController::class, 'docUsers']);

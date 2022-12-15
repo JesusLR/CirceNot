@@ -63,10 +63,10 @@ class LoginController extends Controller
     #Fin sección administrativa
     public function logout(Request $request)
     {
-        //Auth::logout();
-
+        Auth::logout();
         $request->session()->invalidate();
-        return redirect(route('admin.auth.login'));
+        $request->session()->regenerateToken();
+        return redirect(route('admin_login_vista'));
     }
     protected function guard()
     {

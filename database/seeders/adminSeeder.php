@@ -22,6 +22,6 @@ class adminSeeder extends Seeder
             'cSegundoApellido' => 'Romero',
             'email' => 'jesus@example.com',
             'password' => bcrypt('1234567'),
-        ]);
+        ])->assignRole('Administrador');
     }
 }
