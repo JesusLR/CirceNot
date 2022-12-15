@@ -18,6 +18,7 @@ class Servicios extends Model
         'user_creator',
         'notaria_id',
         'lActivo',
+        'Type',
 
 
     ];
