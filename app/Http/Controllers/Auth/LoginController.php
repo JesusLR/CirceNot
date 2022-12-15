@@ -22,7 +22,7 @@ class LoginController extends Controller
     |
     */
 
-   // use AuthenticatesUsers;
+    // use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -42,14 +42,13 @@ class LoginController extends Controller
 
     public function loginPersonaAutorizada(Request $request)
     {
-
         try {
             $credenciales = $request->only(['email', 'password']);
             $personaAutorizada = PersonasAutorizadas::where('email', $request->email)->first();
 
             if (!is_null($personaAutorizada)) {
                 if (Auth::guard('auto')->attempt($credenciales)) {
-                   $x = $request->session()->regenerate();
+                    $x = $request->session()->regenerate();
 
                     return redirect()->route('usuario_inicio_sesion');
                 } else {
@@ -58,10 +57,16 @@ class LoginController extends Controller
             } else {
                 return back()->with('err', 'USUARIO NO ENCONTRADO');
             }
-
         } catch (\Throwable $th) {
             return back()->with('err', $th->getMessage());
         }
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect(route('admin_login_vista'));
     }
     protected function guard()
     {
