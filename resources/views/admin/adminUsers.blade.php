@@ -1,360 +1,41 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="container-fluid py-4">
-    <div class="row mt-4">
-        <div class="col-12">
-            <div class="card">
-                                <!-- Card header -->
-                <div class="card-body">
-                    <h5 class="mb-0">Administración de usuarios</h5>
-                    <p class="text-sm mb-0">
+    <div class="container-fluid py-4">
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-body">
+                        <h5 class="mb-0">Administración de usuarios</h5>
+                        <p class="text-sm mb-0">
                         <div class="text-end ms-auto">
                             <button type="button" class="btn btn-xs btn-primary mb-0" id="btnNewUser">
-                            <i class="fas fa-plus pe-2"></i> Nuevo Usuaio
+                                <i class="fas fa-plus pe-2"></i> Nuevo Usuaio
                             </button>
                         </div>
-                    </p>
-                    <div class="row" style="margin-bottom: 20px;">
-                        <div class="col-md-12">
-                            <table class="table table-striped" id="gridUsers">
-                            </table>
+                        </p>
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-md-12">
+                                <table class="table table-striped" id="gridUsers">
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-  <!-- Modal -->
-  {{-- MODAL DE USUARIOS --}}
-<div class="modal fade bd-example-modal-lg" id="usersModal" tabindex="-1" role="dialog" aria-labelledby="usersModal" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar Usuario
-        </h5>
-      </div>
-      <div class="modal-body">
+    <!-- Modal -->
+    {{-- MODAL DE USUARIOS --}}
+    @include('admin.modal.crearUsuarioModal')
+    {{-- Fin modal de usuarios --}}
 
-        {{-- <div class="card mt-4" id="basic-info"> --}}
-          <div class="card-header">
-            <h5>Información Básica</h5>
-          </div>
-          {{-- <div class="card-body pt-0"> --}}
-            <div class="row">
-              <div class="col-4">
-                <label class="form-label">Nombre(s)
-                </label>
-                <div class="input-group">
-                  <input id="userNombre" maxlength="255" name="userNombre" class="form-control" type="text" placeholder="Juan" required="required">
-                </div>
-              </div>
-              <div class="col-4">
-                <label class="form-label">Primer Apellido</label>
-                <div class="input-group">
-                  <input id="userApellidoP" maxlength="255" name="userApellidoP" class="form-control" type="text" placeholder="Lopez" required="required">
-                </div>
-              </div>
-              <div class="col-4">
-                <label class="form-label">Segundo Apellido</label>
-                <div class="input-group">
-                  <input id="userApellidoM" maxlength="255" name="userApellidoM" class="form-control" type="text" placeholder="Perez" required="required">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-4 col-6">
-                <label class="form-label mt-4">Usuario</label>
-                <input id="userUsuario" maxlength="255" name="userUsuario" class="form-control" type="text" placeholder="Juan.lopez" required="required">
-              </div>
-              <div class="col-sm-4 col-6">
-                <label class="form-label mt-4">Permiso</label>
-                <select class="form-control" name="userPermiso" id="userPermiso">
-                  <option value="0">Selecciona una opcion</option>
-                  <option value="1">Administrador</option>
-                  <option value="2">Usuario</option>
-                </select>
-              </div>
-              <div class="col-sm-4 col-6">
-                <label class="form-label mt-4">Puesto</label>
-                <select class="form-control" name="userPuesto" id="userPuesto">
-                  <option value="0">Selecciona una opcion</option>
-                  <option value="1">Notario</option>
-                  <option value="2">Jefe</option>
-                  <option value="3">Usuario</option>
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-6">
-                <label class="form-label mt-4">Email Personal</label>
-                <div class="input-group">
-                  <input id="userEmail" name="userEmail" maxlength="255" class="form-control" type="email" placeholder="example@email.com">
-                </div>
-              </div>
-              <div class="col-6">
-                <label class="form-label mt-4">Email Laboral</label>
-                <div class="input-group">
-                  <input id="userEmailDos" name="userEmailDos" maxlength="255" class="form-control" type="email" placeholder="example@email.com">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-6">
-                <label class="form-label mt-4">Contraseña</label>
-                <div class="input-group">
-                  <input id="userPassword" maxlength="255" name="userPassword" class="form-control" type="text" placeholder="***** ...">
-                </div>
-              </div>
-              <div class="col-6">
-                <label class="form-label mt-4">Numero de teléfono</label>
-                <div class="input-group">
-                  <input id="userTEL" onkeypress="return soloNumeros(event)" name="userTEL" class="form-control" type="text" maxlength="10" placeholder="+40 735 631 620">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 align-self-center">
-                <label class="form-label mt-4">CURP</label>
-                <input class="form-control" maxlength="18" id="userCURP" type="text" placeholder="CURP" />
-              </div>
-              <div class="col-md-6">
-                <label class="form-label mt-4">RFC</label>
-                <input class="form-control" maxlength="13" id="userRFC" type="text" placeholder="RFC" />
-              </div>
-            </div>
-          {{-- </div> --}}
-        {{-- </div> --}}
+    {{-- Modal editar usuario --}}
+    @include('admin.modal.editarUsuarioModal')
+    {{-- fin modal editar usuario --}}
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="btnSaveUser" class="btn btn-primary">Guardar</button>
-      </div>
-    </div>
-  </div>
-</div>
-{{-- Fin modal de usuarios --}}
-
-{{-- Modal editar usuario --}}
-<div class="modal fade bd-example-modal-lg" id="editUsersModal" tabindex="-1" role="dialog" aria-labelledby="editUsersModal" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Usuario
-        </h5>
-      </div>
-      <div class="modal-body">
-
-        {{-- <div class="card mt-4" id="basic-info"> --}}
-          <div class="card-header">
-            <h5>Información Básica</h5>
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="userStatus" checked="">
-              <label class="form-check-label" for="userStatus">Estatus</label>
-            </div>
-          </div>
-          {{-- <div class="card-body pt-0"> --}}
-            <div class="row">
-              <div class="col-4">
-                <label class="form-label">Nombre(s)
-                </label>
-                <div class="input-group">
-                  <input id="userNombreEdit" maxlength="255" name="userNombreEdit" class="form-control" type="text" placeholder="Juan" required="required">
-                </div>
-              </div>
-              <div class="col-4">
-                <label class="form-label">Primer Apellido</label>
-                <div class="input-group">
-                  <input id="userApellidoPEdit" maxlength="255" name="userApellidoPEdit" class="form-control" type="text" placeholder="Lopez" required="required">
-                </div>
-              </div>
-              <div class="col-4">
-                <label class="form-label">Segundo Apellido</label>
-                <div class="input-group">
-                  <input id="userApellidoMEdit" maxlength="255" name="userApellidoMEdit" class="form-control" type="text" placeholder="Perez" required="required">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-4 col-6">
-                <label class="form-label mt-4">Usuario</label>
-                <input id="userUsuarioEdit" maxlength="255" name="userUsuarioEdit" class="form-control" type="text" placeholder="Juan.lopez" required="required">
-              </div>
-              <div class="col-sm-4 col-6">
-                <label class="form-label mt-4">Permiso</label>
-                <select class="form-control" name="userPermisoEdit" id="userPermisoEdit">
-                  <option value="0">Selecciona una opcion</option>
-                  <option value="1">Administrador</option>
-                  <option value="2">Usuario</option>
-                </select>
-              </div>
-              <div class="col-sm-4 col-6">
-                <label class="form-label mt-4">Puesto</label>
-                <select class="form-control" name="userPuestoEdit" id="userPuestoEdit">
-                  <option value="0">Selecciona una opcion</option>
-                  <option value="1">Notario</option>
-                  <option value="2">Jefe</option>
-                  <option value="3">Usuario</option>
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-6">
-                <label class="form-label mt-4">Email Personal</label>
-                <div class="input-group">
-                  <input id="userEmailEdit" maxlength="255" name="userEmailEdit" class="form-control" type="email" placeholder="example@email.com">
-                </div>
-              </div>
-              <div class="col-6">
-                <label class="form-label mt-4">Email Laboral</label>
-                <div class="input-group">
-                  <input id="userEmailDosEdit" maxlength="255" name="userEmailDosEdit" class="form-control" type="email" placeholder="example@email.com">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-6">
-                <label class="form-label mt-4">Contraseña</label>
-                <div class="input-group">
-                  <input id="userPasswordEdit" maxlength="255" name="userPasswordEdit" class="form-control" type="text" placeholder="***** ...">
-                </div>
-              </div>
-              <div class="col-6">
-                <label class="form-label mt-4">Numero de teléfono</label>
-                <div class="input-group">
-                  <input id="userTELEdit" maxlength="10" onkeypress="return soloNumeros(event)" name="userTELEdit" class="form-control" type="text" placeholder="+40 735 631 620">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 align-self-center">
-                <label class="form-label mt-4">CURP</label>
-                <input class="form-control" maxlength="18" id="userCURPEdit" placeholder="CURP" />
-              </div>
-              <div class="col-md-6">
-                <label class="form-label mt-4">RFC</label>
-                <input class="form-control" maxlength="13" id="userRFCEdit" type="text" placeholder="RFC" />
-              </div>
-            </div>
-          {{-- </div> --}}
-        {{-- </div> --}}
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="btnUpdateUser" class="btn btn-primary">Actualizar</button>
-      </div>
-    </div>
-  </div>
-</div>
-{{-- fin modal editar usuario --}}
-
-<!-- Modal info usuario-->
-<div class="modal fade" id="modalInfoUser" tabindex="-1" role="dialog" aria-labelledby="modalInfoUser" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Informacion del Usuario</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        {{-- <div class="card mt-4 mb-3"> --}}
-          {{-- <div class="card-body pb-0"> --}}
-            <div class="row align-items-center mb-3">
-              <div class="col-9">
-                <h5 class="mb-1">
-                  <a href="javascript:;" id="idNomUserInfo"></a>
-                </h5>
-              </div>
-              {{-- <div class="col-3 text-end">
-                <div class="dropstart">
-                  <a href="javascript:;" class="text-secondary" id="dropdownDesignCard" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v"></i>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-lg-start px-2 py-3" aria-labelledby="dropdownDesignCard">
-                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Edit Team</a></li>
-                    <li><a class="dropdown-item border-radius-md" href="javascript:;">Add Member</a></li>
-                    <li><a class="dropdown-item border-radius-md" href="javascript:;">See Details</a></li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item border-radius-md text-danger" href="javascript:;">Remove Team</a></li>
-                  </ul>
-                </div>
-              </div> --}}
-            </div>
-            {{-- <p>Because it's about motivating the doers. Because I’m here to follow my dreams and inspire other people to follow their dreams, too.</p> --}}
-            <ul class="list-unstyled mx-auto">
-              <li class="d-flex">
-                <p class="mb-0">Usuario</p>
-                <span class="badge badge-secondary ms-auto" id='UserInfo'></span>
-              </li>
-              <li>
-                <hr class="horizontal dark">
-              </li>
-              <li class="d-flex">
-                <p class="mb-0">Permiso</p>
-                <span class="badge badge-secondary ms-auto" id='UserPermisoInfo'></span>
-              </li>
-              <li>
-                <hr class="horizontal dark">
-              </li>
-              <li class="d-flex">
-                <p class="mb-0">Puesto</p>
-                <span class="badge badge-secondary ms-auto" id='UserPuestoInfo'></span>
-              </li>
-              <li>
-                <hr class="horizontal dark">
-              </li>
-              <li class="d-flex">
-                <p class="mb-0">Email Laboral</p>
-                <span class="badge badge-secondary ms-auto" id='UserEmailInfo'></span>
-              </li>
-              <li>
-                <hr class="horizontal dark">
-              </li>
-              <li class="d-flex">
-                <p class="mb-0">Email Personal</p>
-                <span class="badge badge-secondary ms-auto" id='UserEmailDosInfo'></span>
-              </li>
-              <li>
-                <hr class="horizontal dark">
-              </li>
-              <li class="d-flex">
-                <p class="mb-0">Contacto</p>
-                <span class="badge badge-secondary ms-auto" id='UserTelInfo'></span>
-              </li>
-              <li>
-                <hr class="horizontal dark">
-              </li>
-              <li class="d-flex">
-                <p class="mb-0">CURP</p>
-                <span class="badge badge-secondary ms-auto" id='UserCURPInfo'></span>
-              </li>
-              <li>
-                <hr class="horizontal dark">
-              </li>
-              <li class="d-flex">
-                <p class="mb-0">RFC</p>
-                <span class="badge badge-secondary ms-auto" id='UserRFCInfo'></span>
-              </li>
-              <li>
-                <hr class="horizontal dark">
-              </li>
-            </ul>
-          {{-- </div> --}}
-        {{-- </div> --}}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn bg-gradient-warning" data-bs-dismiss="modal">Cerrar</button>
-        {{-- <button type="button" class="btn bg-gradient-primary">Save changes</button> --}}
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-{{-- Fin modal info usuario --}}
+    <!-- Modal info usuario-->
+    @include('admin.modal.infoUsuarioModal')
+    {{-- Fin modal info usuario --}}
 @endsection

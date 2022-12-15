@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Administrador;
+use Spatie\Permission\Models\Role;
 use DB;
 
 class adminSeeder extends Seeder
@@ -15,12 +16,12 @@ class adminSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('administradors')->insert([
+        Administrador::create([
             'cNombre' => 'Jesus',
             'cPrimerApellido' => 'Lira',
             'cSegundoApellido' => 'Romero',
             'email' => 'jesus@example.com',
             'password' => bcrypt('1234567'),
-        ]);
+        ])->assignRole('Administrador');
     }
 }

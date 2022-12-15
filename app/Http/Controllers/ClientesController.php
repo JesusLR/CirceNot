@@ -12,7 +12,7 @@ class ClientesController extends Controller
         return view('clientes.newCliente');
     }
 
-    public function clientesFiscView(){
+    public function clientesView(){
         return view('clientes.clientesF');
     }
 
@@ -46,7 +46,7 @@ class ClientesController extends Controller
 
     public function createCliente(Request $request){
         try {
-            dd($request->all());
+            // dd($request->all());
             if($request->clienteTipo == 1){ //Persona Fisica
 
                 $request->file('clienteIdentificacionF')->store('public');
@@ -77,7 +77,7 @@ class ClientesController extends Controller
                     'cEstado1' => $request->clienteEstado,
                     'iCalle2' => $request->clienteCalleFisc,
                     'iNumExt2' => $request->clienteNumExFisc,
-                    'iNumInt2' => $request->clienteNumExtFisc,
+                    'iNumInt2' => $request->clienteNumIntFisc,
                     'cCodPost2' => $request->clienteCpFisc,
                     'cColonia2' => $request->clienteColoniaFisc,
                     'cCiudad2' => $request->clienteCiudadFisc,
@@ -86,12 +86,13 @@ class ClientesController extends Controller
                     'cActaRuta' => $request->file('clienteActaF')->store('public'),
                     'cComprobanteRuta' => $request->file('clienteComprobanteF')->store('public'),
                     'cFechaVencimientoRuta' => $request->file('clienteVencimientoF')->store('public'),
+                    'lActivo' => 1,
                 ]);
 
                 return redirect()->route('nuevo_cliente')->with('success', 'Cliente '.strtoupper($request->clienteNombre).''.strtoupper($request->clienteApellidoP).''.strtoupper($request->clienteApellidoM).' creado con exito!');
 
             }else{  //Persona Moral
-
+                dd($request->all());
                 $request->file('cleinteActaConstM')->store('public');
                 $request->file('clienteRepresentacionDocM')->store('public');
 
@@ -108,7 +109,7 @@ class ClientesController extends Controller
                     'iIDClienteF' => $request->clienteRepresentanteM,
                     'cActaRuta' => $request->file('cleinteActaConstM')->store('public'),
                     'cDocumentacionRuta' => $request->file('clienteRepresentacionDocM')->store('public'),
-                    'iTipo' => $request->clienteTipo,
+                    'iTipo' => $request->clienteEstatus,
                     'lActivo' => 1,
                 ]);
 
@@ -204,11 +205,15 @@ class ClientesController extends Controller
          }
     }
 
-    public function consultarClientesM(Request $request){
+    public function consultarClientes(Request $request){
         try {
 
-            $clientes = ClientesM::where('lActivo', 1)->where('iTipo',1)->get();
-
+            if($request->iTipoPersona == 1){ // Fisica
+                $clientes = Clientes::where('lActivo', 1)->where('iTipo',$request->iTipoCliente)->get();
+            }else{ // Moral
+                $clientes = ClientesM::where('lActivo', 1)->where('iTipo',$request->iTipoCliente)->get();
+            }
+            // dd($clientes);
             return $clientes;
 
          } catch (Exception $err) {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CatalogoDocumentos;
 use App\Models\Servicios;
+use App\Models\ServiciosTipo;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -11,7 +12,7 @@ class CatalogoDocumentosController extends Controller
 {
     public function catalogosAdmin(){
 
-        $services = Servicios::where('lActivo', 1)->get();
+        $services = ServiciosTipo::where('lActivo', 1)->get();
         // dd($services[0]->name);
         return view('admin.catalogoDocumentos', ['services' => $services]);
     }
@@ -79,14 +80,15 @@ class CatalogoDocumentosController extends Controller
         }
     }
 
-    public function catalogoDocAdmin(){
-        $docs =  CatalogoDocumentos::select('*')->where('lActivo', 1)->where('iIDCategoria', 1)->get();
-        return view('catalogos.catalogoDoc_administracion', compact('docs'));
+    public function catalogoDoc($id){
+        $docs =  CatalogoDocumentos::select('*')->where('lActivo', 1)->where('iIDCategoria', $id)->get();
+        $services = ServiciosTipo::where('lActivo', 1)->where('iIDServiciosTipo', $id)->first();
+        return view('catalogos.catalogoDoc', ['docs' => $docs, 'services' => $services]);
     }
 
-    public function catalogoDocContratos(){
-        return view('catalogos.catalogoDoc_contratos');
-    }
+    // public function catalogoDocContratos(){
+    //     return view('catalogos.catalogoDoc_contratos');
+    // }
 
     public function stsDoc(Request $request){
         try {

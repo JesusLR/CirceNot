@@ -5,16 +5,24 @@
       </div>
       <span class="nav-link-text ms-1">Clientes</span>
     </a>
+
     <div class="collapse " id="clientespanel">
       <ul class="nav ms-4">
-        <li class="nav-item ">
+        {{-- <li class="nav-item ">
           <a class="nav-link " href="{{route('nuevo_cliente')}}">
             <span class="sidenav-mini-icon"> N </span>
             <span class="sidenav-normal"> Nuevo </span>
           </a>
-        </li>
+        </li> --}}
 
-        <li class="nav-item ">
+        <li class="nav-item">
+            <a class="nav-link " id="btnClientesF" href="{{route('clientes_fisico_vista')}}">
+              <span class="sidenav-mini-icon text-xs"> A </span>
+              <span class="sidenav-normal"> Panel de clientes </span>
+            </a>
+          </li>
+
+        {{-- <li class="nav-item ">
           <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#collapseClienteF">
             <span class="sidenav-mini-icon"> C </span>
             <span class="sidenav-normal"> Personas Físicas <b class="caret"></b></span>
@@ -35,9 +43,9 @@
               </li>
             </ul>
           </div>
-        </li>
+        </li> --}}
 
-        <li class="nav-item ">
+        {{-- <li class="nav-item ">
           <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#collapseClienteM">
             <span class="sidenav-mini-icon"> C </span>
             <span class="sidenav-normal"> Personas Morales <b class="caret"></b></span>
@@ -58,7 +66,7 @@
               </li>
             </ul>
           </div>
-        </li>
+        </li> --}}
 
       </ul>
     </div>
