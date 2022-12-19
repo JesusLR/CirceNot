@@ -79,22 +79,12 @@
                                             <input id="passInputLog" type="password" name="password"
                                                 class="form-control form-control-lg" placeholder="Password">
                                         </div>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="rememberMe">
-                                            <label class="form-check-label" for="rememberMe">Remember me</label>
-                                        </div>
                                         <div class="text-center">
                                             <button id="btnAceptLogin" type="submit"
                                                 class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Aceptar</button>
                                         </div>
                                     </form>
                                 </div>
-                                {{-- <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                  <p class="mb-4 text-sm mx-auto">
-                    Don't have an account?
-                    <a href="javascript:;" class="text-primary text-gradient font-weight-bold">Sign up</a>
-                  </p>
-                </div> --}}
                             </div>
                         </div>
                         <div
@@ -104,7 +94,7 @@
           background-size: cover;">
                                 <span class="mask bg-gradient-primary opacity-6"></span>
                                 <h4 class="mt-5 text-white font-weight-bolder position-relative">CIRCE NOTARIAL</h4>
-                                <p class="text-white position-relative">Todo lo que nesesitas, al alcance de tus manos.
+                                <p class="text-white position-relative">Todo lo que necesitas, al alcance de tus manos.
                                 </p>
                             </div>
                         </div>

@@ -12,12 +12,9 @@
     </title>
     <!--AJAX and JQuery-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
@@ -32,16 +29,9 @@
 </head>
 
 <body class="">
-    <div class="container position-sticky z-index-sticky top-0">
-        <div class="row">
-            <div class="col-12">
-                <!-- Navbar -->
-                <!--Fin Navbar -->
-            </div>
-        </div>
-    </div>
+
     <main class="main-content  mt-0">
-@include('autorizados.mesages')
+        @include('autorizados.mesages')
         <section>
             <div class="page-header min-vh-100">
                 <div class="container">
@@ -49,23 +39,20 @@
                         <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
                             <div class="card card-plain">
                                 <div class="card-header pb-0 text-start">
-                                    <h4 class="font-weight-bolder">Sign In</h4>
-                                    <p class="mb-0">Enter your email and password to sign in</p>
+                                    <h4 class="font-weight-bolder">¡Inicia sesión!</h4>
+                                    <p class="mb-0">Introduce tu correo y contraseña para acceder</p>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form" action='{{route('usuario_inicio_sesion_login')}}' method='POST'>
+                                    <form role="form" action='{{ route('usuario_inicio_sesion_login') }}'
+                                        method='POST'>
                                         @csrf
                                         <div class="mb-3">
-                                            <input id="userInputLogAutorizado" name="email" type="email" class="form-control form-control-lg"
-                                                placeholder="Email">
+                                            <input id="userInputLogAutorizado" name="email" type="email"
+                                                class="form-control form-control-lg" placeholder="Email">
                                         </div>
                                         <div class="mb-3">
                                             <input id="passInputLogAutorizado" name="password" type="password"
                                                 class="form-control form-control-lg" placeholder="Password">
-                                        </div>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="rememberMe">
-                                            <label class="form-check-label" for="rememberMe">Remember me</label>
                                         </div>
                                         <div class="text-center">
                                             <button id="btnAceptLoginAutorizado" type="submit"
@@ -73,13 +60,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                                    <p class="mb-4 text-sm mx-auto">
-                                        Don't have an account?
-                                        <a href="javascript:;" class="text-primary text-gradient font-weight-bold">Sign
-                                            up</a>
-                                    </p>
-                                </div>
+
                             </div>
                         </div>
                         <div
@@ -88,10 +69,8 @@
                                 style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg');
           background-size: cover;">
                                 <span class="mask bg-gradient-primary opacity-6"></span>
-                                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Attention is the new
-                                    currency"</h4>
-                                <p class="text-white position-relative">The more effortless the writing looks, the more
-                                    effort the writer actually put into the process.</p>
+                                <h4 class="mt-5 text-white font-weight-bolder position-relative">CIRCE NOTARIAL</h4>
+                                <p class="text-white position-relative">Todo lo que necesitas, al alcance de tus manos.</p>
                             </div>
                         </div>
                     </div>
