@@ -85,13 +85,52 @@ $(document).ready(function() {
         },{
             field: "cAccion",
             title: "Opciones",
-            formatter: "clienteFisFormatter",
+            formatter: "EditAccionFormatter",
         }],
         onLoadSuccess: function(data) {},
     });
 
 
 })
+
+function EditAccionFormatter(value, row) {
+    // console.log(row);
+    var html = "";
+    html = '<a href="javascript:;" onclick="eliminarProducto('+row.id+')" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Cliente">'+
+                        '<i class="fas fa-trash text-secondary"></i>'+
+                    '</a>';
+    // html =
+    //     '<a href="javascript:void(0);" onclick="eliminarProducto(' +
+    //     row.id +
+    //     ')" class="btn btn-round btn-danger btn-icon btn-sm" rel="tooltip" data-toggle="tooltip" title="Eliminar"><i class="ni ni-fat-remove"></i></a>&nbsp;' +
+    //     "<script>$('[data-toggle=" +
+    //     '"' +
+    //     "tooltip" +
+    //     '"' +
+    //     "]').tooltip() </script>";
+    return html;
+}
+
+function eliminarProducto(id) {
+    // console.log(id);
+    $(".tooltip").hide();
+    $("#gridServicios").bootstrapTable("removeByUniqueId", id);
+
+    let total = $("#gridServicios").bootstrapTable("getData");
+                    let precioTotal = 0;
+                    total.forEach(function (lst) {
+
+
+                        precioTotal = (lst.Price + precioTotal);
+                    });
+                    $("#subTotalPrice").val(Number(precioTotal).toFixed(2));
+                    let totales = "0";
+                    totales = Number($("#totalHonorarios").val())+  Number(precioTotal);
+                    $("#totales").val(Number(totales).toFixed(2));
+
+                    calcularHonorarios()
+
+}
 function descriptionFormatter(value, row) {
     if (value.length > 20) {
         return value.substr(0, 20) + '...';

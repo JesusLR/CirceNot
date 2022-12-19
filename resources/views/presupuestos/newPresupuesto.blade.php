@@ -10,6 +10,7 @@
                         <h5 class="font-weight-bolder">Presupuesto</h5>
                         <div class="row">
                             <div class="col-md-5">
+                                <a>Cliente:</a>
                                 <select class="form-control" name="idClient" id="idClient">
                                     <option value="0">--Seleccione Cliente--</option>
                                     @foreach ($clientes as $cliente)
