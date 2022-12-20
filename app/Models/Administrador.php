@@ -12,4 +12,7 @@ class Administrador extends Authenticatable
     use HasFactory, HasRoles;
     protected $guard = 'admin';
     protected $table = 'administradors';
+    protected $fillable = [
+        'cNombre', 'cPrimerApellido', 'cSegundoApellido', 'email', 'password'
+    ];
 }

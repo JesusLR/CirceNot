@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-
 class UsuariosController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth:admin');
     }
 
@@ -49,25 +49,33 @@ class UsuariosController extends Controller
     public function createUser(Request $request)
     {
         try {
-
             $role = Role::findOrFail($request->permiso);
             $permiso = Permission::findOrFail($request->puesto);
+            /**
+             * Parámetros para crear usuarios
+             */
+            $nombre = strtoupper($request->nombre);
+            $apellidoP = strtoupper($request->apellidoP);
+            $apellidoM = strtoupper($request->apellidoM);
+            $correo = $request->email;
+            $correoDos = $request->email2;
+            $usuario = strtoupper($request->usuario);
+            $password = bcrypt($request->password);
+            $curp = strtoupper($request->curp);
+            $rfc = strtoupper($request->rfc);
+            $permiso = $request->permiso;
+            $puesto = $request->puesto;
+            $telefono = $request->telefono;
 
-            $usuario = PersonasAutorizadas::create([
-                'cNombre' => strtoupper($request->nombre),
-                'cPrimerApellido' => strtoupper($request->apellidoP),
-                'cSegundoApellido' => strtoupper($request->apellidoM),
-                'email' => $request->email,
-                'emailDos' => $request->email2,
-                'cUsuario' => strtoupper($request->usuario),
-                'password' => bcrypt($request->password),
-                'cCURP' => strtoupper($request->curp),
-                'cRFC' => strtoupper($request->rfc),
-                'iIDPermiso' => $request->permiso,
-                'iIDPuesto' => $request->puesto,
-                'iTelefono' => $request->telefono,
-                'lActivo' => 1,
-            ]);
+            switch ($role->name) {
+                case 'Administrador':
+                    $usuario = $this->createAdminUser($nombre, $apellidoP, $apellidoM, $correo, $password);
+                    break;
+                case 'Usuario':
+                    $usuario = $this->createAuthorizedUser($nombre, $apellidoP, $apellidoM, $correo, $correoDos, $usuario, $password, $curp, $rfc, $permiso, $puesto, $telefono);
+                    break;
+            }
+
             #Asignación de rol vía obtención de datos
             $usuario->assignRole($role);
             #Asignación de permiso vía obtención de datos
@@ -84,6 +92,36 @@ class UsuariosController extends Controller
                 'cMensaje' => $err->getMessage(),
             ]);
         }
+    }
+    public function createAdminUser($nombre, $apellidoP, $apellidoM, $correo, $password)
+    {
+        $usuario = Administrador::create([
+            'cNombre' => $nombre,
+            'cPrimerApellido' => $apellidoP,
+            'cSegundoApellido' => $apellidoM,
+            'email' => $correo,
+            'password' => bcrypt($password),
+        ]);
+        return $usuario;
+    }
+    public function createAuthorizedUser($nombre, $apellidoP, $apellidoM, $correo, $correoDos, $usuario, $password, $curp, $rfc, $permiso, $puesto, $telefono)
+    {
+        $usuario = PersonasAutorizadas::create([
+            'cNombre' => $nombre,
+            'cPrimerApellido' => $apellidoP,
+            'cSegundoApellido' => $apellidoM,
+            'email' => $correo,
+            'emailDos' => $correoDos,
+            'cUsuario' => $usuario,
+            'password' => $password,
+            'cCURP' => $curp,
+            'cRFC' => $rfc,
+            'iIDPermiso' => $permiso,
+            'iIDPuesto' => $puesto,
+            'iTelefono' => $telefono,
+            'lActivo' => 1,
+        ]);
+        return $usuario;
     }
 
     public function editUser(Request $request)
