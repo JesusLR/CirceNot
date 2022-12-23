@@ -27,8 +27,8 @@
             <img class="w-60 mx-auto" src="/img/illustrations/icon-documentation.svg" alt="sidebar_illustration">
             <div class="card-body text-center p-3 w-100 pt-0">
               <div class="docs-info">
-                <h6 class="mb-0">Nesesitas ayuda?</h6>
-                <p class="text-xs font-weight-bold mb-0">Por favor contactanos!</p>
+                <h6 class="mb-0">¿Necesitas ayuda?</h6>
+                <p class="text-xs font-weight-bold mb-0">¡Por favor, contáctanos!</p>
               </div>
             </div>
           </div>

@@ -396,7 +396,7 @@ function updateClienteF(id){
 
             if(r.lSuccess){
                 swal.fire({
-                    title: "Exito",
+                    title: "Éxito",
                     icon: 'success',
                     text: r.cMensaje,
                     type: "success",

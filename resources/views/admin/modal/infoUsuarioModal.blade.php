@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Informacion del Usuario</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Información del Usuario</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -71,7 +71,7 @@
                         <hr class="horizontal dark">
                     </li>
                     <li class="d-flex">
-                        <p class="mb-0">Contacto</p>
+                        <p class="mb-0">Teléfono</p>
                         <span class="badge badge-secondary ms-auto" id='UserTelInfo'></span>
                     </li>
                     <li>

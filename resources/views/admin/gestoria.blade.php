@@ -110,7 +110,7 @@
                                 @enderror --}}
                         </div>
                         <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                          <label class="@error('numNotaria') border-danger text-danger @enderror">Numero de notaría</label>
+                          <label class="@error('numNotaria') border-danger text-danger @enderror">Número de notaría</label>
                           <input maxlength="255" class="multisteps-form__input form-control @error('numNotaria') is-invalid @enderror" value="{{ old('numNotaria') }}" name="numNotaria" id="numNotaria" type="number" placeholder="... " />
                         </div>
                       </div>
@@ -230,11 +230,11 @@
                       </div>
                       <div class="row mt-3">
                         <div class="col-6">
-                          <label class="@error('curpNotario') border-danger text-danger @enderror">RFC</label>
+                          <label class="@error('curpNotario') border-danger text-danger @enderror">CURP</label>
                           <input maxlength="18" class="multisteps-form__input form-control @error('curpNotario') is-invalid @enderror" value="{{ old('curpNotario') }}" name="curpNotario" id="curpNotario" type="text" placeholder="..." />
                         </div>
                         <div class="col-6">
-                            <label class="@error('rfcNotario') border-danger text-danger @enderror">CURP</label>
+                            <label class="@error('rfcNotario') border-danger text-danger @enderror">RFC</label>
                             <input maxlength="13" class="multisteps-form__input form-control @error('rfcNotario') is-invalid @enderror" value="{{ old('rfcNotario') }}" name="rfcNotario" id="rfcNotario" type="text" placeholder="..." />
                         </div>
                       </div>

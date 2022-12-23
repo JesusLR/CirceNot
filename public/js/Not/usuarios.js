@@ -311,7 +311,7 @@ function createUser(){
             if(r.lSuccess){
                 $('#usersModal').modal('hide');
                 swal.fire({
-                    title: "Exito",
+                    title: "Éxito",
                     icon: 'success',
                     text: r.cMensaje,
                     type: "success",
@@ -471,7 +471,7 @@ function updateUser(){
             // alert('Bienvenido '+ email);
             $('#editUsersModal').modal('hide');
             swal.fire({
-                title: "Exito",
+                title: "Éxito",
                 icon: 'success',
                 text: r.cMensaje,
                 type: "success",

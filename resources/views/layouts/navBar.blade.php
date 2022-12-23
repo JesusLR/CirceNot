@@ -34,12 +34,12 @@
                     @if (Auth::guard('admin')->check())
                         <form method="POST" action="{{ route('admin_logout') }}">
                             @csrf
-                            <button type="submit" class="btn btn-link">Logout</button>
+                            <button type="submit" class="btn btn-link">Cerrar sesión</button>
                         </form>
                     @else
                         <form method="POST" action="{{ route('usuario_logout') }}">
                             @csrf
-                            <button type="submit" class="btn text-white btn-link">Logout</button>
+                            <button type="submit" class="btn text-white btn-link">Cerrar sesión</button>
                         </form>
                     @endif
                 </li>
