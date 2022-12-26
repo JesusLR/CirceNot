@@ -5,12 +5,12 @@ use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\PresupuestoController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PersonaLoginController;
+use App\Http\Controllers\GestoriaController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/')->group(function () {
     Route::post('user-logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('usuario_logout');
-    Route::get('catalogoDocAdmin', [CatalogoDocumentosController::class, 'catalogoDocAdmin'])->name('catalogoDoc_Administracion');
-    Route::get('catalogoDocContratos', [CatalogoDocumentosController::class, 'catalogoDocContratos'])->name('catalogoDoc_Contratos');
+    Route::get('catalogoDoc/{id}', [CatalogoDocumentosController::class, 'catalogoDoc'])->name('catalogoDoc_Administracion');
     Route::post('docUsers', [CatalogoDocumentosController::class, 'docUsers']);
     Route::get('newCliente', [ClientesController::class, 'newCliente'])->name('nuevo_cliente');
     Route::post('createCliente', [ClientesController::class, 'createCliente'])->name('createCliente');
