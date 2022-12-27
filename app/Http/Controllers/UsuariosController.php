@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Administrador;
 use App\Models\PersonasAutorizadas;
-use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Models\Role;
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class UsuariosController extends Controller
 {
@@ -71,7 +69,13 @@ class UsuariosController extends Controller
                 case 'Administrador':
                     $usuario = $this->createAdminUser($nombre, $apellidoP, $apellidoM, $correo, $password);
                     break;
-                case 'Usuario':
+                case 'Notario':
+                    $usuario = $this->createAdminUser($nombre, $apellidoP, $apellidoM, $correo, $password);
+                    break;
+                case 'Abogado(a)':
+                    $usuario = $this->createAuthorizedUser($nombre, $apellidoP, $apellidoM, $correo, $correoDos, $usuario, $password, $curp, $rfc, $permiso, $puesto, $telefono);
+                    break;
+                case 'Secreatario(a)':
                     $usuario = $this->createAuthorizedUser($nombre, $apellidoP, $apellidoM, $correo, $correoDos, $usuario, $password, $curp, $rfc, $permiso, $puesto, $telefono);
                     break;
             }
