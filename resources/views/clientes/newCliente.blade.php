@@ -415,7 +415,7 @@
 
                                             <div class="row mt-3">
                                                 <div class="col-12 col-sm-12">
-                                                    <label>Fecha de vencimiento del documento</label>
+                                                    <label>Otros Documentos</label>
                                                     <div class="form-control dropzone">
                                                         <div class="fallback">
                                                             <input name="clienteVencimientoF" id="clienteVencimientoF"
