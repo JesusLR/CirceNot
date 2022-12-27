@@ -68,9 +68,9 @@ $(document).ready(function() {
 function docFormatter(value, row) {
     var html = '';
 
-    html += '<a href="javascript:;" class="mx-3" onclick="verDoc('+row.iIDCatalogoDocumento+')" data-bs-toggle="tooltip" data-bs-original-title="Ver Documento">' +
-            '<i class="fas fa-file"></i>'+
-            '</a>';
+    // html += '<a href="javascript:;" class="mx-3" onclick="verDoc('+row.iIDCatalogoDocumento+')" data-bs-toggle="tooltip" data-bs-original-title="Ver Documento">' +
+    //         '<i class="fas fa-file"></i>'+
+    //         '</a>';
 
     html += '<a href="javascript:;" class="mx-3" onclick="confirmDeleteDoc('+row.iIDCatalogoDocumento+')" data-bs-toggle="tooltip" data-bs-original-title="Eliminar Documento">' +
             '<i class="fas fa-trash"></i>'+
