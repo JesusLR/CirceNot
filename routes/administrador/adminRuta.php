@@ -4,6 +4,7 @@ use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\CatalogoDocumentosController;
 use App\Http\Controllers\GestoriaController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin/')->group(function () {
@@ -24,5 +25,12 @@ Route::prefix('admin/')->group(function () {
     Route::post('createGestoria', [GestoriaController::class, 'createGestoria'])->name('createGestoria');
     Route::post('docprueba', [CatalogoDocumentosController::class, 'docprueba'])->name('docprueba_pure');
     // Route::get('docpruebaget', [CatalogoDocumentosController::class, 'docpruebaget'])->name('docpruebaget');
+});
+
+Route::prefix('perfiles/')->group(function(){
+    Route::get('inicio', [RoleController::class, 'index'])->name('admin_perfiles_inicio');
+    Route::post('gridProfiles', [RoleController::class, 'gridProfiles'])->name('admin_carga_perfiles');
+    Route::get('editar-permiso/{id}', [RoleController::class, 'editProfilePermission'])->name('admin_editar_role_permiso');
+    Route::get('gridProfilePermissions/{id}', [RoleController::class, 'gridProfilePermissions'])->name('admin_permisos_perfiles');
 });
 

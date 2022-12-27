@@ -14,7 +14,9 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::create(['name' => 'Administrador', 'guard_name' => 'admin']);
-        Role::create(['name' => 'Usuario', 'guard_name' => 'auto']);
+        Role::create(['name' => 'Administrador', 'guard_name' => 'admin'])->givePermissionTo(['Notario', 'Jefe']);
+        Role::create(['name' => 'Notario', 'guard_name' => 'admin'])->givePermissionTo('Notario');
+        Role::create(['name' => 'Abogado(a)', 'guard_name' => 'auto'])->givePermissionTo('Usuario');
+        Role::create(['name' => 'Secreatario(a)', 'guard_name' => 'auto'])->givePermissionTo('Usuario');
     }
 }
