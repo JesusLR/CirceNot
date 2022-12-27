@@ -45,7 +45,7 @@ class CatalogoDocumentosController extends Controller
                 'lActivo' => 1,
             ]);
 
-            return back()->with('success', 'Documento creado con exito!');
+            return back()->with('success', 'Documento creado con éxito!');
          } catch (Exception $err) {
              $conexion->rollback();
              return response()->json([

@@ -82,7 +82,7 @@
                   </div>
                 </div>
                 <div class="col-6">
-                  <label class="form-label mt-4">Numero de teléfono</label>
+                  <label class="form-label mt-4">Número de teléfono</label>
                   <div class="input-group">
                     <input id="userTELEdit" maxlength="10" onkeypress="return soloNumeros(event)" name="userTELEdit" class="form-control" type="text" placeholder="+40 735 631 620">
                   </div>

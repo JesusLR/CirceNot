@@ -16,10 +16,12 @@ class CreatePresupuestosTable extends Migration
         Schema::create('Presupuestos', function (Blueprint $table) {
             $table->id();
             $table->float('totales');
+            $table->string('folio');
             $table->float('honorarios');
             $table->float('ivaHonorarios');
             $table->float('totalHonorarios');
             $table->float('subtotalServicios');
+            $table->bigInteger('vigencia');
             $table->boolean('lActivo');
             $table->bigInteger('idClient');
             //$table->foreignId('idClient')->constrained('clientes');

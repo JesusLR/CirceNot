@@ -89,7 +89,7 @@ class ClientesController extends Controller
                     'lActivo' => 1,
                 ]);
 
-                return redirect()->route('nuevo_cliente')->with('success', 'Cliente '.strtoupper($request->clienteNombre).''.strtoupper($request->clienteApellidoP).''.strtoupper($request->clienteApellidoM).' creado con exito!');
+                return redirect()->route('nuevo_cliente')->with('success', 'Cliente '.strtoupper($request->clienteNombre).''.strtoupper($request->clienteApellidoP).''.strtoupper($request->clienteApellidoM).' creado con éxito!');
 
             }else{  //Persona Moral
                 dd($request->all());
@@ -113,7 +113,7 @@ class ClientesController extends Controller
                     'lActivo' => 1,
                 ]);
 
-                return redirect()->route('nuevo_cliente')->with('success', 'Cliente '.strtoupper($request->clienteRazonSocia).' creado con exito!');
+                return redirect()->route('nuevo_cliente')->with('success', 'Cliente '.strtoupper($request->clienteRazonSocia).' creado con éxito!');
             }
 
          } catch (Exception $err) {
@@ -177,7 +177,7 @@ class ClientesController extends Controller
 
             return response()->json([
                 'lSuccess' => true,
-                'cMensaje' => 'Usuario editado con exito!',
+                'cMensaje' => 'Usuario editado con éxito!',
             ]);
 
          } catch (Exception $err) {
@@ -260,7 +260,7 @@ class ClientesController extends Controller
 
             return response()->json([
                 'lSuccess' => true,
-                'cMensaje' => 'Usuario editado con exito!',
+                'cMensaje' => 'Usuario editado con éxito!',
             ]);
 
          } catch (Exception $err) {

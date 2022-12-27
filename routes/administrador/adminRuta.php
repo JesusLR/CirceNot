@@ -25,6 +25,9 @@ Route::prefix('admin/')->group(function () {
     Route::post('createGestoria', [GestoriaController::class, 'createGestoria'])->name('createGestoria');
     Route::post('docprueba', [CatalogoDocumentosController::class, 'docprueba'])->name('docprueba_pure');
     // Route::get('docpruebaget', [CatalogoDocumentosController::class, 'docpruebaget'])->name('docpruebaget');
+    //gestoria
+    Route::get('editarGestoria', [GestoriaController::class, 'gestoriaEdit'])->name('edit_gestoria');
+    Route::post('updateGestoria', [GestoriaController::class, 'updateGestoria'])->name('update_Gestoria');
 });
 
 Route::prefix('perfiles/')->group(function(){

@@ -17,8 +17,6 @@ class CreatePresupuestoHasServiceTable extends Migration
             $table->id();
             $table->bigInteger('id_presupuesto');
             $table->bigInteger('id_service');
-            $table->string('folio');
-            $table->bigInteger('vigencia');
             $table->float('cantidad');
             $table->timestamps();
         });

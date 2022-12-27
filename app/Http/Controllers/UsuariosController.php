@@ -83,7 +83,7 @@ class UsuariosController extends Controller
 
             return response()->json([
                 'lSuccess' => true,
-                'cMensaje' => '¡El usuario ha sido creado con exito!',
+                'cMensaje' => '¡El usuario ha sido creado con éxito!',
             ]);
         } catch (Exception $err) {
             $conexion->rollback();
@@ -167,7 +167,7 @@ class UsuariosController extends Controller
 
             return response()->json([
                 'lSuccess' => true,
-                'cMensaje' => '¡El usuario se ha actualizado con exito!',
+                'cMensaje' => '¡El usuario se ha actualizado con éxito!',
             ]);
         } catch (Exception $err) {
             $conexion->rollback();

@@ -46,7 +46,7 @@
           <div class="col-12 col-lg-12 m-auto">
 
                 <h5 class="font-weight-bolder mb-0">Servicio</h5>
-                <p class="mb-0 text-sm">Informacion General del servicio</p>
+                <p class="mb-0 text-sm">Información General del servicio</p>
                 <input type="text" value="" name="idServiceE" id="idServiceE" hidden>
                 <div class="multisteps-form__content">
 

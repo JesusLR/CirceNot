@@ -27,7 +27,7 @@
                                 <div class="card-body">
                                     <div class="multisteps-form__progress">
                                         <button class="multisteps-form__progress-btn js-active" type="button"
-                                            title="Notaria"><span>Informacion General</span></button>
+                                            title="Notaria"><span>Información General</span></button>
                                         <button class="multisteps-form__progress-btn" type="button"
                                             title="Profile">Expediente</button>
                                     </div>
@@ -114,7 +114,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-3">
-                                                    <label class="form-label">Numero Celular</label>
+                                                    <label class="form-label">Número Celular</label>
                                                     <div class="input-group">
                                                         <input id="clienteCel" name="clienteCel" maxlength="10"
                                                             onkeypress="return soloNumeros(event)" class="form-control"
@@ -276,7 +276,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <label class="form-label">Numero Telefonico
+                                                    <label class="form-label">Número Telefonico
                                                     </label>
                                                     <div class="input-group">
                                                         <input id="telClienteM" maxlength="10" name="telClienteM"
@@ -285,7 +285,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <label class="form-label">Numero Celular
+                                                    <label class="form-label">Número Celular
                                                     </label>
                                                     <div class="input-group">
                                                         <input id="celClienteM" maxlength="10"

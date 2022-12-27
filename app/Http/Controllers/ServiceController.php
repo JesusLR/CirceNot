@@ -95,7 +95,7 @@ class ServiceController extends Controller
 
             return response()->json([
                 'lSuccess' => true,
-                'cMensaje' => 'Usuario actualizado con exito!',
+                'cMensaje' => 'Usuario actualizado con éxito!',
             ]);
 
          } catch (Exception $err) {

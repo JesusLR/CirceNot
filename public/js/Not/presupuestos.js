@@ -35,7 +35,7 @@ $(document).ready(function() {
         },{
             field: "cNombre",
             title: "Nombre",
-            formatter: "nombreGridFisFormatter",
+            // formatter: "nombreGridFisFormatter",
 
         },{
             field: "folio",
@@ -360,7 +360,7 @@ function guardarPresupuesto() {
                 swal.fire({
                     icon: "info",
                     title: "Presupuesto Folio: "+r.folioPresupuesto,
-                    text: "se guardo el presupuesto con exito",
+                    text: "se guardo el presupuesto con éxito",
 
                     showCancelButton: false,
                     allowEscapeKey: false,

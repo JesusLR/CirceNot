@@ -62,7 +62,7 @@
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">Apellido Paterno</label>
+                <label class="form-label">Primer Apellido</label>
                 <div class="input-group">
                   <input id="clienteApellidoPEdit" name="clienteApellidoPEdit" class="form-control" type="text" placeholder="Lopez" required="required">
                 </div>
@@ -82,13 +82,13 @@
                   </div>
               </div>
               <div class="col-3">
-                  <label class="form-label">Numero Telefonico</label>
+                  <label class="form-label">Número Telefonico</label>
                   <div class="input-group">
                     <input id="clienteTelEdit" name="clienteTelEdit" class="form-control" type="number" placeholder="969 000 0000">
                   </div>
               </div>
               <div class="col-3">
-                  <label class="form-label">Numero Celular</label>
+                  <label class="form-label">Número Celular</label>
                   <div class="input-group">
                     <input id="clienteCelEdit" name="clienteCelEdit" class="form-control" type="number" placeholder="999 100 0000">
                   </div>

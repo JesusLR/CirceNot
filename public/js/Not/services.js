@@ -140,7 +140,7 @@ function updateService(){
             // alert('Bienvenido '+ email);
             $('#editServiceModal').modal('hide');
             swal.fire({
-                title: "Exito",
+                title: "Éxito",
                 icon: 'success',
                 text: r.cMensaje,
                 type: "success",
@@ -251,7 +251,7 @@ function saveServiceform(){
         beforeSend: function () {
             Swal.fire({
                 title: "CirceNot",
-                text: "Guardando Informacion...",
+                text: "Guardando Información...",
                 allowEscapeKey: false,
                 allowOutsideClick: false,
                 onOpen: () => {
@@ -266,7 +266,7 @@ function saveServiceform(){
 
                  Swal.fire({
                     title: "CirceNot",
-                    text: "Informacion Guardada.",
+                    text: "Información Guardada.",
                     type: "success",
                     allowOutsideClick: false,
                 }).then(function () {

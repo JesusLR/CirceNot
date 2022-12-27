@@ -74,14 +74,14 @@
                   </div>
                 </div>
                 <div class="col-4">
-                  <label class="form-label">Numero Telefonico
+                  <label class="form-label">Número Telefonico
                   </label>
                   <div class="input-group">
                     <input id="telClienteMEdit" name="telClienteMEdit" class="form-control" type="text" placeholder="969 123 4567" required="required">
                   </div>
                 </div>
                 <div class="col-4">
-                  <label class="form-label">Numero Celular
+                  <label class="form-label">Número Celular
                   </label>
                   <div class="input-group">
                     <input id="celClienteMEdit" name="celClienteMEdit" class="form-control" type="text" placeholder="999 123 4567" required="required">

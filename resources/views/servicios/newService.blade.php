@@ -26,7 +26,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="multisteps-form__progress">
-                    <button class="multisteps-form__progress-btn js-active" type="button" title="Servicios"><span>Informacion General</span></button>
+                    <button class="multisteps-form__progress-btn js-active" type="button" title="Servicios"><span>Información General</span></button>
 
                   </div>
                 </div>
@@ -40,7 +40,7 @@
                   <!--single form panel-->
                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
                   <h5 class="font-weight-bolder mb-0">Servicio</h5>
-                  <p class="mb-0 text-sm">Informacion General del servicio</p>
+                  <p class="mb-0 text-sm">Información General del servicio</p>
                   <div class="multisteps-form__content">
 
                     <div id="infoClienteFisica">
