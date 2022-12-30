@@ -35,5 +35,7 @@ Route::prefix('perfiles/')->group(function(){
     Route::post('gridProfiles', [RoleController::class, 'gridProfiles'])->name('admin_carga_perfiles');
     Route::get('editar-permiso/{id}', [RoleController::class, 'editProfilePermission'])->name('admin_editar_role_permiso');
     Route::get('gridProfilePermissions/{id}', [RoleController::class, 'gridProfilePermissions'])->name('admin_permisos_perfiles');
+    Route::put('updateProfilePermissions/{id}', [RoleController::class, 'updateProfilePermissions'])->name('admin_actualizar_permisos_perfiles');
+    Route::put('assignProfilePermissions/{id}', [RoleController::class, 'assignProfilePermissions'])->name('admin_asignar_permisos_perfiles');
 });
 

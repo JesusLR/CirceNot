@@ -12,6 +12,7 @@ class PersonasAutorizadas extends Authenticatable
     use HasFactory, HasRoles;
     protected $guard = 'auto';
     protected $table = 'personas_autorizadas';
+    protected $primaryKey = 'iIDPersonaAutorizada';
 
     protected $fillable =
     [
