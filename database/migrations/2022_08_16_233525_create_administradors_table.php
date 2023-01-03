@@ -20,11 +20,11 @@ class CreateAdministradorsTable extends Migration
             $table->string('cSegundoApellido');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('emailDos');
-            $table->string('cUsuario');
-            $table->string('cCURP');
-            $table->string('cRFC');
-            $table->integer('iTelefono');
+            $table->string('emailDos')->nullable();
+            $table->string('cUsuario')->nullable();
+            $table->string('cCURP')->nullable();
+            $table->string('cRFC')->nullable();
+            $table->integer('iTelefono')->nullable();
             $table->integer('lActivo');
             $table->rememberToken();
             $table->timestamps();
