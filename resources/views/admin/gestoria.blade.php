@@ -135,7 +135,7 @@
                             <label class="@error('logoNotaria') border-danger text-danger @enderror">Logotipo</label>
                             <div class="form-control dropzone @error('logoNotaria') is-invalid @enderror">
                                 <div class="fallback">
-                                    <input name="logoNotaria" id="logoNotaria" type="file" multiple />
+                                    <input value="{{ old('logoNotaria') }}" name="logoNotaria" id="logoNotaria" type="file" multiple />
                                 </div>
                             </div>
                         </div>
@@ -161,19 +161,19 @@
                       <div class="row mt-3" id="divProtocoloAbierto">
                         <div class="col-12 col-sm-6">
                           <label>Libro</label>
-                          <input maxlength="255" class="multisteps-form__input form-control" name="numLibroProtocolo" id="numLibroProtocolo" type="text" placeholder="Libro..." />
+                          <input maxlength="255" value="{{ old('numLibroProtocolo') }}" class="multisteps-form__input form-control" name="numLibroProtocolo" id="numLibroProtocolo" type="text" placeholder="Libro..." />
                         </div>
                         <div class="col-12 col-sm-6 ">
                           <label>Acta</label>
-                          <input maxlength="255" class="multisteps-form__input form-control" name="numActaProtocolo" id="numActaProtocolo" type="text" placeholder="Acta..." />
+                          <input maxlength="255" value="{{ old('numActaProtocolo') }}" class="multisteps-form__input form-control" name="numActaProtocolo" id="numActaProtocolo" type="text" placeholder="Acta..." />
                         </div>
                         <div class="col-12 col-sm-6 ">
                             <label>Foja Inicial</label>
-                            <input maxlength="11" class="multisteps-form__input form-control" name="numFojaIniProtocolo" id="numFojaIniProtocolo" type="number" placeholder="0..." />
+                            <input maxlength="11" value="{{ old('numFojaIniProtocolo') }}" class="multisteps-form__input form-control" name="numFojaIniProtocolo" id="numFojaIniProtocolo" type="number" placeholder="0..." />
                         </div>
                         <div class="col-12 col-sm-6 ">
                             <label>Foja Final</label>
-                            <input maxlength="11" class="multisteps-form__input form-control" name="numFojaFinProtocolo" id="numFojaFinProtocolo" type="number" placeholder="0..." />
+                            <input maxlength="11" value="{{ old('numFojaFinProtocolo') }}" class="multisteps-form__input form-control" name="numFojaFinProtocolo" id="numFojaFinProtocolo" type="number" placeholder="0..." />
                         </div>
                       </div>
                       {{-- fin apartado protocolo abierto --}}

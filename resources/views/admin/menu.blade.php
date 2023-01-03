@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link " href="{{ route('administracion_gestoria') }}">
+                <a class="nav-link " href="{{ route('edit_gestoria') }}">
                     <span class="sidenav-mini-icon"> G </span>
                     <span class="sidenav-normal"> Gestionar Gestoría </span>
                 </a>

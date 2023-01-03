@@ -13,6 +13,16 @@ class Administrador extends Authenticatable
     protected $guard = 'admin';
     protected $table = 'administradors';
     protected $fillable = [
-        'cNombre', 'cPrimerApellido', 'cSegundoApellido', 'email', 'password'
+        'cNombre',
+        'cPrimerApellido',
+        'cSegundoApellido',
+        'email',
+        'password',
+        'emailDos',
+        'cUsuario',
+        'cCURP',
+        'cRFC',
+        'iTelefono',
+        'lActivo',
     ];
 }

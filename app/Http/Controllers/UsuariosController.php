@@ -25,7 +25,50 @@ class UsuariosController extends Controller
     public function gridUsers()
     {
         try {
-            $users = PersonasAutorizadas::select('*')->get();
+            $users = array();
+
+            $autorizados = PersonasAutorizadas::select('*')->get();
+            $admins = Administrador::where('id', '>', 1)->get();
+
+            foreach($autorizados as $autorizado){
+                $users[] = array(
+                    "iIDPersonaAutorizada" => $autorizado->iIDPersonaAutorizada,
+                    "cNombre" => $autorizado->cNombre,
+                    "cPrimerApellido" => $autorizado->cPrimerApellido,
+                    "cSegundoApellido" => $autorizado->cSegundoApellido,
+                    "email" => $autorizado->email,
+                    "emailDos" => $autorizado->emailDos,
+                    "cUsuario" => $autorizado->cUsuario,
+                    "password" => $autorizado->password,
+                    "cCURP" => $autorizado->cCURP,
+                    "cRFC" => $autorizado->cRFC,
+                    "iIDPermiso" => $autorizado->iIDPermiso,
+                    "iIDPuesto" => $autorizado->iIDPuesto,
+                    "iTelefono" => $autorizado->iTelefono,
+                    "lActivo" => $autorizado->lActivo,
+                    "iTipo" => 2,
+                );
+            }
+
+            foreach($admins as $admin){
+                $users[] = array(
+                    "iIDPersonaAutorizada" => $admin->id,
+                    "cNombre" => $admin->cNombre,
+                    "cPrimerApellido" => $admin->cPrimerApellido,
+                    "cSegundoApellido" => $admin->cSegundoApellido,
+                    "email" => $admin->email,
+                    "emailDos" => $admin->emailDos,
+                    "cUsuario" => $admin->cUsuario,
+                    "password" => $admin->password,
+                    "cCURP" => $admin->cCURP,
+                    "cRFC" => $admin->cRFC,
+                    "iIDPermiso" => 1,
+                    "iIDPuesto" => 1,
+                    "iTelefono" => $admin->iTelefono,
+                    "lActivo" => $admin->lActivo,
+                    "iTipo" => 1,
+                );
+            }
 
             return $users;
         } catch (Exception $err) {
@@ -67,10 +110,10 @@ class UsuariosController extends Controller
 
             switch ($role->name) {
                 case 'Administrador':
-                    $usuario = $this->createAdminUser($nombre, $apellidoP, $apellidoM, $correo, $password);
+                    $usuario = $this->createAdminUser($nombre, $apellidoP, $apellidoM, $correo, $correoDos, $usuario, $password, $curp, $rfc, $permiso, $puesto, $telefono);
                     break;
                 case 'Notario':
-                    $usuario = $this->createAdminUser($nombre, $apellidoP, $apellidoM, $correo, $password);
+                    $usuario = $this->createAdminUser($nombre, $apellidoP, $apellidoM, $correo, $correoDos, $usuario, $password, $curp, $rfc, $permiso, $puesto, $telefono);
                     break;
                 case 'Abogado(a)':
                     $usuario = $this->createAuthorizedUser($nombre, $apellidoP, $apellidoM, $correo, $correoDos, $usuario, $password, $curp, $rfc, $permiso, $puesto, $telefono);
@@ -97,14 +140,20 @@ class UsuariosController extends Controller
             ]);
         }
     }
-    public function createAdminUser($nombre, $apellidoP, $apellidoM, $correo, $password)
+    public function createAdminUser($nombre, $apellidoP, $apellidoM, $correo, $correoDos, $usuario, $password, $curp, $rfc, $permiso, $puesto, $telefono)
     {
         $usuario = Administrador::create([
             'cNombre' => $nombre,
             'cPrimerApellido' => $apellidoP,
             'cSegundoApellido' => $apellidoM,
             'email' => $correo,
-            'password' => bcrypt($password),
+            'emailDos' => $correoDos,
+            'cUsuario' => $usuario,
+            'password' => $password,
+            'cCURP' => $curp,
+            'cRFC' => $rfc,
+            'iTelefono' => $telefono,
+            'lActivo' => 1,
         ]);
         return $usuario;
     }
@@ -131,9 +180,32 @@ class UsuariosController extends Controller
     public function editUser(Request $request)
     {
         try {
-            $user = PersonasAutorizadas::where('iIDPersonaAutorizada', $request->iIDPersonaAutorizada)->first();
+            $usersEdit = array();
+            if($request->iTipo == 1){
+                $user = Administrador::where('id', $request->iIDPersonaAutorizada)->first();
+            }else{
+                $user = PersonasAutorizadas::where('iIDPersonaAutorizada', $request->iIDPersonaAutorizada)->first();
+            }
 
-            return $user;
+            $usersEdit = array(
+                "iIDPersonaAutorizada" => $request->iIDPersonaAutorizada,
+                "cNombre" => $user->cNombre,
+                "cPrimerApellido" => $user->cPrimerApellido,
+                "cSegundoApellido" => $user->cSegundoApellido,
+                "email" => $user->email,
+                "emailDos" => $user->emailDos,
+                "cUsuario" => $user->cUsuario,
+                "password" => $user->password,
+                "cCURP" => $user->cCURP,
+                "cRFC" => $user->cRFC,
+                "iIDPermiso" =>  ($request->iTipo == 1) ? 1 : $user->iIDPermiso,
+                "iIDPuesto" =>  ($request->iTipo == 1) ? 1 : $user->iIDPuesto,
+                "iTelefono" => $user->iTelefono,
+                "lActivo" => $user->lActivo,
+                "iTipo" => $request->iTipo,
+            );
+            // dd($usersEdit);
+            return json_Encode($usersEdit);
         } catch (Exception $err) {
             $conexion->rollback();
             return response()->json([
@@ -153,21 +225,39 @@ class UsuariosController extends Controller
                 $estatus = 0;
             }
 
-            PersonasAutorizadas::where('iIDPersonaAutorizada', $request->iIDPersonaAutorizada)->update([
-                'cNombre' => $request->nombre,
-                'cPrimerApellido' => $request->apellidoP,
-                'cSegundoApellido' => $request->apellidoM,
-                'email' => $request->email,
-                'emailDos' => $request->email2,
-                'cUsuario' => $request->usuario,
-                'password' => bcrypt($request->password),
-                'cCURP' => $request->curp,
-                'cRFC' => $request->rfc,
-                'iIDPermiso' => $request->permiso,
-                'iIDPuesto' => $request->puesto,
-                'iTelefono' => $request->telefono,
-                'lActivo' => $estatus,
-            ]);
+            if($request->iTipo == 1){
+                Administrador::where('id', $request->iIDPersonaAutorizada)->update([
+                    'cNombre' => $request->nombre,
+                    'cPrimerApellido' => $request->apellidoP,
+                    'cSegundoApellido' => $request->apellidoM,
+                    'email' => $request->email,
+                    'emailDos' => $request->email2,
+                    'cUsuario' => $request->usuario,
+                    'password' => bcrypt($request->password),
+                    'cCURP' => $request->curp,
+                    'cRFC' => $request->rfc,
+                    // 'iIDPermiso' => $request->permiso,
+                    // 'iIDPuesto' => $request->puesto,
+                    'iTelefono' => $request->telefono,
+                    'lActivo' => $estatus,
+                ]);
+            }else{
+                PersonasAutorizadas::where('iIDPersonaAutorizada', $request->iIDPersonaAutorizada)->update([
+                    'cNombre' => $request->nombre,
+                    'cPrimerApellido' => $request->apellidoP,
+                    'cSegundoApellido' => $request->apellidoM,
+                    'email' => $request->email,
+                    'emailDos' => $request->email2,
+                    'cUsuario' => $request->usuario,
+                    'password' => bcrypt($request->password),
+                    'cCURP' => $request->curp,
+                    'cRFC' => $request->rfc,
+                    'iIDPermiso' => $request->permiso,
+                    'iIDPuesto' => $request->puesto,
+                    'iTelefono' => $request->telefono,
+                    'lActivo' => $estatus,
+                ]);
+            }
 
             return response()->json([
                 'lSuccess' => true,

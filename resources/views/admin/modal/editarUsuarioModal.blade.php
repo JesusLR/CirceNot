@@ -16,6 +16,7 @@
               </div>
             </div>
             {{-- <div class="card-body pt-0"> --}}
+                <input id="iTipoUserEdit" type="text" hidden/>
               <div class="row">
                 <div class="col-4">
                   <label class="form-label">Nombre(s)

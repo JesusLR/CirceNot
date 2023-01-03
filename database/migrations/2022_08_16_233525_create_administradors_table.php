@@ -20,6 +20,12 @@ class CreateAdministradorsTable extends Migration
             $table->string('cSegundoApellido');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('emailDos');
+            $table->string('cUsuario');
+            $table->string('cCURP');
+            $table->string('cRFC');
+            $table->integer('iTelefono');
+            $table->integer('lActivo');
             $table->rememberToken();
             $table->timestamps();
         });

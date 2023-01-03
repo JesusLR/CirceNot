@@ -105,10 +105,10 @@ function usuarioStatusFormatter(value, row) {
 function usuarioFormatter(value, row) {
     var html;
 
-    html = '<a href="javascript:;" onclick="infoUser('+row.iIDPersonaAutorizada+')" data-bs-toggle="tooltip" data-bs-original-title="Tarjeta de presentacion">'+
+    html = '<a href="javascript:;" onclick="infoUser('+row.iIDPersonaAutorizada+','+row.iTipo+')" data-bs-toggle="tooltip" data-bs-original-title="Tarjeta de presentacion">'+
            ' <i class="fas fa-eye text-secondary"></i>'+
         '</a>'+
-        '<a href="javascript:;" onclick="editUser('+row.iIDPersonaAutorizada+')" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Usuario">'+
+        '<a href="javascript:;" onclick="editUser('+row.iIDPersonaAutorizada+','+row.iTipo+')" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Usuario">'+
             '<i class="fas fa-user-edit text-secondary"></i>'+
         '</a>';
     // <td class="text-sm">
@@ -354,13 +354,14 @@ function soloNumeros(e) {
     }
 }
 
-function infoUser(iIDPersonaAutorizada){
+function infoUser(iIDPersonaAutorizada, iTipo){
     $.ajax({
         url: "/admin/editUser",
         type: "post",
         dataType: "json",
         data: {
             iIDPersonaAutorizada:iIDPersonaAutorizada,
+            iTipo, iTipo
         },
         success: function (r) {
             console.log(r.cNombre)
@@ -387,13 +388,14 @@ function infoUser(iIDPersonaAutorizada){
     });
 }
 
-function editUser(iIDPersonaAutorizada){
+function editUser(iIDPersonaAutorizada, iTipo){
     $.ajax({
         url: "/admin/editUser",
         type: "post",
         dataType: "json",
         data: {
             iIDPersonaAutorizada:iIDPersonaAutorizada,
+            iTipo, iTipo,
         },
         success: function (r) {
             console.log(r.cNombre)
@@ -415,6 +417,7 @@ function editUser(iIDPersonaAutorizada){
             $('#userPasswordEdit').val(r.password);
             $('#userCURPEdit').val(r.cCURP);
             $('#userRFCEdit').val(r.cRFC);
+            $('#iTipoUserEdit').val(r.iTipo);
             $('#editUsersModal').modal('show');
     },
         error: function (err) {
@@ -438,6 +441,7 @@ function updateUser(){
     password = $('#userPasswordEdit').val();
     curp = $('#userCURPEdit').val();
     rfc = $('#userRFCEdit').val();
+    iTipo = $('#iTipoUserEdit').val();
 
     if($('#userStatus').prop('checked')){
         sts = 1;
@@ -466,6 +470,7 @@ function updateUser(){
             curp : curp,
             rfc : rfc,
             sts: sts,
+            iTipo: iTipo,
         },
         success: function (r) {
             // alert('Bienvenido '+ email);
