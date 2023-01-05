@@ -19,7 +19,7 @@ class CreateCatalogoDocumentosTable extends Migration
             $table->string('cRuta');
             $table->string('cDescripcion');
             $table->string('iIDCategoria');
-            $table->string('cPlantilla');
+            $table->longText('cPlantilla');
             $table->boolean('lActivo');
             $table->timestamps();
         });
